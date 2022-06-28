@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
+import ImageUpload from './ImageUpload';
 
 const style = {
   position: 'absolute',
@@ -89,6 +90,10 @@ const signIn = (event)=>{
 
   return (
     <div className="App">
+
+    <ImageUpload/>
+
+
       <div>
         <Modal
           open={open}
