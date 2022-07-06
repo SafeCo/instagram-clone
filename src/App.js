@@ -43,7 +43,6 @@ useEffect(()=>{
   const unsubscribe = auth.onAuthStateChanged((authUser)=>{
     if(authUser){
       //user logged in
-      console.log(authUser);
       setUser(authUser);
       
     }else{
@@ -58,7 +57,7 @@ useEffect(()=>{
 }, [user, username]);
 
 useEffect(()=>{
-  db.collection('posts').onSnapshot(snapshot => {
+  db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
     setPosts(snapshot.docs.map(doc => ({
       id: doc.id,
       post: doc.data()
@@ -90,7 +89,7 @@ const signIn = (event)=>{
 
   return (
     <div className="App">
-
+      <h3>GUEST- Username: Testguy email: tester123@mail.com pass: tester123</h3>
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
       ): (
