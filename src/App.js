@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'; 
 import './App.css';
+import './ImageUpload.css'
 import Post from './Post';
 import { db, auth, storage} from './firebase';
 import Box from '@mui/material/Box';
@@ -7,6 +8,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
 import ImageUpload from './ImageUpload';
+import InstagramEmbed from 'react-instagram-embed';
 
 const style = {
   position: 'absolute',
@@ -90,11 +92,7 @@ const signIn = (event)=>{
   return (
     <div className="App">
       <h3>GUEST- Username: Testguy email: tester123@mail.com pass: tester123</h3>
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ): (
-        <h3>Sorry you need to login to upload</h3>
-      )}
+      
 
       <div>
         <Modal
@@ -177,23 +175,31 @@ const signIn = (event)=>{
           src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
           alt=""
         />
+        {user ? (
+          <Button onClick={()=> auth.signOut()}>Logout</Button>
+        ):(
+          <div className="app__loginContainer">
+            <Button onClick={()=> setOpenSignIn(true)}>Sign In</Button>
+            <Button onClick={()=> setOpen(true)}>Sign Up</Button>
+          </div>
+        )}
       </div>
-      {user ? (
-        <Button onClick={()=> auth.signOut()}>Logout</Button>
-      ):(
-        <div className="app__loginContainer">
-          <Button onClick={()=> setOpenSignIn(true)}>Sign In</Button>
-          <Button onClick={()=> setOpen(true)}>Sign Up</Button>
-        </div>
-      )}
 
-      <h1>Test</h1>
-      
-      {
-        posts.map(({id, post}) =>(
-          <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
-        ))
-      }
+      <div className="app__posts">
+        {
+          posts.map(({id, post}) =>(
+            <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+          ))
+        }
+      </div>
+           
+     
+
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ): (
+        <h3>Sorry you need to login to upload</h3>
+      )}
       
 
     </div>
