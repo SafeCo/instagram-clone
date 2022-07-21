@@ -20,7 +20,7 @@
     justify-content: space-between;
 }
 
-.app_headerImage {
+.app__headerImage {
     object-fit: contain;
 }
 

@@ -8,7 +8,6 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
 import ImageUpload from './ImageUpload';
-import InstagramEmbed from 'react-instagram-embed';
 
 const style = {
   position: 'absolute',
@@ -192,7 +191,7 @@ const signIn = (event)=>{
           ))
         }
       </div>
-           
+      
      
 
       {user?.displayName ? (
