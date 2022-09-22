@@ -8,6 +8,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
 import ImageUpload from './ImageUpload';
+import searchIcon from './search.svg';
 
 const style = {
   position: 'absolute',
@@ -25,7 +26,6 @@ const style = {
 
 function App() {
 const [posts, setPosts] = useState([]);
-
 const [openSignIn, setOpenSignIn] = useState(false);
 const [open, setOpen] = useState(false);
 const [username, setUsername] = useState('');
@@ -90,7 +90,7 @@ const signIn = (event)=>{
 
   return (
     <div className="App">
-      <h3>GUEST- Username: Testguy email: tester123@mail.com pass: tester123</h3>
+      <h3>GUEST- Username: Testguy email: tester123@mail.com pass: tester123 REMEM- attribute icons</h3>
       
 
       <div>
@@ -175,7 +175,21 @@ const signIn = (event)=>{
           alt=""
         />
         {user ? (
-          <Button onClick={()=> auth.signOut()}>Logout</Button>
+          <div className="app__headerIcons">
+            <h1 className="app__header__searchBar">
+              <img className="app__headerIcon" src={searchIcon} alt='home button'/>
+            Search
+            </h1>
+            {/* can import image */}
+
+            <img className="app__headerIcon" src={require('./home.png')} alt='home button'/>
+            <img className="app__headerIcon" src={require('./send.png')} alt='send button'/>
+            <img className="app__headerIcon" src={require('./plus.png')} alt='plus button'/>
+            <img className="app__headerIcon" src={require('./explore.png')} alt='explore button'/>
+            <img className="app__headerIcon" src={require('./heart.png')} alt='heart button'/>
+
+            <Button onClick={()=> auth.signOut()}>Logout</Button>
+          </div>
         ):(
           <div className="app__loginContainer">
             <Button onClick={()=> setOpenSignIn(true)}>Sign In</Button>
@@ -185,11 +199,13 @@ const signIn = (event)=>{
       </div>
 
       <div className="app__posts">
-        {
-          posts.map(({id, post}) =>(
-            <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
-          ))
-        }
+        <div className="app__postsLeft">
+          {
+            posts.map(({id, post}) =>(
+              <Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+            ))
+          }
+        </div>
       </div>
       
      

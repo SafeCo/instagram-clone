@@ -1,27 +1,56 @@
 *{
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color:#fafafa;
 }
 
 .app{
+    /* might not apply */
     background-color: #fafafa;
 }
 
 .app__posts {
     padding: 20px;
+
 }
 
 .app__header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     background-color: white;
     padding: 20px;
     border-bottom: 1px solid lightgray;
     object-fit: contain;
     display: flex;
-    justify-content: space-between;
 }
 
 .app__headerImage {
     object-fit: contain;
+}
+
+.app__header__searchBar{
+    border-radius: 10px;
+    background-color: rgb(239, 239, 239);
+    width: 300px;
+    font-size: 16px;
+    font-weight: 300;
+}
+.app__headerIcons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: solid red 2px;
+    width: 100%;
+    
+}
+.app__headerIcon{
+    object-fit: contain;
+    height: 30px;
 }
 
 .app__signup{
