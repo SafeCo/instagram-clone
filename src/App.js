@@ -172,14 +172,14 @@ const signIn = (event)=>{
         <img
           className="app__headerImage"
           src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
-          alt=""
+          alt="instagram logo"
         />
         {user ? (
           <div className="app__headerIcons">
-            <h1 className="app__header__searchBar">
-              <img className="app__headerIcon" src={searchIcon} alt='home button'/>
+            <div className="app__header__searchBar">
+              <img className="app__header__searchIcon" src={searchIcon} alt='Search Icon'/>
             Search
-            </h1>
+            </div>
             {/* can import image */}
 
             <img className="app__headerIcon" src={require('./home.png')} alt='home button'/>
