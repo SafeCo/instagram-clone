@@ -13,10 +13,7 @@ body{
     background-color: #fafafa;
 }
 
-.app__posts {
-    padding: 20px;
 
-}
 
 .app__header {
     position: sticky;
@@ -27,6 +24,7 @@ body{
     border-bottom: 1px solid lightgray;
     object-fit: contain;
     display: flex;
+    justify-content: space-around;
 }
 
 .app__headerImage {
@@ -55,17 +53,51 @@ body{
 }
 .app__headerIcons{
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    
+    align-items: center;    
 }
+
 .app__headerIcon{
     object-fit: contain;
     height: 30px;
+    padding-left: 30px;
 }
 
 .app__signup{
     display: flex;
     flex-direction: column;
+}
+
+
+.app__main{
+    display: grid;
+    grid-template-areas: 
+    "one three"
+    "two three";
+}
+
+
+
+
+
+.app__reels{
+    grid-area: one;
+    border: solid red 2px;
+    height: 20px;
+    width: 20px;
+}
+
+
+.app__posts {
+    grid-area: two;
+    padding: 20px;
+
+}
+
+
+
+.app__friendSugg{
+    grid-area: three;
+    border: solid green 2px;
+    height: 20px;
+    width: 20px;
 }

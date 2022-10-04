@@ -174,22 +174,20 @@ const signIn = (event)=>{
           src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
           alt="instagram logo"
         />
-        {user ? (
-          <div className="app__headerIcons">
-            <div className="app__header__searchBar">
+        <div className="app__header__searchBar">
               <img className="app__header__searchIcon" src={searchIcon} alt='Search Icon'/>
             Search
-            </div>
-            {/* can import image */}
-
+        </div>
+        {user ? (
+          <div className="app__headerIcons">
             <img className="app__headerIcon" src={require('./home.png')} alt='home button'/>
             <img className="app__headerIcon" src={require('./send.png')} alt='send button'/>
             <img className="app__headerIcon" src={require('./plus.png')} alt='plus button'/>
             <img className="app__headerIcon" src={require('./explore.png')} alt='explore button'/>
             <img className="app__headerIcon" src={require('./heart.png')} alt='heart button'/>
-
             <Button onClick={()=> auth.signOut()}>Logout</Button>
           </div>
+  
         ):(
           <div className="app__loginContainer">
             <Button onClick={()=> setOpenSignIn(true)}>Sign In</Button>
@@ -198,17 +196,32 @@ const signIn = (event)=>{
         )}
       </div>
 
-      <div className="app__posts">
-        <div className="app__postsLeft">
-          {
-            posts.map(({id, post}) =>(
-              <Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
-            ))
-          }
+
+
+     
+      <div className="app__main">
+
+        <div className="app__reels">
+            <div></div>
         </div>
+
+        <div className="app__posts">
+          <div className="app__postsLeft">
+            {
+              posts.map(({id, post}) =>(
+                <Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+              ))
+            }
+          </div>
+        </div>
+        
+ 
+        <div className="app__friendSugg">
+        
+        </div>
+
       </div>
       
-     
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
