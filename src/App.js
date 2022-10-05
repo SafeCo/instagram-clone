@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import './ImageUpload.css'
 import Post from './Post';
+import Reel from './Reel';
+import FriendSuggestion from './FriendSuggestion';
 import { db, auth, storage} from './firebase';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -9,6 +11,7 @@ import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
 import ImageUpload from './ImageUpload';
 import searchIcon from './search.svg';
+import InstaLogo from './instagram-text-icon.svg'
 
 const style = {
   position: 'absolute',
@@ -90,9 +93,7 @@ const signIn = (event)=>{
 
   return (
     <div className="App">
-      <h3>GUEST- Username: Testguy email: tester123@mail.com pass: tester123 REMEM- attribute icons</h3>
-      
-
+    
       <div>
         <Modal
           open={open}
@@ -171,7 +172,7 @@ const signIn = (event)=>{
       <div className="app__header">
         <img
           className="app__headerImage"
-          src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
+          src={InstaLogo}
           alt="instagram logo"
         />
         <div className="app__header__searchBar">
@@ -200,25 +201,31 @@ const signIn = (event)=>{
 
      
       <div className="app__main">
-
+      {user?.displayName ? (
         <div className="app__reels">
-            <div></div>
+          <Reel username={user.displayName}/>
         </div>
+      ): (
+        <h3>Sorry you need to login to see reels</h3>
+      )}
+        
 
         <div className="app__posts">
-          <div className="app__postsLeft">
             {
               posts.map(({id, post}) =>(
                 <Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
               ))
             }
+        </div>
+
+        {user?.displayName ? (
+          <div className="app__friendSugg">
+            <FriendSuggestion username={user.displayName}/>
           </div>
-        </div>
-        
+        ): (
+          <h3>Sorry you need to login to see friend suggestions</h3>
+        )}
  
-        <div className="app__friendSugg">
-        
-        </div>
 
       </div>
       

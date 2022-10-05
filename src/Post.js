@@ -26,8 +26,6 @@ function Post({postId, user, username, caption, imageUrl}) {
 
   const postComment = (event) => {
     event.preventDefault();
-   
-      console.log("working 2")
       db.collection("posts").doc(postId).collection("comments").add({
         text: comment,
         username: user.displayName,

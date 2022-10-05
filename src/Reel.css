@@ -1,0 +1,8 @@
+.reel__profile{
+    border: solid black 2px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

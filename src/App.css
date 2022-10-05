@@ -19,16 +19,18 @@ body{
     position: sticky;
     top: 0;
     z-index: 1;
+    height: 60px;
     background-color: white;
     padding: 20px;
     border-bottom: 1px solid lightgray;
     object-fit: contain;
     display: flex;
+    align-items: center;
     justify-content: space-around;
 }
 
 .app__headerImage {
-    object-fit: contain;
+    height: 29px;    
 }
 
 .app__header__searchBar{
@@ -58,8 +60,8 @@ body{
 
 .app__headerIcon{
     object-fit: contain;
-    height: 30px;
-    padding-left: 30px;
+    height: 23px;
+    padding-left: 25px;
 }
 
 .app__signup{
@@ -76,28 +78,25 @@ body{
 }
 
 
-
-
-
 .app__reels{
     grid-area: one;
     border: solid red 2px;
-    height: 20px;
-    width: 20px;
+    
 }
 
 
 .app__posts {
     grid-area: two;
-    padding: 20px;
+    border: solid blue 2px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
 }
-
 
 
 .app__friendSugg{
     grid-area: three;
     border: solid green 2px;
-    height: 20px;
-    width: 20px;
+    
 }
