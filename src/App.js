@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'; 
+import React, {useEffect, useRef, useState} from 'react'; 
 import './App.css';
 import './ImageUpload.css'
 import Post from './Post';
@@ -12,6 +12,8 @@ import { Input } from '@mui/material';
 import ImageUpload from './ImageUpload';
 import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
+
+
 
 const style = {
   position: 'absolute',
@@ -35,6 +37,33 @@ const [username, setUsername] = useState('');
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const [user, setUser] = useState(null);
+const [suggestion, setSuggestion] = useState([]);
+const shouldLogOne = useRef(true)
+const shouldLogTwo = useRef(true)
+//APPARENTLY THERE'S A BUG WITH USEEFFCT IN REACT 18 THAT USEEFFECT WITHOUT DEPENDECIES ARE EXECUTED TWICE
+//NVM ITS A STRESS TEST FOR REACT 18
+
+useEffect(()=>{
+  if(shouldLogOne.current){
+    shouldLogOne.current = false;
+    console.log("use effect 1")
+    db.collection("posts").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        let data =  doc.data()
+        setSuggestion((suggest)=>
+          [
+            ...suggest,
+            data.username
+          ]
+        )
+      });
+    });
+
+  }
+
+}, []);
+
+
 
 const handleOpen = () => {
   setOpen(true);
@@ -61,12 +90,19 @@ useEffect(()=>{
 }, [user, username]);
 
 useEffect(()=>{
-  db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+
+  if(shouldLogTwo.current){
+    shouldLogTwo.current = false;
+    console.log("use effect 2")
+
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
     setPosts(snapshot.docs.map(doc => ({
       id: doc.id,
       post: doc.data()
     })));
   })
+  }
+  
 }, []);
 
 const signUp = (event) =>{
@@ -220,7 +256,7 @@ const signIn = (event)=>{
 
         {user?.displayName ? (
           <div className="app__friendSugg">
-            <FriendSuggestion username={user.displayName}/>
+            <FriendSuggestion suggestion={suggestion} profileUsername={user.displayName}/>
           </div>
         ): (
           <h3>Sorry you need to login to see friend suggestions</h3>
