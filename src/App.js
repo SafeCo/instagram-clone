@@ -43,25 +43,6 @@ const shouldLogTwo = useRef(true)
 //APPARENTLY THERE'S A BUG WITH USEEFFCT IN REACT 18 THAT USEEFFECT WITHOUT DEPENDECIES ARE EXECUTED TWICE
 //NVM ITS A STRESS TEST FOR REACT 18
 
-useEffect(()=>{
-  if(shouldLogOne.current){
-    shouldLogOne.current = false;
-    console.log("use effect 1")
-    db.collection("posts").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        let data =  doc.data()
-        setSuggestion((suggest)=>
-          [
-            ...suggest,
-            data.username
-          ]
-        )
-      });
-    });
-
-  }
-
-}, []);
 
 
 
@@ -94,7 +75,6 @@ useEffect(()=>{
   if(shouldLogTwo.current){
     shouldLogTwo.current = false;
     console.log("use effect 2")
-
     db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
     setPosts(snapshot.docs.map(doc => ({
       id: doc.id,
@@ -103,6 +83,24 @@ useEffect(()=>{
   })
   }
   
+}, []);
+
+useEffect(()=>{
+  if(shouldLogOne.current){
+    shouldLogOne.current = false;
+    console.log("use effect 1")
+    db.collection("posts").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        let data =  doc.data()
+        setSuggestion((suggest)=>
+          [
+            ...suggest,
+            data.username
+          ]
+        )
+      });
+    });
+  }
 }, []);
 
 const signUp = (event) =>{

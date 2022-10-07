@@ -8,3 +8,8 @@ pass: tester123
 Username: BTestguy2 
 email: tester1234@mail.com 
 pass: tester1234 
+
+TODO LIST
+1. make a login page
+2 sort out reels
+3. sort out friend suggestion
