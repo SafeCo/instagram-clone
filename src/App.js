@@ -15,6 +15,8 @@ import InstaLogo from './instagram-text-icon.svg'
 
 
 
+console.log("new routes branch")
+
 const style = {
   position: 'absolute',
   top: '50%',
