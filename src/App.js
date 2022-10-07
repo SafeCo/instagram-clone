@@ -13,9 +13,6 @@ import ImageUpload from './ImageUpload';
 import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
 
-console.log("Hello World")
-
-console.log("new routes branch")
 
 const style = {
   position: 'absolute',
