@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useEffect, useRef, useState} from 'react'; 
 import {useNavigate} from 'react-router-dom';
 import { db, auth, storage} from './firebase';
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
 
 
-function Login() {
+function LoginPage() {
   const [posts, setPosts] = useState([]);
   const [openSignIn, setOpenSignIn] = useState(false);
   const [open, setOpen] = useState(false);
@@ -36,6 +36,27 @@ function Login() {
   .catch((error)=> alert(error.message));
   setOpen(false);
 }
+
+
+//user authenitcation
+useEffect(()=>{
+  const unsubscribe = auth.onAuthStateChanged((authUser)=>{
+    if(authUser){
+      //user logged in
+      setUser(authUser);
+      
+    }else{
+      //user logged out
+      setUser(null);
+    }
+  })
+  return () => {
+    //perform some clean up actions before you use the useffect
+    unsubscribe()
+  }
+}, [user, username]);
+
+
 
 
   return (
@@ -95,4 +116,4 @@ function Login() {
   )
 }
 
-export default Login
+export default LoginPage
