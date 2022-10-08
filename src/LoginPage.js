@@ -1,8 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react'; 
+import React, {useEffect, useState, useContext} from 'react'; 
 import {useNavigate} from 'react-router-dom';
 import { db, auth, storage} from './firebase';
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
+import {useAuth} from './hooks/useAuth'
 
 
 function LoginPage() {
@@ -14,13 +15,14 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null);
 
+  const {login} = useContext(useAuth);
+
   // Sign in
   const signIn = (event)=>{
     event.preventDefault();
     auth.signInWithEmailAndPassword(email, password)
     .catch((error)=> alert(error.message))
-  
-    setOpenSignIn(false);
+    login()
   }
 
   //Sign Up 
@@ -34,11 +36,15 @@ function LoginPage() {
     })
   })
   .catch((error)=> alert(error.message));
-  setOpen(false);
+  login()
 }
 
 
-//user authenitcation
+// Once user signed in, attach global oberver which is onAuthStateChanged method to auth, 
+// when a user successfully signed in
+// you can get info about user in the observer.
+// basically the User state has all the info about the person who logged in.
+
 useEffect(()=>{
   const unsubscribe = auth.onAuthStateChanged((authUser)=>{
     if(authUser){
