@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useContext} from 'react'; 
-import {useNavigate} from 'react-router-dom';
 import { db, auth, storage} from './firebase';
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
@@ -8,10 +7,9 @@ import useAuth from './hooks/useAuth'
 
 
 function LoginPage() {
-
   const { user } = useContext(AuthContext);
-  console.log(user)
- 
+  const { login } = useContext(AuthContext)
+  const { logout } = useContext(AuthContext)
 
   const [posts, setPosts] = useState([]);
   const [openSignIn, setOpenSignIn] = useState(false);
@@ -52,14 +50,21 @@ function LoginPage() {
 useEffect(()=>{
   const unsubscribe = auth.onAuthStateChanged((authUser)=>{
     if(authUser){
+      console.log(authUser)
       //user logged in
-      setUser(authUser);
+      // setUser(authUser);
+      login(authUser);
+      console.log("logged in")
       
     }else{
       //user logged out
-      setUser(null);
+      logout(null);
+      console.log("logged out")
+
     }
   })
+
+  console.log("test to see if whole page rendering after logging in")
   return () => {
     //perform some clean up actions before you use the useffect
     unsubscribe()

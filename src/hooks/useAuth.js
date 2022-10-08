@@ -1,6 +1,7 @@
 import { createContext, useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "./useLocalStorage";
+import { auth } from "../firebase";
 
 const AuthContext = createContext();
 
@@ -16,20 +17,17 @@ export const AuthProvider = ({ children }) => {
 
   // call this function to sign out logged in user
   const logout = () => {
+    auth.signOut()
     setUser(null);
-    navigate("/login", { replace: true });
+    // navigate("/login", { replace: true });
   };
 
-  const test =()=>{
-    console.log("working!")
-  }
 
   const value = useMemo(
     () => ({
       user,
       login,
       logout,
-      test
     }),
     [user]
   );

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'; 
+import React, {useEffect, useRef, useState, useContext} from 'react'; 
 import './HomePage.css';
 import './ImageUpload.css'
 import Post from './Post';
@@ -12,16 +12,19 @@ import { Input } from '@mui/material';
 import ImageUpload from './ImageUpload';
 import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
+import AuthContext from './hooks/useAuth'
 
 
 function HomePage() {
+
+	const { user } = useContext(AuthContext);
+	const { logout } = useContext(AuthContext)
 	const [posts, setPosts] = useState([]);
 	const [openSignIn, setOpenSignIn] = useState(false);
 	const [open, setOpen] = useState(false);
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [user, setUser] = useState(null);
 	const [suggestion, setSuggestion] = useState([]);
 
 	const shouldLogOne = useRef(true)
@@ -63,8 +66,7 @@ function HomePage() {
 
 
 	return (
-		<div>
-		<div>HomePage</div>
+		<>
 		<div className="app__header">
         <img
           className="app__headerImage"
@@ -82,7 +84,7 @@ function HomePage() {
             <img className="app__headerIcon" src={require('./plus.png')} alt='plus button'/>
             <img className="app__headerIcon" src={require('./explore.png')} alt='explore button'/>
             <img className="app__headerIcon" src={require('./heart.png')} alt='heart button'/>
-            <Button onClick={()=> auth.signOut()}>Logout</Button>
+            <Button onClick={()=>{logout(null)}}>Logout</Button>
           </div>
   
         ):(
@@ -129,7 +131,7 @@ function HomePage() {
 		)}
 		
 
-    </div>
+    </>
 		
 	)
 	}
