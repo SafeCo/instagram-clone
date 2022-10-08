@@ -3,26 +3,30 @@ import {useNavigate} from 'react-router-dom';
 import { db, auth, storage} from './firebase';
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
-import {useAuth} from './hooks/useAuth'
+import AuthContext from './hooks/useAuth'
+import useAuth from './hooks/useAuth'
 
 
 function LoginPage() {
+
+  const { user } = useContext(AuthContext);
+  console.log(user)
+ 
+
   const [posts, setPosts] = useState([]);
   const [openSignIn, setOpenSignIn] = useState(false);
   const [open, setOpen] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
-  const {login} = useContext(useAuth);
 
   // Sign in
   const signIn = (event)=>{
     event.preventDefault();
     auth.signInWithEmailAndPassword(email, password)
     .catch((error)=> alert(error.message))
-    login()
   }
 
   //Sign Up 
@@ -36,7 +40,7 @@ function LoginPage() {
     })
   })
   .catch((error)=> alert(error.message));
-  login()
+
 }
 
 
