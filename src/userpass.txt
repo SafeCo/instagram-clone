@@ -19,3 +19,4 @@ ISSUES NOW
 1. Logging in using login function in useAuth custom hook
 2. dont know why 'post' message error pops up in browser console window
 4. change hooks folder to context and change in APP.js etc.
+5. Make CSS for sign in and out the same

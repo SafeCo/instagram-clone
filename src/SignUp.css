@@ -1,0 +1,78 @@
+*{
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+}
+
+.login__box {
+	border: solid #dbdbdb 1px;
+	background-color: #FFFFFF;
+	max-width: 350px;
+	margin: 0 0 10px;
+	padding: 10px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+.login__formBox{
+	margin-bottom: 10px;
+	max-width: 350px;
+	width: 100%;
+
+}
+
+.login__form{
+	margin-top: 24px;
+	display: flex;
+	flex-direction: column;
+}
+.login__form input{
+	background-color: #fafafa;
+	border: 1px solid #dbdbdb;
+	border-radius: 4px;
+	font-size: 12px;
+	padding: 9px 0 7px 8px;
+	height: 30px;
+	margin: 0 40px 6px;
+
+}
+
+.login__form button{
+	background-color: #0095F6;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	padding: 5px 9px 5px 9px;
+	color: #FFFFFF;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	min-height: auto;
+	min-width: auto;
+	margin: 8px 40px 8px 40px;
+	
+}
+
+.login__headerImageBox{
+	height: 51px;
+	width: 175px;
+	display: flex;
+	justify-content: center;
+	margin-top: 36px;
+	margin-bottom: 12px;
+}
+.login__headerImage {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+
+.login__signIn{
+	display: flex;
+	font-size: 14px;
+}
+
+.login__signIn :nth-child(2){
+	font-weight: 600;
+	color: #0095F6;
+}

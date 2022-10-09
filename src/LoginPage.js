@@ -4,7 +4,8 @@ import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
 import AuthContext from './hooks/useAuth'
 import useAuth from './hooks/useAuth'
-
+import SignIn from './SignIn'
+import SignUp from './SignUp';
 
 function LoginPage() {
   const { user } = useContext(AuthContext);
@@ -12,7 +13,7 @@ function LoginPage() {
   const { logout } = useContext(AuthContext)
 
   const [posts, setPosts] = useState([]);
-  const [openSignIn, setOpenSignIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(true);
   const [open, setOpen] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -38,7 +39,27 @@ function LoginPage() {
     })
   })
   .catch((error)=> alert(error.message));
+  }
 
+  //Sign in component function
+  const signInProps = (target, data)=>{
+    if(target.placeholder === "email"){
+      setEmail(data)
+    }else if(target.placeholder === "password"){
+      setPassword(data)
+    }else if (target.placeholder === "username"){
+      setUsername(data)
+    }else{
+      alert("error")
+    }
+  }
+
+//switch between sign in component and sign up component
+const checkSignedIn = (event)=>{
+  event.preventDefault()
+  console.log(isSignedIn)
+  setIsSignedIn(!isSignedIn)
+  console.log(isSignedIn)
 }
 
 
@@ -58,13 +79,13 @@ useEffect(()=>{
       
     }else{
       //user logged out
-      logout(null);
+      // called 4 times when logging out executes auth as log out once renders page twice
+      // logout(null);
       console.log("logged out")
 
     }
   })
 
-  console.log("test to see if whole page rendering after logging in")
   return () => {
     //perform some clean up actions before you use the useffect
     unsubscribe()
@@ -73,61 +94,34 @@ useEffect(()=>{
 
 
 
+console.log("test to see if whole page rendering after logging in")
 
   return (
-    <div>
-      <form className='login__signin'>
-        <center>
-          <img
-            className="login__headerImage"
-            src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
-            alt=""
-          />
-        </center>
-        <Input
-          placeholder="email"
-          type="text"
-          value={email}
-          onChange={(e)=> setEmail(e.target.value)}
-        />
-        <Input
-          placeholder="password"
-          type="text"
-          value={password}
-          onChange={(e)=> setPassword(e.target.value)}
-        />
-        <Button type="submit" onClick={signIn}>Sign In</Button>
-      </form>
-
-      <form className='login__signup'>
-              <center>
-                <img
-                  className="login__headerImage"
-                  src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
-                  alt=""
-                />
-              </center>
-              <Input
-                placeholder="username"
-                type="text"
-                value={username}
-                onChange={(e)=> setUsername(e.target.value)}
-                />
-              <Input
-                placeholder="email"
-                type="text"
-                value={email}
-                onChange={(e)=> setEmail(e.target.value)}
-              />
-              <Input
-                placeholder="password"
-                type="text"
-                value={password}
-                onChange={(e)=> setPassword(e.target.value)}
-              />
-              <Button type="submit" onClick={signUp}>Sign Up</Button>
-            </form>
-    </div>
+    <>
+      {
+        isSignedIn ?(
+          
+          <SignIn 
+          checkSignedIn={checkSignedIn}
+          signIn={signIn}
+          signInProps={signInProps} 
+          email={email} 
+          password={password} />
+          
+        ) : (
+          <SignUp
+          checkSignedIn={checkSignedIn} 
+          signUp={signUp}
+          signInProps={signInProps} 
+          username={username}
+          email={email} 
+          password={password} />
+        )
+        
+      }
+      
+      
+    </>
   )
 }
 
