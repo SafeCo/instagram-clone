@@ -1,7 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './SignUp.css'
 
 function SignUp({checkSignedIn, signUp, signInProps, username, email, password}) {
+	const [showPass, setShowPass] = useState(false) 
+
+	const passSwitch = (e)=> {
+		e.preventDefault()
+		setShowPass(!showPass)
+	}
+
+
   return (
 		<div>
 			<div className="login__box">
@@ -15,24 +23,33 @@ function SignUp({checkSignedIn, signUp, signInProps, username, email, password})
 				<div className='login__formBox'>
 					<form className='login__form'>
 						<input
-						placeholder="Username"
-						type="text"
-						value={username}
-						onChange={(e)=> signInProps(e.target, e.target.value)}
+							className='login__emailUserInput'
+							name="username"
+							placeholder="Username"
+							type="text"
+							value={username}
+							onChange={(e)=> signInProps(e.target, e.target.value)}
 						/>
 						<input
+							className='login__emailUserInput'
+							name="email"
 							placeholder="Email address"
 							type="text"
 							value={email}
 							onChange={(e)=> signInProps(e.target, e.target.value)}
 						/>
-						<input
+						<div className='login__password'>
+							<input
+							className='login__passwordInput'
+							name="password"
 							placeholder="Password"
-							type="text"
+							type={showPass? "text" : "password" }
 							value={password}
-							onChange={(e)=> signInProps(e.target, e.target.value)}
-						/>
-						<button type="submit" onClick={signUp}>Register</button>
+							onChange={(e)=> {signInProps(e.target, e.target.value) }}
+							/>
+							<button onClick={(e)=> passSwitch(e)} className='login__showButton'>Show</button>
+						</div>
+						<button className='login__submitButton' type="submit" onClick={signUp}>Register</button>
 					</form>
 				</div>
 			</div>

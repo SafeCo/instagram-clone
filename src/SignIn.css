@@ -27,7 +27,7 @@
 	display: flex;
 	flex-direction: column;
 }
-.signIn__form input{
+.signIn__emailInput{
 	background-color: #fafafa;
 	border: 1px solid #dbdbdb;
 	border-radius: 4px;
@@ -38,7 +38,7 @@
 
 }
 
-.signIn__form button{
+.signIn__submitButton{
 	background-color: #0095F6;
 	border: 1px solid transparent;
 	border-radius: 4px;
@@ -52,6 +52,40 @@
 	margin: 8px 40px 8px 40px;
 	
 }
+
+.signIn__password{
+	display:flex;
+}
+
+.signIn__passwordInput{
+	flex: 8;
+	background-color: #fafafa;
+	border: 1px solid #dbdbdb;
+	border-right: 0;
+	border-radius: 4px 0px 0px 4px;
+	font-size: 12px;
+	padding: 9px 0 7px 8px;
+	height: 30px;
+	margin: 0 0 6px 40px ;
+}
+
+.signIn__showButton{
+	flex: 2;
+	cursor: pointer;
+	background-color: #fafafa;
+	color: #262626;
+	border: 1px solid #dbdbdb;
+	border-left: 0;
+	border-radius: 0px 4px 4px 0px;
+	font-size: 14px;
+	font-weight: 600;
+	height: 30px;
+	margin: 0 40px 6px 0 ;	
+}
+
+
+
+
 
 .signIn__headerImageBox{
 	height: 51px;

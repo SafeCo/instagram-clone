@@ -1,11 +1,14 @@
 import React, {useEffect, useState, useContext} from 'react'; 
 import { db, auth, storage} from './firebase';
-import Button from '@mui/material/Button';
-import { Input } from '@mui/material';
 import AuthContext from './hooks/useAuth'
+import './LoginPage.css'
 import useAuth from './hooks/useAuth'
+import LoginImage from './LoginImage';
 import SignIn from './SignIn'
 import SignUp from './SignUp';
+import { motion } from "framer-motion"
+
+
 
 function LoginPage() {
   const { user } = useContext(AuthContext);
@@ -43,11 +46,11 @@ function LoginPage() {
 
   //Sign in component function
   const signInProps = (target, data)=>{
-    if(target.placeholder === "email"){
+    if(target.name === "email"){
       setEmail(data)
-    }else if(target.placeholder === "password"){
+    }else if(target.name === "password"){
       setPassword(data)
-    }else if (target.placeholder === "username"){
+    }else if (target.name === "username"){
       setUsername(data)
     }else{
       alert("error")
@@ -86,18 +89,25 @@ useEffect(()=>{
     }
   })
 
-  return () => {
-    //perform some clean up actions before you use the useffect
-    unsubscribe()
-  }
-}, [user, username]);
+    return () => {
+      //perform some clean up actions before you use the useffect
+      unsubscribe()
+      }
+   }, [user, username]);
 
 
 
 console.log("test to see if whole page rendering after logging in")
 
   return (
-    <>
+    <main className='loginPage__main'>
+      <motion.div
+      whileHover={{scale: 1.5}}
+      >
+        <h2>Hello</h2>
+      </motion.div>
+      
+      <LoginImage/>
       {
         isSignedIn ?(
           
@@ -121,7 +131,7 @@ console.log("test to see if whole page rendering after logging in")
       }
       
       
-    </>
+    </main>
   )
 }
 
