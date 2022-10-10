@@ -11,7 +11,7 @@ function SignUp({checkSignedIn, signUp, signInProps, username, email, password})
 
 
   return (
-		<div>
+		<div className='login__container'>
 			<div className="login__box">
 				<div className='login__headerImageBox'>
 					<img

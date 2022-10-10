@@ -64,6 +64,9 @@ function HomePage() {
 	}, []);
 
 
+	// Each element like insta logo, search bar and icons have their container within the main contianer
+	// flex grow and shrink is used on the individual containers rather than the element
+	// the element is merely moved around with justify content flex start and end
 
 	return (
 		<>
@@ -77,22 +80,15 @@ function HomePage() {
               <img className="app__header__searchIcon" src={searchIcon} alt='Search Icon'/>
             Search
         </div>
-        {user ? (
+        
           <div className="app__headerIcons">
             <img className="app__headerIcon" src={require('./home.png')} alt='home button'/>
             <img className="app__headerIcon" src={require('./send.png')} alt='send button'/>
             <img className="app__headerIcon" src={require('./plus.png')} alt='plus button'/>
             <img className="app__headerIcon" src={require('./explore.png')} alt='explore button'/>
             <img className="app__headerIcon" src={require('./heart.png')} alt='heart button'/>
-            <Button onClick={()=>{logout(null)}}>Logout</Button>
           </div>
   
-        ):(
-          <div className="app__loginContainer">
-            <Button onClick={()=> setOpenSignIn(true)}>Sign In</Button>
-            <Button onClick={()=> setOpen(true)}>Sign Up</Button>
-          </div>
-        )}
     </div>
 
 		<div className="app__main">

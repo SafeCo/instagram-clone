@@ -3,10 +3,14 @@
 
 }
 
+.login__container{
+	max-width: 350px;
+	width: 100%;
+}
+
 .login__box {
 	border: solid #dbdbdb 1px;
 	background-color: #FFFFFF;
-	max-width: 350px;
 	margin: 0 0 10px;
 	padding: 10px 0;
 	display: flex;

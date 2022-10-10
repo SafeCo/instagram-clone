@@ -1,4 +1,3 @@
-import { animate } from 'framer-motion'
 import React, {useState, useEffect, useRef} from 'react'
 import instagramPhone from './instagram_Phone.svg'
 import './LoginImage.css'

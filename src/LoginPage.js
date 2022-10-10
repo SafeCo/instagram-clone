@@ -6,7 +6,6 @@ import useAuth from './hooks/useAuth'
 import LoginImage from './LoginImage';
 import SignIn from './SignIn'
 import SignUp from './SignUp';
-import { motion } from "framer-motion"
 
 
 
@@ -101,12 +100,6 @@ console.log("test to see if whole page rendering after logging in")
 
   return (
     <main className='loginPage__main'>
-      <motion.div
-      whileHover={{scale: 1.5}}
-      >
-        <h2>Hello</h2>
-      </motion.div>
-      
       <LoginImage/>
       {
         isSignedIn ?(
