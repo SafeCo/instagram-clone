@@ -70,54 +70,65 @@ function HomePage() {
 
 	return (
 		<>
-		<div className="app__header">
-        <img
-          className="app__headerImage"
-          src={InstaLogo}
-          alt="instagram logo"
-        />
-        <div className="app__header__searchBar">
-              <img className="app__header__searchIcon" src={searchIcon} alt='Search Icon'/>
-            Search
-        </div>
-        
-          <div className="app__headerIcons">
-            <img className="app__headerIcon" src={require('./home.png')} alt='home button'/>
-            <img className="app__headerIcon" src={require('./send.png')} alt='send button'/>
-            <img className="app__headerIcon" src={require('./plus.png')} alt='plus button'/>
-            <img className="app__headerIcon" src={require('./explore.png')} alt='explore button'/>
-            <img className="app__headerIcon" src={require('./heart.png')} alt='heart button'/>
-          </div>
-  
-    </div>
+		<nav className='app__headerContainer'>
+			<div className="app__header">
+				<div className="app__headerImageFlex">
+					<img
+						className="app__headerImage"
+						src={InstaLogo}
+						alt="instagram logo"
+					/>
+				</div>
 
-		<div className="app__main">
-		{user?.displayName ? (
-			<div className="app__reels">
-				<Reel username={user.displayName}/>
+				<div className="app__header__searchBarFlex">
+					<div className="app__header__searchBar">
+						<input type="text" className="app__headerInput" />
+							<div className="app__headerSearchItems">
+								<img className="app__header__searchIcon" src={searchIcon} alt='Search Icon'/>
+								<span>Search</span>
+							</div>
+					</div>
+				</div>  
+					
+				<div className="app__headerIconsFlex">
+					<div className="app__headerIcons">
+							<img className="app__headerIcon" src={require('./home.png')} alt='home button'/>
+							<img className="app__headerIcon" src={require('./send.png')} alt='send button'/>
+							<img className="app__headerIcon" src={require('./plus.png')} alt='plus button'/>
+							<img className="app__headerIcon" src={require('./explore.png')} alt='explore button'/>
+							<img className="app__headerIcon" src={require('./heart.png')} alt='heart button'/>
+						</div>
+				</div>
+			</div>	
+		</nav>
+		
+
+		<main className="app__main">
+			<section className="app__section">
+			<div className="app__sectionLeft">
+					<div className="app__reels">
+						<Reel username={user.displayName}/>
+						<Reel username={"test"}/>
+						<Reel username={"test2"}/>
+					</div>
+					<div className="app__posts">
+							{
+								posts.map(({id, post}) =>(
+									<Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+								))
+							}
+					</div>
 			</div>
-		): (
-			<h3>Sorry you need to login to see reels</h3>
-		)}
-        
+				
 
-		<div className="app__posts">
-				{
-					posts.map(({id, post}) =>(
-						<Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
-					))
-				}
-		</div>
 
-		{user?.displayName ? (
-			<div className="app__friendSugg">
-				<FriendSuggestion suggestion={suggestion} profileUsername={user.displayName}/>
-			</div>
-		): (
-			<h3>Sorry you need to login to see friend suggestions</h3>
-		)}
-
-	</div>
+				<div className="app__friendSugg">
+					<FriendSuggestion suggestion={suggestion} profileUsername={user.displayName}/>
+				</div>
+			</section>
+			
+	
+		</main>
       
 
 		{user?.displayName ? (

@@ -1,49 +1,82 @@
-
+.app__headerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
 .app__header {
     position: sticky;
     top: 0;
     z-index: 1;
     height: 60px;
+    width: 970px;
     background-color: white;
     border-bottom: 1px solid lightgray;
     object-fit: contain;
     display: flex;
     flex-direction: row;
-    flex-shrink: 0;
     align-items: center;
     padding: 20px;
 }
-
+.app__headerImageFlex{
+    display: flex;
+    flex: 1 0 127px;
+}
 .app__headerImage {
-    height: 29px;  
+    height: 30px;  
     display: flex;
     flex: 0 0 auto;  
 }
 
+.app__header__searchBarFlex{
+    display: flex;
+    flex: 0 1 auto;
+}
 .app__header__searchBar{
     border-radius: 8px;
-    background-color: rgb(239, 239, 239);
     color: #999999;
-    height: 40px;
-    min-width: 260px;
+    height: 36px;
+    min-width: 125px;
+    width: 268px;
     font-size: 16px;
     font-weight: 300;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-
     display: flex;
-    flex: 0 1 auto;
     align-items: center;
 
+}
+
+.app__headerInput{
+    background-color: rgb(239, 239, 239);
+    padding: 3px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.app__headerSearchItems{
+    position: absolute;
+    display: flex;
+    align-items: center;
+
+    
 }
 
 .app__header__searchIcon{
     padding-left: 10px;
     padding-right: 10px;
-    height: 20px;
+    height: 18px;
+}
+
+.app__headerIconsFlex{
+    flex: 1 0 127px;
 }
 .app__headerIcons{
     display: flex;
     align-items: center;    
+    justify-content: flex-end;
 }
 
 .app__headerIcon{
@@ -59,23 +92,42 @@
 
 
 .app__main{
-    display: grid;
-    grid-template-areas: 
-    "one three"
-    "two three";
+	border: solid green 2px;
+	display: flex;
+	flex-direction: column;
+
+
+}
+.app__section{
+	margin: 0 auto;
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.app__sectionLeft{
+	margin-top: 10px;
+	margin-right: 32px;
+	max-width: 470px;
+	width: 100%;
+	flex-shrink: 0;
 }
 
 
 .app__reels{
-    grid-area: one;
-    border: solid red 2px;
+	display: flex;
+	background-color: white;
+	flex-direction: row;
+	border: solid lightgray 1px;
+	border-radius: 8px;
+	margin-bottom: 0;
+	margin-top: 16px;
+	padding: 16px 0;
+	height: 119px;
     
 }
 
 
 .app__posts {
-    grid-area: two;
-    border: solid blue 2px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -84,7 +136,6 @@
 
 
 .app__friendSugg{
-    grid-area: three;
     border: solid green 2px;
     
 }

@@ -41,13 +41,20 @@ function Post({postId, user, username, caption, imageUrl}) {
   return (
     <div className="post">
       <div className="post__header" >
-        <Avatar
+        <div className="post__headerProfile">
+          <Avatar
           className="post__avatar"
           alt={username}
           src="/static/images/avatar/1.jpg"
-        />
-        <h3>{username}</h3>
-        <button className="post__header__button">...</button>
+          />
+          <h3>{username}</h3>
+        </div>
+        <div className="post__headerButtonContainer">
+          <div className="post__headerButton">
+            <div className="post__headerButtonDots">&bull; &bull; &bull;</div>
+          </div>
+        </div>
+        
       </div>
 
       <img className="post__image"

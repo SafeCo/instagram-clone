@@ -7,11 +7,15 @@ const Reel = ({username}) => {
   return (
     <>
         <div className="reel__profile">
+          <div className="reel__image">
             <Avatar
-            className="post__avatar"
+            className="reel__avatar"
             alt= {username}
             src="/static/images/avatar/1.jpg"
             />
+            <div className="reel__avatarRing"></div>
+          </div>
+            
             <div className="app__reelsName">{username}</div>
         </div>
 
