@@ -107,9 +107,8 @@ function HomePage() {
 			<section className="app__section">
 			<div className="app__sectionLeft">
 					<div className="app__reels">
-						<Reel username={user.displayName}/>
-						<Reel username={"test"}/>
-						<Reel username={"test2"}/>
+						<Reel list={suggestion}/>
+				
 					</div>
 					<div className="app__posts">
 							{

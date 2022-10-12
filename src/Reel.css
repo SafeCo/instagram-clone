@@ -1,13 +1,16 @@
 .reel__profile{
-    width: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-overflow: ellipsis;
 }
 
 .reel__image{
     position: relative;
+    margin-bottom: 8px;
 }
 .reel__avatar{
     z-index: 2;
@@ -26,4 +29,9 @@
     border-radius: 50%;
     height: 110%;
     width: 110%;
+}
+
+.app__reelsName{
+    font-weight: 400;
+    font-size: 12px;
 }

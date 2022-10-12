@@ -3,6 +3,11 @@ import './Post.css';
 import Avatar from "@mui/material/Avatar"
 import { db } from './firebase';
 import firebase from 'firebase/compat/app';
+import instagramCommentIcon from './comment.png'
+import heart from './heart.png'
+import send from './send.png'
+import save from './save.png'
+import { red } from '@mui/material/colors';
 
 function Post({postId, user, username, caption, imageUrl}) {
   const [comments, setComments] = useState([]);
@@ -32,11 +37,9 @@ function Post({postId, user, username, caption, imageUrl}) {
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
       setComment('');
-
-    
-    
   }
 
+  const postButtonColor = comment? {color: '#0095F6'} : {color: '#6082a3'}
 
   return (
     <div className="post">
@@ -47,7 +50,7 @@ function Post({postId, user, username, caption, imageUrl}) {
           alt={username}
           src="/static/images/avatar/1.jpg"
           />
-          <h3>{username}</h3>
+          <h3 className="post__username">{username}</h3>
         </div>
         <div className="post__headerButtonContainer">
           <div className="post__headerButton">
@@ -61,33 +64,66 @@ function Post({postId, user, username, caption, imageUrl}) {
       src={imageUrl} 
       alt="Not Working"
       />
+      <section className="post__iconBar">
+        <div className="post__iconBar__heart">
+          <img
+            className="post__iconBar__Icon"
+						src={heart}
+						alt="Heart Icon"
+					/>
+        </div>
+        <div className="post__iconBar__chat">
+          <img
+            className="post__iconBar__Icon"
+						src={instagramCommentIcon}
+						alt="Comment Icon"
+					/>
+        </div>
+        <div className="post__iconBar__send">
+          <img
+            className="post__iconBar__Icon"
+						src={send}
+						alt="Send Icon"
+					/>
+        </div>
+        <div className="post__iconBar__save">
+          <img
+            className="post__iconBar__Icon"
+						src={save}
+						alt="Save Icon"
+					/>
+        </div>
+      </section>
       
-      <h4 className="post__text"><strong>{username}</strong> {caption}</h4>
+      
       
         <div className="post__comments">
+          <p> 
+            <strong>{username}</strong> {caption}
+          </p>
           {comments.map((comment)=> (
             <p>
               <strong>{comment.username}</strong> {comment.text}
             </p>
-          ))}
+            ))}
         </div>
       
       {user && (
-        <form className="post__commentBox">
-          <input
-            className="post__input"
-            type="text"
-            placeholder="Add a comment..."
-            value={comment}
-            onChange={(e)=> setComment(e.target.value)}
-          />
-          <button
-            disabled={!comment}
-            className="post__button"
-            type="submit"
-            onClick={postComment}
-          >Post</button>
-        </form>
+          <form className="post__commentBox">
+            <input
+              className="post__input"
+              type="text"
+              placeholder="Add a comment..."
+              value={comment}
+              onChange={(e)=> setComment(e.target.value)}
+            />
+            <button
+              disabled={!comment}
+              className="post__button"
+              type="submit"
+              onClick={postComment}
+            ><div style={postButtonColor}>Post</div></button>
+          </form>        
       )}
       
       

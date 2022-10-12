@@ -22,3 +22,8 @@ ISSUES NOW
 5. Make CSS for sign in and out the same
 6. image transition for loginpage
 7. img tags are not dynamically adding classes
+
+
+attributions:
+
+comment icon = <a href="https://www.flaticon.com/free-icons/instagram-comment" title="instagram comment icons">Instagram comment icons created by QudaDesign - Flaticon</a>

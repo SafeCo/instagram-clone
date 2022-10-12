@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    background-color: white ;
+    border-bottom: 1px solid lightgray;
 }
 .app__header {
     position: sticky;
@@ -10,8 +11,6 @@
     z-index: 1;
     height: 60px;
     width: 970px;
-    background-color: white;
-    border-bottom: 1px solid lightgray;
     object-fit: contain;
     display: flex;
     flex-direction: row;
@@ -92,11 +91,8 @@
 
 
 .app__main{
-	border: solid green 2px;
 	display: flex;
 	flex-direction: column;
-
-
 }
 .app__section{
 	margin: 0 auto;
@@ -122,6 +118,7 @@
 	margin-bottom: 0;
 	margin-top: 16px;
 	padding: 16px 0;
+    padding-left: 16px;
 	height: 119px;
     
 }
@@ -136,6 +133,7 @@
 
 
 .app__friendSugg{
-    border: solid green 2px;
-    
+    margin-top: 40px;
+    min-width: 319px;
+    width: 100%;
 }
