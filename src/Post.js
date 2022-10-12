@@ -3,10 +3,10 @@ import './Post.css';
 import Avatar from "@mui/material/Avatar"
 import { db } from './firebase';
 import firebase from 'firebase/compat/app';
-import instagramCommentIcon from './comment.png'
-import heart from './heart.png'
-import send from './send.png'
-import save from './save.png'
+import commentIcon from './icons/comment.svg'
+import heart from './icons/heart.svg'
+import send from './icons/send.svg'
+import save from './icons/save.svg'
 import { red } from '@mui/material/colors';
 
 function Post({postId, user, username, caption, imageUrl}) {
@@ -75,7 +75,7 @@ function Post({postId, user, username, caption, imageUrl}) {
         <div className="post__iconBar__chat">
           <img
             className="post__iconBar__Icon"
-						src={instagramCommentIcon}
+						src={commentIcon}
 						alt="Comment Icon"
 					/>
         </div>

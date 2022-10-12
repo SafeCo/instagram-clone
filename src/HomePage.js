@@ -13,6 +13,11 @@ import ImageUpload from './ImageUpload';
 import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
 import AuthContext from './hooks/useAuth'
+import home_inUse from './icons/home_inUse.svg'
+import send from './icons/send.svg'
+import plus from './icons/plus.svg'
+import explore from './icons/explore.svg'
+import heart from './icons/heart.svg'
 
 
 function HomePage() {
@@ -92,12 +97,12 @@ function HomePage() {
 					
 				<div className="app__headerIconsFlex">
 					<div className="app__headerIcons">
-							<img className="app__headerIcon" src={require('./home.png')} alt='home button'/>
-							<img className="app__headerIcon" src={require('./send.png')} alt='send button'/>
-							<img className="app__headerIcon" src={require('./plus.png')} alt='plus button'/>
-							<img className="app__headerIcon" src={require('./explore.png')} alt='explore button'/>
-							<img className="app__headerIcon" src={require('./heart.png')} alt='heart button'/>
-						</div>
+						<img className="app__headerIcon" src={home_inUse} alt='home use button'/>
+						<img className="app__headerIcon" src={send} alt='send button'/>
+						<img className="app__headerIcon" src={plus} alt='plus button'/>
+						<img className="app__headerIcon" src={explore} alt='explore button'/>
+						<img className="app__headerIcon" src={heart} alt='heart button'/>
+					</div>
 				</div>
 			</div>	
 		</nav>
@@ -108,7 +113,7 @@ function HomePage() {
 			<div className="app__sectionLeft">
 					<div className="app__reels">
 						<Reel list={suggestion}/>
-				
+					
 					</div>
 					<div className="app__posts">
 							{
