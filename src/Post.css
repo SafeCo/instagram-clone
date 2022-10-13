@@ -21,16 +21,26 @@
 .post__iconBar__img{
     object-fit: contain;
 }
-
-.post__iconBar__Icon{
-    height: 23px;
+.post__iconBar__iconContainer{
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.post__iconBar__save{
+.post__iconBar__iconContainer button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.post__iconBar__Icon{
+    height: 23px;
+
+}
+
+.post__iconBar :nth-child(4){
     margin-left: auto;
 }
+
 
 .post__header{
    display: flex;
@@ -107,3 +117,4 @@
     border-top: 1px solid lightgray;
     cursor: pointer;
 }
+

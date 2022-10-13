@@ -65,33 +65,43 @@ function Post({postId, user, username, caption, imageUrl}) {
       alt="Not Working"
       />
       <section className="post__iconBar">
-        <div className="post__iconBar__heart">
-          <img
+        <div className="post__iconBar__iconContainer">
+          <button>
+            <img
             className="post__iconBar__Icon"
 						src={heart}
-						alt="Heart Icon"
-					/>
+						alt="Heart Icon"/>
+          </button>
+          
         </div>
-        <div className="post__iconBar__chat">
-          <img
+
+        <div className="post__iconBar__iconContainer">
+          <button>
+            <img
             className="post__iconBar__Icon"
 						src={commentIcon}
-						alt="Comment Icon"
-					/>
+						alt="Comment Icon"/>
+          </button>
         </div>
-        <div className="post__iconBar__send">
-          <img
+
+        <div className="post__iconBar__iconContainer">
+          <button>
+            <img
             className="post__iconBar__Icon"
 						src={send}
 						alt="Send Icon"
-					/>
+					  />
+          </button>
         </div>
-        <div className="post__iconBar__save">
-          <img
+
+        <div className="post__iconBar__iconContainer">
+          <button>
+            <img
             className="post__iconBar__Icon"
 						src={save}
 						alt="Save Icon"
-					/>
+					  />
+          </button>
         </div>
       </section>
       

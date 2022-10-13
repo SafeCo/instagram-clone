@@ -3,6 +3,15 @@ import Avatar from "@mui/material/Avatar"
 import './FriendSuggestion.css'
 
 const FriendSuggestion = ({profileUsername, suggestion}) => {
+  
+  const filteredList = suggestion.filter((name)=>{
+    if(name === profileUsername){
+      return false
+    }else{
+      return true
+    }
+  })
+
   return (
     <>
       <div className='friendSuggestion__profile'>
@@ -12,11 +21,12 @@ const FriendSuggestion = ({profileUsername, suggestion}) => {
         src="/static/images/avatar/1.jpg"
         />
         <div className='friendSuggestion__profileName'>{profileUsername}</div>
-        <div className='friendSuggestion__profileSwitch'>Switch</div>
+        <div className='friendSuggestion__profileSwitch'>Logout</div>
       </div>
       <h3 className='friendSuggestion__suggestTitle'> Suggestions for you</h3>
       {
-        suggestion.map((name) =>(
+        
+        filteredList.map((name) =>(
           <div className='friendSuggestion__suggest'>
             <Avatar className="friendSuggestion__avatar"
             alt= {name}

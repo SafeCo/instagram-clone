@@ -1,0 +1,29 @@
+.modalUpload__previewContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border: solid red 1px;
+}
+
+.modalUpload__imageContainer{
+    display: flex;
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    border: solid blue 1px;
+    flex: 1;
+    object-fit: contain;
+    height: 400px;
+}
+.modalUpload__captionContainer{
+    flex: 1;
+    border: solid green 1px;
+}
+
+.modalUpload__image{
+   object-fit: contain;
+   max-height: 400px;
+   max-width: 100%;
+}
+
+

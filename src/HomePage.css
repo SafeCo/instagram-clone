@@ -78,10 +78,26 @@
     justify-content: flex-end;
 }
 
+.app__headerIconContainer{
+    padding-left: 25px;
+}
+
+.app__headerIconButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
 .app__headerIcon{
     object-fit: contain;
     height: 23px;
-    padding-left: 25px;
+
+}
+.app__avatar{
+    margin-left: 25px;
 }
 
 .app__signup{

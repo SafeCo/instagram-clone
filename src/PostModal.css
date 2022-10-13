@@ -1,0 +1,57 @@
+.postModal__container{
+    max-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.postModal__header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;   
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid lightgray 1px;
+    padding: 2px;
+}
+
+.buttons{
+    border: none;
+    background-color: transparent;
+}
+.postModal__header__backButtonContainer{
+    margin: 8px;
+    flex: 0;
+}
+
+.postModal__header__backButtonContainer button{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+}
+
+.postModal__header__text{
+    font-size: 16px;
+    font-weight: 600;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.postModal__header__postButtonContainer{
+    flex: 0;
+    margin: 8px;
+}
+
+.postModal__header__postButtonContainer button{
+    cursor: pointer;
+    font-size: 14;
+    font-weight: 600;
+    color: #0095F6;
+    border: none;
+    background-color: transparent;
+}

@@ -5,19 +5,19 @@ import Post from './Post';
 import Reel from './Reel';
 import FriendSuggestion from './FriendSuggestion';
 import { db, auth, storage} from './firebase';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { Input } from '@mui/material';
+import Avatar from "@mui/material/Avatar"
 import ImageUpload from './ImageUpload';
 import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
 import AuthContext from './hooks/useAuth'
 import home_inUse from './icons/home_inUse.svg'
 import send from './icons/send.svg'
-import plus from './icons/plus.svg'
+import post from './icons/post.svg'
 import explore from './icons/explore.svg'
 import heart from './icons/heart.svg'
+import PostModal from './PostModal'
 
 
 function HomePage() {
@@ -26,7 +26,6 @@ function HomePage() {
 	const { logout } = useContext(AuthContext)
 	const [posts, setPosts] = useState([]);
 	const [openSignIn, setOpenSignIn] = useState(false);
-	const [open, setOpen] = useState(false);
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -35,7 +34,12 @@ function HomePage() {
 	const shouldLogOne = useRef(true)
 	const shouldLogTwo = useRef(true)
 
+	const [open, setOpen] = useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 
+
+	
 //Putting posts on page
 	useEffect(()=>{
 		if(shouldLogTwo.current){
@@ -75,6 +79,12 @@ function HomePage() {
 
 	return (
 		<>
+		
+	
+		<PostModal open={open} onClose={handleClose} />
+
+
+
 		<nav className='app__headerContainer'>
 			<div className="app__header">
 				<div className="app__headerImageFlex">
@@ -97,11 +107,41 @@ function HomePage() {
 					
 				<div className="app__headerIconsFlex">
 					<div className="app__headerIcons">
-						<img className="app__headerIcon" src={home_inUse} alt='home use button'/>
-						<img className="app__headerIcon" src={send} alt='send button'/>
-						<img className="app__headerIcon" src={plus} alt='plus button'/>
-						<img className="app__headerIcon" src={explore} alt='explore button'/>
-						<img className="app__headerIcon" src={heart} alt='heart button'/>
+						<div className="app__headerIconContainer">
+							<button className="app__headerIconButton" >
+								<img className="app__headerIcon" src={home_inUse} alt='home use button'/>
+							</button>
+						</div>
+						
+						<div className="app__headerIconContainer">
+							<button className="app__headerIconButton" >
+							<img className="app__headerIcon" src={send} alt='send button'/>
+							</button>
+						</div>
+
+						<div className="app__headerIconContainer">
+							<button onClick={handleOpen} className="app__headerIconButton" >
+								<img className="app__headerIcon" src={post} alt='post button'/>
+							</button>
+						</div>
+
+						<div className="app__headerIconContainer">
+							<button className="app__headerIconButton" >
+								<img className="app__headerIcon" src={explore} alt='explore button'/>
+							</button>
+						</div>
+
+						<div className="app__headerIconContainer">
+							<button className="app__headerIconButton" >
+								<img className="app__headerIcon" src={heart} alt='heart button'/>
+							</button>
+						</div>
+						<Avatar
+						className="app__avatar "
+						alt={user.displayName}
+						sx={{ width: 23, height: 23 }}
+						src="/static/images/avatar/1.jpg"
+						/>
 					</div>
 				</div>
 			</div>	
