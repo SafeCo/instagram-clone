@@ -46,7 +46,6 @@ function LoginImage() {
     two.current.classList.add(animation.two) 
     three.current.classList.add(animation.three) 
     four.current.classList.add(animation.four) 
-    console.log(one.current.classList)
   },5000)
   return()=>{
     clearInterval(animTimer);

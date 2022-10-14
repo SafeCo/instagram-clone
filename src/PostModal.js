@@ -6,7 +6,7 @@ import './PostModal.css'
 import ModalUpload from './ModalUpload'
 import back from './icons/back.svg'
 
-function PostModal({ open, onClose}) {
+function PostModal({ open, onClose, username}) {
 	const style = {
 		position: 'absolute',
     borderRadius: 3,
@@ -67,7 +67,13 @@ const onSelectFile = e => {
           {
             selectedFile ? (
               <Box sx={styleTwo}>
-                <ModalUpload setSelectedFile={setSelectedFile} selectedFile={selectedFile} preview={preview}  />
+                <ModalUpload 
+                  onClose={onClose}
+                  setSelectedFile={setSelectedFile} 
+                  selectedFile={selectedFile} 
+                  preview={preview}  
+                  username={username}
+                />
               </Box>
             ):(
             <Box sx={style}>

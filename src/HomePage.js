@@ -3,15 +3,13 @@ import './HomePage.css';
 import './ImageUpload.css'
 import Post from './Post';
 import Reel from './Reel';
+import AuthContext from './hooks/useAuth'
 import FriendSuggestion from './FriendSuggestion';
-import { db, auth, storage} from './firebase';
-import Button from '@mui/material/Button';
-import { Input } from '@mui/material';
+import { db } from './firebase';
 import Avatar from "@mui/material/Avatar"
 import ImageUpload from './ImageUpload';
 import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
-import AuthContext from './hooks/useAuth'
 import home_inUse from './icons/home_inUse.svg'
 import send from './icons/send.svg'
 import post from './icons/post.svg'
@@ -21,25 +19,22 @@ import PostModal from './PostModal'
 
 
 function HomePage() {
-
+	
+	
 	const { user } = useContext(AuthContext);
-	const { logout } = useContext(AuthContext)
+	
 	const [posts, setPosts] = useState([]);
-	const [openSignIn, setOpenSignIn] = useState(false);
-	const [username, setUsername] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
 	const [suggestion, setSuggestion] = useState([]);
+
 
 	const shouldLogOne = useRef(true)
 	const shouldLogTwo = useRef(true)
+
 
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 
-
-	
 //Putting posts on page
 	useEffect(()=>{
 		if(shouldLogTwo.current){
@@ -81,7 +76,7 @@ function HomePage() {
 		<>
 		
 	
-		<PostModal open={open} onClose={handleClose} />
+		<PostModal username={user.displayName} open={open} onClose={handleClose} />
 
 
 
@@ -175,12 +170,12 @@ function HomePage() {
 		</main>
       
 
-		{user?.displayName ? (
+		{/* {user?.displayName ? (
 			<ImageUpload username={user.displayName} />
 		): (
 			<h3>Sorry you need to login to upload</h3>
 		)}
-		
+		 */}
 
     </>
 		

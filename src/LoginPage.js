@@ -10,7 +10,6 @@ import SignUp from './SignUp';
 
 
 function LoginPage() {
-  const { user } = useContext(AuthContext);
   const { login } = useContext(AuthContext)
   const { logout } = useContext(AuthContext)
 
@@ -20,7 +19,6 @@ function LoginPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const [user, setUser] = useState(null);
 
 
   // Sign in
@@ -33,12 +31,14 @@ function LoginPage() {
   //Sign Up 
   const signUp = (event) =>{
   event.preventDefault();
-
   auth.createUserWithEmailAndPassword(email, password)
   .then((authUser)=>{
     authUser.user.updateProfile({
       displayName: username
     })
+  })
+  .then(() => {
+    auth.currentUser.reload()
   })
   .catch((error)=> alert(error.message));
   }
@@ -59,9 +59,7 @@ function LoginPage() {
 //switch between sign in component and sign up component
 const checkSignedIn = (event)=>{
   event.preventDefault()
-  console.log(isSignedIn)
   setIsSignedIn(!isSignedIn)
-  console.log(isSignedIn)
 }
 
 
@@ -73,16 +71,15 @@ const checkSignedIn = (event)=>{
 useEffect(()=>{
   const unsubscribe = auth.onAuthStateChanged((authUser)=>{
     if(authUser){
-      console.log(authUser)
+
       //user logged in
-      // setUser(authUser);
       login(authUser);
-      console.log("logged in")
+      
       
     }else{
       //user logged out
       // called 4 times when logging out executes auth as log out once renders page twice
-      // logout(null);
+      logout();
       console.log("logged out")
 
     }
@@ -92,11 +89,10 @@ useEffect(()=>{
       //perform some clean up actions before you use the useffect
       unsubscribe()
       }
-   }, [user, username]);
+   }, []);
 
 
 
-console.log("test to see if whole page rendering after logging in")
 
   return (
     <main className='loginPage__main'>

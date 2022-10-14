@@ -15,11 +15,24 @@
     object-fit: contain;
     height: 400px;
 }
+
+.modalUpload__captionProfile{
+    border: solid green 1px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+
 .modalUpload__captionContainer{
     flex: 1;
     border: solid green 1px;
 }
 
+.modalUpload__caption{
+    
+    width: 100%;
+}
 .modalUpload__image{
    object-fit: contain;
    max-height: 400px;

@@ -22,6 +22,7 @@ ISSUES NOW
 5. Make CSS for sign in and out the same
 6. image transition for loginpage
 7. img tags are not dynamically adding classes
+8. signing up results in user.displayname not working and diplaying
 
 
 attributions:

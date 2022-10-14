@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Avatar from "@mui/material/Avatar"
 import './FriendSuggestion.css'
+import AuthContext from './hooks/useAuth'
+
 
 const FriendSuggestion = ({profileUsername, suggestion}) => {
+  const { logout } = useContext(AuthContext)
   
   const filteredList = suggestion.filter((name)=>{
     if(name === profileUsername){
@@ -21,7 +24,7 @@ const FriendSuggestion = ({profileUsername, suggestion}) => {
         src="/static/images/avatar/1.jpg"
         />
         <div className='friendSuggestion__profileName'>{profileUsername}</div>
-        <div className='friendSuggestion__profileSwitch'>Logout</div>
+        <div ><button className='friendSuggestion__profileLogout' onClick={()=>{logout()}} >Logout</button> </div>
       </div>
       <h3 className='friendSuggestion__suggestTitle'> Suggestions for you</h3>
       {
