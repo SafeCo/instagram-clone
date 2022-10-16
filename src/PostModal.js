@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import postImage from './images/postimage.svg'
@@ -7,30 +7,14 @@ import ModalUpload from './ModalUpload'
 import back from './icons/back.svg'
 
 function PostModal({ open, onClose, username}) {
-	const style = {
-		position: 'absolute',
-    borderRadius: 3,
-		top: '50%',
-		left: '50%',
-		transform: 'translate(-50%, -50%)',
-		width: 400,
-		bgcolor: 'background.paper',
-		boxShadow: 24,
-	};
-  const styleTwo = {
-		position: 'absolute',
-    borderRadius: 3,
-		top: '50%',
-		left: '50%',
-		transform: 'translate(-50%, -50%)',
-		width: 700,
-		bgcolor: 'background.paper',
-		boxShadow: 24,
-	};
-
   const [selectedFile, setSelectedFile] = useState()
   const [preview, setPreview] = useState()
 
+  const inputElement = useRef(null)
+
+  // const onButtonClick = (e) => {
+  //   console.log(inputElement)
+  // };
 
   // create a preview as a side effect, whenever selected file is changed
   useEffect(() => {
@@ -51,32 +35,28 @@ const onSelectFile = e => {
         setSelectedFile(undefined)
         return
     }
-
     // I've kept this example simple by using the first image instead of multiple
-    setSelectedFile(e.target.files[0])
+    setSelectedFile(e.target.files[0])    
 }
 
 
   return (
-    <Modal
-        open={open}
-        onClose={onClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        >
+    <>
           {
             selectedFile ? (
-              <Box sx={styleTwo}>
-                <ModalUpload 
-                  onClose={onClose}
-                  setSelectedFile={setSelectedFile} 
-                  selectedFile={selectedFile} 
-                  preview={preview}  
-                  username={username}
-                />
-              </Box>
+              <div className="postModal__Box__container">
+                
+                  <ModalUpload 
+                    // onClose={onClose}
+                    setSelectedFile={setSelectedFile} 
+                    selectedFile={selectedFile} 
+                    preview={preview}  
+                    username={username}
+                  />
+
+              </div>
+              
             ):(
-            <Box sx={style}>
               <div className="postModal__container">
                 <div className="postModal__header"> 
                   <div className="postModal__header__backButtonContainer">
@@ -89,15 +69,27 @@ const onSelectFile = e => {
                     {selectedFile && <button> <p>Post</p> </button>}
                   </div>
                 </div> 
-                <div>
-                  <img src={postImage} alt="post modal image"/> 
+                <div className="postModal__body">
+                  <div className="postModal__body__image">
+                    <img src={postImage} alt="post modal image"/> 
+                  </div>
+                  <div className="postModal__body__inputContainer">
+                    <button className="postModal__body__button"> 
+                      <p className="postModal__body__buttonText" >Select From Computer</p>
+                      <input 
+                      className="postModal__body__input"
+                      name="file"
+                      type='file'  
+                      accept="image/png, image/jpeg" 
+                      onChange={onSelectFile} 
+                      />
+                    </button>
+                  </div>
                 </div>
-                <input type='file' onChange={onSelectFile} />
               </div>
-            </Box>
             )
           }    
-	</Modal>
+	</>
   )
 }
 

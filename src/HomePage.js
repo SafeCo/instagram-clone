@@ -16,6 +16,7 @@ import post from './icons/post.svg'
 import explore from './icons/explore.svg'
 import heart from './icons/heart.svg'
 import PostModal from './PostModal'
+import CustomModal from './CustomModal'
 
 
 function HomePage() {
@@ -34,6 +35,9 @@ function HomePage() {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+
+	const [customIsOpen, setCustomIsOpen] = useState(false);
+
 
 //Putting posts on page
 	useEffect(()=>{
@@ -67,6 +71,18 @@ function HomePage() {
 		}
 	}, []);
 
+	const switchOpen = ()=>{
+		setCustomIsOpen(!customIsOpen)
+		if (customIsOpen === false){	
+			const scrollBarWidth = window.innerWidth - document.body.clientWidth;
+			document.body.style.overflow = 'hidden';
+			
+		
+		}else{
+			document.body.style.overflow = 'unset'
+		}
+	}
+
 
 	// Each element like insta logo, search bar and icons have their container within the main contianer
 	// flex grow and shrink is used on the individual containers rather than the element
@@ -76,8 +92,14 @@ function HomePage() {
 		<>
 		
 	
-		<PostModal username={user.displayName} open={open} onClose={handleClose} />
+		{/* <PostModal username={user.displayName} open={open} onClose={handleClose} /> */}
 
+		<main>
+      		<button className="primaryBtn "onClick={() => switchOpen()}>
+        		Open Modal
+      		</button>
+	  		{customIsOpen && <CustomModal username={user.displayName} setCustomIsOpen={switchOpen} />}
+    	</main>
 
 
 		<nav className='app__headerContainer'>

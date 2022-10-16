@@ -26,17 +26,19 @@ const FriendSuggestion = ({profileUsername, suggestion}) => {
         <div className='friendSuggestion__profileName'>{profileUsername}</div>
         <div ><button className='friendSuggestion__profileLogout' onClick={()=>{logout()}} >Logout</button> </div>
       </div>
-      <h3 className='friendSuggestion__suggestTitle'> Suggestions for you</h3>
+      <p className='friendSuggestion__suggestTitle'> Suggestions for you</p>
       {
         
         filteredList.map((name) =>(
           <div className='friendSuggestion__suggest'>
-            <Avatar className="friendSuggestion__avatar"
+            <Avatar 
+            className="friendSuggestion__avatar"
             alt= {name}
             src="/static/images/avatar/1.jpg"
+            sx={{height: 30, width: 30}}
             /> 
             <div className='friendSuggestion__profileName'>{name}</div>
-            <div className='friendSuggestion__profileSwitch'>Follow</div>
+            <div className='friendSuggestion__profileLogout'>Follow</div>
           </div>
           
         ))

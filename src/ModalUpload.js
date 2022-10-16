@@ -79,12 +79,12 @@ function ModalUpload({setSelectedFile, selectedFile, preview, username, onClose}
 						<div className="modalUpload__captionProfile">
 							<Avatar
 							alt={username}
-							sx={{ width: 23, height: 23 }}
+							sx={{ width: 23, height: 23, marginRight: 1 }}
 							src="/static/images/avatar/1.jpg"
 							/>
 							<div>{username}</div>
 						</div>
-						<textarea className="modalUpload__caption" type="text" placeholder="Enter a caption..." onChange={event => setCaption(event.target.value) } value={caption}></textarea>
+						<textarea className="modalUpload__caption" type="text" placeholder="Write a caption..." onChange={event => setCaption(event.target.value) } value={caption}></textarea>
 					</div>
 				</div>
 			</div>
