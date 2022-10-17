@@ -1,12 +1,11 @@
 import React, {useState, useEffect, useRef} from 'react'
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+
 import postImage from './images/postimage.svg'
 import './PostModal.css'
 import ModalUpload from './ModalUpload'
 import back from './icons/back.svg'
 
-function PostModal({ open, onClose, username}) {
+function PostModal({username}) {
   const [selectedFile, setSelectedFile] = useState()
   const [preview, setPreview] = useState()
 
@@ -35,7 +34,6 @@ const onSelectFile = e => {
         setSelectedFile(undefined)
         return
     }
-    // I've kept this example simple by using the first image instead of multiple
     setSelectedFile(e.target.files[0])    
 }
 
@@ -44,10 +42,9 @@ const onSelectFile = e => {
     <>
           {
             selectedFile ? (
-              <div className="postModal__Box__container">
+              <div className="postModal__box__container">
                 
                   <ModalUpload 
-                    // onClose={onClose}
                     setSelectedFile={setSelectedFile} 
                     selectedFile={selectedFile} 
                     preview={preview}  
@@ -70,12 +67,16 @@ const onSelectFile = e => {
                   </div>
                 </div> 
                 <div className="postModal__body">
-                  <div className="postModal__body__image">
+                  <div >
                     <img src={postImage} alt="post modal image"/> 
                   </div>
+                  <div className="postModal__body__textContainer">
+                    <p className="postModal__body__text" >Upload a Picture!</p>
+                  </div>
+                  
                   <div className="postModal__body__inputContainer">
                     <button className="postModal__body__button"> 
-                      <p className="postModal__body__buttonText" >Select From Computer</p>
+                      <p className="postModal__body__buttonText">Select From Computer</p>
                       <input 
                       className="postModal__body__input"
                       name="file"

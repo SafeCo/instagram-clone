@@ -15,7 +15,6 @@ import send from './icons/send.svg'
 import post from './icons/post.svg'
 import explore from './icons/explore.svg'
 import heart from './icons/heart.svg'
-import PostModal from './PostModal'
 import CustomModal from './CustomModal'
 
 
@@ -33,8 +32,7 @@ function HomePage() {
 
 
 	const [open, setOpen] = useState(false);
-	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
+
 
 	const [customIsOpen, setCustomIsOpen] = useState(false);
 
@@ -59,12 +57,17 @@ function HomePage() {
 			console.log("use effect 1")
 			db.collection("posts").get().then((querySnapshot) => {
 				querySnapshot.forEach((doc) => {
-					let data =  doc.data()
+					let data =  doc.data().username
+					let id = doc.id
 					setSuggestion((suggest)=>
 						[
 							...suggest,
-							data.username
+							{
+								username: data,
+								id: id
+							}
 						]
+						
 					)
 				});
 			});
@@ -76,10 +79,10 @@ function HomePage() {
 		if (customIsOpen === false){	
 			const scrollBarWidth = window.innerWidth - document.body.clientWidth;
 			document.body.style.overflow = 'hidden';
-			
-		
+			document.body.style.paddingRight = scrollBarWidth + "px"
 		}else{
 			document.body.style.overflow = 'unset'
+			document.body.style.paddingRight = "0px"
 		}
 	}
 
@@ -94,12 +97,8 @@ function HomePage() {
 	
 		{/* <PostModal username={user.displayName} open={open} onClose={handleClose} /> */}
 
-		<main>
-      		<button className="primaryBtn "onClick={() => switchOpen()}>
-        		Open Modal
-      		</button>
+	
 	  		{customIsOpen && <CustomModal username={user.displayName} setCustomIsOpen={switchOpen} />}
-    	</main>
 
 
 		<nav className='app__headerContainer'>
@@ -137,7 +136,7 @@ function HomePage() {
 						</div>
 
 						<div className="app__headerIconContainer">
-							<button onClick={handleOpen} className="app__headerIconButton" >
+							<button onClick={() => switchOpen()} className="app__headerIconButton" >
 								<img className="app__headerIcon" src={post} alt='post button'/>
 							</button>
 						</div>
@@ -183,9 +182,9 @@ function HomePage() {
 				
 
 
-				<div className="app__friendSugg">
+				{/* <div className="app__friendSugg">
 					<FriendSuggestion suggestion={suggestion} profileUsername={user.displayName}/>
-				</div>
+				</div> */}
 			</section>
 			
 	

@@ -5,7 +5,7 @@ import Avatar  from '@mui/material/Avatar';
 import back from './icons/back.svg'
 import './ModalUpload.css'
 
-function ModalUpload({setSelectedFile, selectedFile, preview, username, onClose}) {
+function ModalUpload({setSelectedFile, selectedFile, preview, username}) {
 	const [caption, setCaption] = useState('');
 	const [progress, setProgress] = useState(0);
 
@@ -46,7 +46,6 @@ function ModalUpload({setSelectedFile, selectedFile, preview, username, onClose}
 									setCaption("");
 									setProgress(0)
 									setSelectedFile(null);
-									onClose();
 							});
 				}
 		);
@@ -56,15 +55,15 @@ function ModalUpload({setSelectedFile, selectedFile, preview, username, onClose}
 
 	return (
     <>
-			<div className="postModal__container">
-				<div className="postModal__header"> 
-					<div className="postModal__header__backButtonContainer">
+			<div className="modalUpload__container">
+				<div className="modalUpload__header"> 
+					<div className="modalUpload__header__backButtonContainer">
 						<button onClick={()=>{setSelectedFile(null)}}><img src={back} alt="back button"/></button>
 					</div>
-					<div className="postModal__header__text">
+					<div className="modalUpload__header__text">
 						<p>Create new Post</p> 
 					</div>
-					<div className="postModal__header__postButtonContainer">
+					<div className="modalUpload__header__postButtonContainer">
 						<button onClick={handleUpload}>
 							<p>Post</p>
 						</button>

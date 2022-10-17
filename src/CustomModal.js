@@ -5,7 +5,8 @@ import PostModal from "./PostModal";
 
 const CustomModal = ({ username, setCustomIsOpen }) => {
   return (
-    <div className="cM__darkBg" onClick={()=> {setCustomIsOpen()}} > 
+    <div className="cM__container"> 
+      <div className="cM__darkBg" onClick={(e)=> {setCustomIsOpen()}}  ></div>
       <div className="cM__position">
         <PostModal username={username} />
       </div>
