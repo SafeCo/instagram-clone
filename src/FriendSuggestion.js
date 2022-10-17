@@ -7,8 +7,21 @@ import AuthContext from './hooks/useAuth'
 const FriendSuggestion = ({profileUsername, suggestion}) => {
   const { logout } = useContext(AuthContext)
   
-  const filteredList = suggestion.filter((name)=>{
-    if(name === profileUsername){
+ 
+  const uniqueIds = [];
+  const unique = suggestion.filter(element => {
+    const isDuplicate = uniqueIds.includes(element.username);
+    if (!isDuplicate) {
+      uniqueIds.push(element.username);
+
+      return true;
+    }
+
+    return false;
+  });
+
+  const filteredList = unique.filter((name)=>{
+    if(name.username === profileUsername){
       return false
     }else{
       return true
@@ -28,16 +41,15 @@ const FriendSuggestion = ({profileUsername, suggestion}) => {
       </div>
       <p className='friendSuggestion__suggestTitle'> Suggestions for you</p>
       {
-        
-        filteredList.map((name) =>(
-          <div className='friendSuggestion__suggest'>
+        filteredList.map(({username, id}) =>(
+          <div key={id} className='friendSuggestion__suggest'>
             <Avatar 
             className="friendSuggestion__avatar"
-            alt= {name}
+            alt= {username}
             src="/static/images/avatar/1.jpg"
             sx={{height: 30, width: 30}}
             /> 
-            <div className='friendSuggestion__profileName'>{name}</div>
+            <div className='friendSuggestion__profileName'>{username}</div>
             <div className='friendSuggestion__profileLogout'>Follow</div>
           </div>
           

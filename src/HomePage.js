@@ -181,9 +181,9 @@ function HomePage() {
 				
 
 
-				{/* <div className="app__friendSugg">
+				<div className="app__friendSugg">
 					<FriendSuggestion suggestion={suggestion} profileUsername={user.displayName}/>
-				</div> */}
+				</div> 
 			</section>
 			
 	

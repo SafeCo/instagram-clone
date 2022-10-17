@@ -3,8 +3,8 @@ import Avatar from "@mui/material/Avatar"
 import './Reel.css'
 
 const Reel = ({list}) => {
-  const uniqueIds = [];
 
+  const uniqueIds = [];
   const unique = list.filter(element => {
     const isDuplicate = uniqueIds.includes(element.username);
     if (!isDuplicate) {
@@ -19,7 +19,7 @@ const Reel = ({list}) => {
   return (
     <>
       {
-        unique.map(({username, id}) =>(
+        list.map(({username, id}) =>(
         <div key={id} className="reel__profile">
           <div className="reel__image">
             <Avatar
