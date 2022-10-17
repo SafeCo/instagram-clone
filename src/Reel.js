@@ -3,22 +3,24 @@ import Avatar from "@mui/material/Avatar"
 import './Reel.css'
 
 const Reel = ({list}) => {
-  console.log(list);
- 
+  const uniqueIds = [];
+
+  const unique = list.filter(element => {
+    const isDuplicate = uniqueIds.includes(element.username);
+    if (!isDuplicate) {
+      uniqueIds.push(element.username);
+
+      return true;
+    }
+
+    return false;
+  });
+
   return (
     <>
       {
-        list.forEach((prop) =>{
-          console.log(prop.username)
-        })
-      }
-    </>
-  )
-}
-
-export default Reel
-
-{/* <div key={prop.id} className="reel__profile">
+        unique.map(({username, id}) =>(
+        <div key={id} className="reel__profile">
           <div className="reel__image">
             <Avatar
             className="reel__avatar"
@@ -28,5 +30,12 @@ export default Reel
             />
             <div className="reel__avatarRing"></div>
           </div>
-            <div className="app__reelsName">{prop.username}</div>
-        </div> */}
+            <div className="app__reelsName">{username}</div>
+        </div> 
+        )) 
+      }
+    </>
+  )
+}
+
+export default Reel

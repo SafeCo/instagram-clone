@@ -169,7 +169,6 @@ function HomePage() {
 			<div className="app__sectionLeft">
 					<div className="app__reels">
 						<Reel list={suggestion}/>
-					
 					</div>
 					<div className="app__posts">
 							{
