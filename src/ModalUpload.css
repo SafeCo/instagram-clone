@@ -3,7 +3,7 @@
     border-radius: 12px;
     width: 730px;
     max-width: 988px;
-    min-width: 688px;
+    min-width: 390px;
     min-height: 391px;
     max-height: 691px;
     z-index: 4;
@@ -60,15 +60,13 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    border: solid lightgray 1px;
 }
 
 .modalUpload__imageContainer{
     display: flex;
-    background-color: black;
     align-items: center;
     justify-content: center;
-    border: solid lightgray 1px;
+    border-right: solid lightgray 1px;
     flex: 1;
     object-fit: contain;
     height: 400px;
@@ -83,7 +81,6 @@
 
 .modalUpload__captionContainer{
     flex: 1;
-    border: solid lightgray 1px;
 }
 
 .modalUpload__caption{
@@ -102,3 +99,11 @@
 }
 
 
+
+
+@media (max-width: 480px) {
+    .modalUpload__container{
+        width: 100%;
+    }
+    
+}

@@ -76,10 +76,19 @@ function HomePage() {
 
 	const switchOpen = ()=>{
 		setCustomIsOpen(!customIsOpen)
-		if (customIsOpen === false){	
+		if(window.matchMedia("(max-width: 480px)") && customIsOpen === false ){
+			console.log("working")
+			console.log(document.body.classList)
+			document.body.classList.add("noMobileScroll")
+
+		}else if(window.matchMedia("(max-width: 480px)") && customIsOpen === true){
+			document.body.classList.remove("noMobileScroll")
+
+		}else if (customIsOpen === false){	
 			const scrollBarWidth = window.innerWidth - document.body.clientWidth;
 			document.body.style.overflow = 'hidden';
 			document.body.style.paddingRight = scrollBarWidth + "px"
+
 		}else{
 			document.body.style.overflow = 'unset'
 			document.body.style.paddingRight = "0px"
