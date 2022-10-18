@@ -152,12 +152,15 @@ function HomePage() {
 								<img className="app__headerIcon" src={heart} alt='heart button'/>
 							</button>
 						</div>
-						<Avatar
-						className="app__avatar "
-						alt={user.displayName}
-						sx={{ width: 23, height: 23 }}
-						src="/static/images/avatar/1.jpg"
-						/>
+						<div className="app__headerIconContainer">
+							<Avatar
+							className="app__headerIcon"
+							alt={user.displayName}
+							sx={{ width: 23, height: 23 }}
+							src="/static/images/avatar/1.jpg"
+							/>
+						</div>
+						
 					</div>
 				</div>
 			</div>	

@@ -4,6 +4,7 @@
     align-items: center;
     background-color: white ;
     border-bottom: 1px solid lightgray;
+    width: 100%;
 }
 .app__header {
     position: sticky;
@@ -20,6 +21,7 @@
 .app__headerImageFlex{
     display: flex;
     flex: 1 0 127px;
+    margin-top: 7px;
 }
 .app__headerImage {
     height: 30px;  
@@ -96,9 +98,7 @@
     height: 23px;
 
 }
-.app__avatar{
-    margin-left: 25px;
-}
+
 
 .app__signup{
     display: flex;
@@ -154,30 +154,31 @@
     width: 100%;
 }
 
+@media (max-width: 480px) {
+    html, body{
+        overflow-x: hidden;
+    }
+    .app__header__searchBarFlex{
+        display: none;
+    }
+    .app__headerIconContainer{
+        padding-left: 0px;
+        padding-right: 25px;
+    }
+    .app__headerContainer{
+        width: 100%;
+    }
+    .app__header{
+        width: 100%;
+    }
+    .app__friendSugg{
+        display: none;
+    }
+    .app__header{
+        padding-left: 0px;
+    }
 
 
-
-
-
-
-
-
-/* CUSTOM MODAL STYLE */
-
-.primaryBtn {
-    margin: 20px 10px;
-    cursor: pointer;
-    font-weight: 500;
-    padding: 13px 25px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    border: none;
-    color: white;
-    background: #185adb;
-    transition: all 0.25s ease;
   }
-  
-  .primaryBtn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6);
-  }
+
+

@@ -19,7 +19,7 @@ const Reel = ({list}) => {
   return (
     <>
       {
-        list.map(({username, id}) =>(
+        unique.map(({username, id}) =>(
         <div key={id} className="reel__profile">
           <div className="reel__image">
             <Avatar
