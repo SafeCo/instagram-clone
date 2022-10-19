@@ -45,12 +45,12 @@ function HomePage() {
 				db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
 				setPosts(snapshot.docs.map(doc => ({
 				id: doc.id,
-				post: doc.data()
+				post: doc.data(),
 				})));
 		})}
 		}, []);
 
-	//Friend Suggestions
+//Friend Suggestions
 	useEffect(()=>{
 		if(shouldLogOne.current){
 			shouldLogOne.current = false;
@@ -72,26 +72,31 @@ function HomePage() {
 				});
 			});
 		}
-	}, []);
+	}, [posts]);
 
 	const switchOpen = ()=>{
 		setCustomIsOpen(!customIsOpen)
-		if(window.matchMedia("(max-width: 480px)") && customIsOpen === false ){
-			console.log("working")
-			console.log(document.body.classList)
+		modalSetter(customIsOpen)
+	}
+
+	const modalSetter = (modalState)=>{
+		if(window.matchMedia("(max-width: 480px)").matches && modalState === false ){
+			document.body.style.paddingRight = "0px"
 			document.body.classList.add("noMobileScroll")
 
-		}else if(window.matchMedia("(max-width: 480px)") && customIsOpen === true){
+		}else if(window.matchMedia("(max-width: 480px)").matches && modalState === true){
+			document.body.style.paddingRight = "0px"
 			document.body.classList.remove("noMobileScroll")
 
-		}else if (customIsOpen === false){	
+		}else if (modalState === false){	
 			const scrollBarWidth = window.innerWidth - document.body.clientWidth;
 			document.body.style.overflow = 'hidden';
 			document.body.style.paddingRight = scrollBarWidth + "px"
 
 		}else{
-			document.body.style.overflow = 'unset'
+			document.body.style.overflowY = 'scroll'
 			document.body.style.paddingRight = "0px"
+
 		}
 	}
 
@@ -102,12 +107,8 @@ function HomePage() {
 
 	return (
 		<>
-		
 	
-		{/* <PostModal username={user.displayName} open={open} onClose={handleClose} /> */}
-
-	
-	  		{customIsOpen && <CustomModal username={user.displayName} setCustomIsOpen={switchOpen} />}
+	  	{customIsOpen && <CustomModal username={user.displayName} setCustomIsOpen={switchOpen} />}
 
 
 		<nav className='app__headerContainer'>
@@ -185,7 +186,7 @@ function HomePage() {
 					<div className="app__posts">
 							{
 								posts.map(({id, post}) =>(
-									<Post key={id} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+									<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} modalSetter={modalSetter} />
 								))
 							}
 					</div>

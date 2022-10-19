@@ -34,9 +34,9 @@ const onSelectFile = e => {
         setSelectedFile(undefined)
         return
     }
-    setSelectedFile(e.target.files[0])    
+    setSelectedFile(e.target.files[0])   
+    
 }
-
 
   return (
     <>

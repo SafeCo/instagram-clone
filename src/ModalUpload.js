@@ -9,9 +9,14 @@ function ModalUpload({setSelectedFile, selectedFile, preview, username}) {
 	const [caption, setCaption] = useState('');
 	const [progress, setProgress] = useState(0);
 
+	let today = new Date();
+	let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+	let time = today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
+	let dateTime = date+'-'+time+'-';
+
 	const handleUpload = () => {
-		const uploadTask = storage.ref(`images/${selectedFile.name}`).put(selectedFile);
-		console.log(uploadTask)
+		const fileName = `${dateTime + selectedFile.name}`
+		const uploadTask = storage.ref(`images/${fileName}`).put(selectedFile);
 		uploadTask.on(
 			"state_changed",
 			(snapshot) => {
@@ -27,20 +32,18 @@ function ModalUpload({setSelectedFile, selectedFile, preview, username}) {
 			},
 			() => {
 					//complete function...
-					console.log("working")
 					storage
 							.ref("images")
-							.child(selectedFile.name)
+							.child(fileName)
 							.getDownloadURL()
 							.then(url => {
-									console.log(url)
-									console.log("re-render")
 									// post image inside db
 									db.collection("posts").add({
 											timestamp: firebase.firestore.FieldValue.serverTimestamp(),
 											caption: caption,
 											imageUrl: url,
-											username: username                              
+											username: username,
+											filename: fileName                              
 									});
 
 									setCaption("");

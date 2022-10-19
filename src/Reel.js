@@ -28,9 +28,13 @@ const Reel = ({list}) => {
             alt= {username}
             src="/static/images/avatar/1.jpg"
             />
-            <div className="reel__avatarRing"></div>
+
+            <div className="reel__avatarRing"></div>         
+
           </div>
-            <div className="app__reelsName">{username}</div>
+          <div className="app__reelsNameContainer">
+              <div className="app__reelsName">{username}</div>
+            </div>
         </div> 
         )) 
       }

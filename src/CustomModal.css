@@ -1,5 +1,5 @@
 .cM__container{
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100vw;
   z-index: 3;
@@ -14,7 +14,8 @@
     background-color: rgba(0, 0, 0, 0.65);
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
+    overflow-y: scroll;
   }
   
 
@@ -24,4 +25,11 @@
     align-items: center;
     justify-content: center;
     
+  }
+
+  @media (max-width: 480px) {
+    .cM__darkBg{
+        overflow: hidden;
+    }
+
   }

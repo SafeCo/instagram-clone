@@ -7,11 +7,18 @@ import commentIcon from './icons/comment.svg'
 import heart from './icons/heart.svg'
 import send from './icons/send.svg'
 import save from './icons/save.svg'
-import { red } from '@mui/material/colors';
+import DeleteModal from './DeleteModal';
 
-function Post({postId, user, username, caption, imageUrl}) {
+function Post({filename, postId, user, username, caption, imageUrl, modalSetter}) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState('');
+  const [deletePost, setDeletePost] = useState(false);
+
+  const switchDeleteOpen = ()=>{
+    setDeletePost(!deletePost)
+    modalSetter(deletePost)
+  }
+
   useEffect(()=> {
     let unsubscribe;
     if(postId) {
@@ -42,7 +49,9 @@ function Post({postId, user, username, caption, imageUrl}) {
   const postButtonColor = comment? {color: '#0095F6'} : {color: '#6082a3'}
 
   return (
-    <div className="post">
+    <>
+    {deletePost && <DeleteModal id={postId} filename={filename} switchDeleteOpen={switchDeleteOpen} />}
+    <div key={postId} className="post">
       <div className="post__header" >
         <div className="post__headerProfile">
           <Avatar
@@ -54,7 +63,9 @@ function Post({postId, user, username, caption, imageUrl}) {
         </div>
         <div className="post__headerButtonContainer">
           <div className="post__headerButton">
-            <div className="post__headerButtonDots">&bull; &bull; &bull;</div>
+            <div className="post__headerButtonDots" onClick={()=>switchDeleteOpen()}>
+              &bull; &bull; &bull;
+            </div>
           </div>
         </div>
         
@@ -117,8 +128,6 @@ function Post({postId, user, username, caption, imageUrl}) {
             </p>
             ))}
         </div>
-      
-      {user && (
           <form className="post__commentBox">
             <input
               className="post__input"
@@ -133,11 +142,9 @@ function Post({postId, user, username, caption, imageUrl}) {
               type="submit"
               onClick={postComment}
             ><div style={postButtonColor}>Post</div></button>
-          </form>        
-      )}
-      
-      
+          </form>              
     </div>
+    </>
   )
 }
 
