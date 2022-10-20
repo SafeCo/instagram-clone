@@ -13,9 +13,7 @@ function LoginPage() {
   const { login } = useContext(AuthContext)
   const { logout } = useContext(AuthContext)
 
-  const [posts, setPosts] = useState([]);
   const [isSignedIn, setIsSignedIn] = useState(true);
-  const [open, setOpen] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -71,10 +69,8 @@ const checkSignedIn = (event)=>{
 useEffect(()=>{
   const unsubscribe = auth.onAuthStateChanged((authUser)=>{
     if(authUser){
-
       //user logged in
       login(authUser);
-      
       
     }else{
       //user logged out

@@ -16,6 +16,9 @@ import post from './icons/post.svg'
 import explore from './icons/explore.svg'
 import heart from './icons/heart.svg'
 import CustomModal from './CustomModal'
+import ReelCarousel from './ReelCarousel';
+
+
 
 
 function HomePage() {
@@ -180,9 +183,7 @@ function HomePage() {
 		<main className="app__main">
 			<section className="app__section">
 			<div className="app__sectionLeft">
-					<div className="app__reels">
-						<Reel list={suggestion}/>
-					</div>
+						<ReelCarousel list={suggestion}/>
 					<div className="app__posts">
 							{
 								posts.map(({id, post}) =>(
@@ -201,15 +202,6 @@ function HomePage() {
 			
 	
 		</main>
-      
-
-		{/* {user?.displayName ? (
-			<ImageUpload username={user.displayName} />
-		): (
-			<h3>Sorry you need to login to upload</h3>
-		)}
-		 */}
-
     </>
 		
 	)

@@ -23,6 +23,7 @@ ISSUES NOW
 6. image transition for loginpage
 7. img tags are not dynamically adding classes
 8. signing up results in user.displayname not working and diplaying
+9. Issue if you try to sign in with a new user that doesnt exist and then switch to create new account, the email and pass is recorded but the username is not recorded.
 
 
 attributions:
