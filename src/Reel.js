@@ -3,6 +3,7 @@ import Avatar from "@mui/material/Avatar"
 import './Reel.css'
 
 const Reel = ({list}) => {
+  console.log(list)
 
   const uniqueIds = [];
     const unique = list.filter(element => {

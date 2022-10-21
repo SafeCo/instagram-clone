@@ -59,10 +59,11 @@ function HomePage() {
 			shouldLogOne.current = false;
 			console.log("use effect 1")
 			db.collection("posts").get().then((querySnapshot) => {
-				querySnapshot.forEach((doc) => {
-					let data =  doc.data().username
-					let id = doc.id
-					setSuggestion((suggest)=>
+				for(let i = 0; i < 11; i++){
+					if(querySnapshot.docs[i]){
+						let data = querySnapshot.docs[i].data().username
+						let id = querySnapshot.docs[i].id
+						setSuggestion((suggest)=>
 						[
 							...suggest,
 							{
@@ -72,7 +73,26 @@ function HomePage() {
 						]
 						
 					)
-				});
+					}else{
+						break;
+					}
+
+				}
+
+				// querySnapshot.forEach((doc) => {
+				// 	let data =  doc.data().username
+				// 	let id = doc.id
+					// setSuggestion((suggest)=>
+					// 	[
+					// 		...suggest,
+					// 		{
+					// 			username: data,
+					// 			id: id
+					// 		}
+					// 	]
+						
+					// )
+				// });
 			});
 		}
 	}, [posts]);
