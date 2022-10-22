@@ -15,21 +15,8 @@ const FriendSuggestion = ({profileUsername, suggestion}) => {
       break;
     }
   }
-  
 
-  const uniqueIds = [];
-  const unique = reducedList.filter(element => {
-    const isDuplicate = uniqueIds.includes(element.username);
-    if (!isDuplicate) {
-      uniqueIds.push(element.username);
-
-      return true;
-    }
-
-    return false;
-  });
-
-  const filteredList = unique.filter((name)=>{
+  const filteredList = reducedList.filter((name)=>{
     if(name.username === profileUsername){
       return false
     }else{

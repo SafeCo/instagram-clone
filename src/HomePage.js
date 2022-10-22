@@ -17,6 +17,7 @@ import explore from './icons/explore.svg'
 import heart from './icons/heart.svg'
 import CustomModal from './CustomModal'
 import ReelCarousel from './ReelCarousel';
+import CheckPostModal from './CheckPostModal';
 
 
 
@@ -38,6 +39,7 @@ function HomePage() {
 
 
 	const [customIsOpen, setCustomIsOpen] = useState(false);
+	const [checkPostModalIsOpen, setCheckPostModalIsOpen] = useState(false)
 
 
 //Putting posts on page
@@ -76,26 +78,15 @@ function HomePage() {
 					}else{
 						break;
 					}
-
 				}
-
-				// querySnapshot.forEach((doc) => {
-				// 	let data =  doc.data().username
-				// 	let id = doc.id
-					// setSuggestion((suggest)=>
-					// 	[
-					// 		...suggest,
-					// 		{
-					// 			username: data,
-					// 			id: id
-					// 		}
-					// 	]
-						
-					// )
-				// });
 			});
 		}
 	}, [posts]);
+
+	const switchCheckPostModalOpen= () =>{
+		setCheckPostModalIsOpen(!checkPostModalIsOpen)
+		modalSetter(checkPostModalIsOpen)
+	}
 
 	const switchOpen = ()=>{
 		setCustomIsOpen(!customIsOpen)
@@ -130,7 +121,8 @@ function HomePage() {
 
 	return (
 		<>
-	
+
+		{checkPostModalIsOpen && <CheckPostModal switchModalFunc={switchCheckPostModalOpen} />}
 	  	{customIsOpen && <CustomModal username={user.displayName} setCustomIsOpen={switchOpen} />}
 
 
@@ -207,7 +199,7 @@ function HomePage() {
 					<div className="app__posts">
 							{
 								posts.map(({id, post}) =>(
-									<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} modalSetter={modalSetter} />
+									<Post key={id} switchModalFunc={switchCheckPostModalOpen} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} modalSetter={modalSetter} />
 								))
 							}
 					</div>

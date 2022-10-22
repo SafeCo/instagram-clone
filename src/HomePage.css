@@ -119,8 +119,7 @@
 .app__sectionLeft{
 	margin-top: 10px;
 	margin-right: 32px;
-	max-width: 470px;
-	width: 100%;
+    max-width: 470px;
 	flex-shrink: 0;
 }
 
@@ -157,6 +156,9 @@
     html, body{
         overflow-x: hidden;
     }
+    .app__sectionLeft{
+        margin-top: 0px;
+    }
     .app__header__searchBarFlex{
         display: none;
     }
@@ -179,8 +181,12 @@
     .modalUpload__container{
         width: 100px;
     }
-
-
+    
   }
 
+@media (max-width: 390px) {
+    .app__sectionLeft{
+        max-width: 390px;
+    }
+}
 

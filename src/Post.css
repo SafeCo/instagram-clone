@@ -99,6 +99,14 @@
     font-size: 14px;
     font-weight: 400;
 }
+
+.post__viewAll{
+    cursor: pointer;
+    color: rgb(142, 142, 142);
+    font-size: 14px;
+    font-weight: 400;
+    padding-left: 10px;
+}
 .post__input{
     flex: 1;
     border: none;

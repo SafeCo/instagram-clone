@@ -9,8 +9,9 @@ import send from './icons/send.svg'
 import save from './icons/save.svg'
 import DeleteModal from './DeleteModal';
 
-function Post({filename, postId, user, username, caption, imageUrl, modalSetter}) {
+function Post({switchModalFunc, filename, postId, user, username, caption, imageUrl, modalSetter}) {
   const [comments, setComments] = useState([]);
+  const [reducedComments, setReducedComments] = useState([])
   const [comment, setComment] = useState('');
   const [deletePost, setDeletePost] = useState(false);
 
@@ -45,6 +46,14 @@ function Post({filename, postId, user, username, caption, imageUrl, modalSetter}
       });
       setComment('');
   }
+
+  // this component re-renders 14 times most likely because of comments.
+  useEffect(()=>{
+    let filter = comments.slice(0, 2)
+    setReducedComments(filter)
+  },[comments])
+
+
 
   const postButtonColor = comment? {color: '#0095F6'} : {color: '#6082a3'}
 
@@ -122,12 +131,19 @@ function Post({filename, postId, user, username, caption, imageUrl, modalSetter}
           <p> 
             <strong>{username}</strong> {caption}
           </p>
-          {comments.map((comment)=> (
-            <p>
-              <strong>{comment.username}</strong> {comment.text}
-            </p>
-            ))}
+          {
+            reducedComments.map((comment, index)=> (
+              <p key={index+postId}>
+                <strong>{comment.username}</strong> {comment.text}
+              </p>
+              )) 
+          }
+          
         </div>
+        {
+            comments.length > 2 ? 
+              <p onClick={()=>{switchModalFunc()}} className="post__viewAll">View all comments</p> : null
+          }
           <form className="post__commentBox">
             <input
               className="post__input"
