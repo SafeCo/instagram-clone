@@ -1,3 +1,11 @@
+.postModal__position{
+    position: absolute;
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    
+  }
 
 .postModal__box__container{
     z-index: 4;

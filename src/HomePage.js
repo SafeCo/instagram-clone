@@ -17,7 +17,9 @@ import explore from './icons/explore.svg'
 import heart from './icons/heart.svg'
 import CustomModal from './CustomModal'
 import ReelCarousel from './ReelCarousel';
-import CheckPostModal from './CheckPostModal';
+import TestModal from './TestModal';
+import ModalWrapper from './ModalWrapper';
+import PostModal from './PostModal';
 
 
 
@@ -40,7 +42,9 @@ function HomePage() {
 
 	const [customIsOpen, setCustomIsOpen] = useState(false);
 	const [checkPostModalIsOpen, setCheckPostModalIsOpen] = useState(false)
-
+	const [modalSwitch, setModalSwitch] = useState(false)
+	const [modalName, setModalName]= useState("")
+	const [modalChild, setModalChild]= useState("")
 
 //Putting posts on page
 	useEffect(()=>{
@@ -83,6 +87,24 @@ function HomePage() {
 		}
 	}, [posts]);
 
+	const modalSwitchOpen= (e)=>{
+		switch(e.target.name){
+			case "newPost":
+				setModalChild(
+					<PostModal
+						username={user.displayName}
+					/>
+					)
+				break;
+			case "TestName":
+				setModalChild(<TestModal/>)
+			default :
+				break;
+		}
+		setModalSwitch(!modalSwitch)
+		modalSetter(modalSwitch)
+	}
+
 	const switchCheckPostModalOpen= () =>{
 		setCheckPostModalIsOpen(!checkPostModalIsOpen)
 		modalSetter(checkPostModalIsOpen)
@@ -122,9 +144,15 @@ function HomePage() {
 	return (
 		<>
 
-		{checkPostModalIsOpen && <CheckPostModal switchModalFunc={switchCheckPostModalOpen} />}
+		{modalSwitch && 
+			<ModalWrapper switch={modalSwitchOpen}> 
+				{modalChild}
+			</ModalWrapper>
+		}
+
 	  	{customIsOpen && <CustomModal username={user.displayName} setCustomIsOpen={switchOpen} />}
 
+		<button name="TestName" style={{height: 50, width: 50}} onClick={(e)=>{modalSwitchOpen(e)}}></button>
 
 		<nav className='app__headerContainer'>
 			<div className="app__header">
@@ -161,8 +189,8 @@ function HomePage() {
 						</div>
 
 						<div className="app__headerIconContainer">
-							<button onClick={() => switchOpen()} className="app__headerIconButton" >
-								<img className="app__headerIcon" src={post} alt='post button'/>
+							<button onClick={(e) => modalSwitchOpen(e)} className="app__headerIconButton" >
+								<img name="newPost" className="app__headerIcon" src={post} alt='post button'/>
 							</button>
 						</div>
 

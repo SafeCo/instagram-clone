@@ -39,7 +39,7 @@ const onSelectFile = e => {
 }
 
   return (
-    <>
+    <div className="postModal__position">
           {
             selectedFile ? (
               <div className="postModal__box__container">
@@ -90,7 +90,7 @@ const onSelectFile = e => {
               </div>
             )
           }    
-	</>
+	</div>
   )
 }
 

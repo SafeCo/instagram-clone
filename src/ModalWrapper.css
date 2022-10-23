@@ -1,4 +1,4 @@
-.checkPostModal__container{
+.modalWrapper__container{
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -10,10 +10,21 @@
     justify-content: center;
   }
   
-  .checkPostModal__darkBg {
+  .modalWrapper__darkBg {
       background-color: rgba(0, 0, 0, 0.65);
       width: 100%;
       height: 100%;
       position: fixed;
       overflow-y: scroll;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
+    @media (max-width: 480px) {
+      .modalWrapper__darkBg{
+          overflow: hidden;
+      }
+  
+    }
+  
