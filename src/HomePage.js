@@ -8,10 +8,6 @@ import { db } from './firebase';
 import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
 import ReelCarousel from './ReelCarousel';
-import TestModal from './TestModal';
-import ModalWrapper from './ModalWrapper';
-import PostModal from './PostModal';
-import ViewCommentsModal from './ViewCommentsModal';
 import NavIcons from './NavIcons';
 
 
@@ -30,8 +26,7 @@ function HomePage() {
 	const shouldLogOne = useRef(true)
 	const shouldLogTwo = useRef(true)
 
-	const [modalSwitch, setModalSwitch] = useState(false)
-	const [modalChild, setModalChild]= useState("")
+
 
 //Putting posts on page
 	useEffect(()=>{
@@ -74,31 +69,7 @@ function HomePage() {
 		}
 	}, [posts]);
 	
-	const modalSwitchOpen= (e)=>{
-		switch(e.target.name){
-			case "newPost":
-				setModalChild(
-					<PostModal
-						username={user.displayName}
-					/>
-					)
-				break;
-			case "viewComments":
-				setModalChild(
-					<ViewCommentsModal
-
-					/>
-					)
-				break;
-			case "TestName":
-				setModalChild(<TestModal/>)
-				break;
-			default :
-				break;
-		}
-		setModalSwitch(!modalSwitch)
-		// modalSetter(modalSwitch)
-	}
+	
 
 
 
@@ -216,7 +187,7 @@ function HomePage() {
 					<div className="app__posts">
 							{
 								posts.map(({id, post}) =>(
-									<Post key={id} modalSwitch={modalSwitchOpen} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+									<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
 								))
 							}
 					</div>

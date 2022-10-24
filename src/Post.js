@@ -9,8 +9,9 @@ import send from './icons/send.svg'
 import save from './icons/save.svg'
 import DeleteModal from './DeleteModal';
 import ModalWrapper from './ModalWrapper';
+import ViewComments from './ViewComments';
 
-function Post({modalSwitch, filename, postId, user, username, caption, imageUrl}) {
+function Post({filename, postId, user, username, caption, imageUrl}) {
   const [comments, setComments] = useState([]);
   const [reducedComments, setReducedComments] = useState([])
   const [comment, setComment] = useState('');
@@ -35,6 +36,15 @@ function Post({modalSwitch, filename, postId, user, username, caption, imageUrl}
           />
 					)
 				break;
+      case "viewComments":
+        setModalChild(
+          <ViewComments 
+          username={username}
+          comments={comments}
+          imageUrl={imageUrl}  
+          />
+        )
+        break;
 			default :
 				break;
 		}
@@ -72,7 +82,7 @@ function Post({modalSwitch, filename, postId, user, username, caption, imageUrl}
       setComment('');
   }
 
-  // this component re-renders 14 times most likely because of comments.
+
   useEffect(()=>{
     let filter = comments.slice(0, 2)
     setReducedComments(filter)
@@ -169,7 +179,7 @@ function Post({modalSwitch, filename, postId, user, username, caption, imageUrl}
         </div>
         {
             comments.length > 2 ? 
-              <button className="post__viewAll" name="viewComments" onClick={(e)=> console.log(e) }>
+              <button className="post__viewAll" name="viewComments" onClick={(e)=> modalSwitchOpen(e) }>
                 View all comments 
               </button>
               

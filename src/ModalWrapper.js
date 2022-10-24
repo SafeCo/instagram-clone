@@ -29,8 +29,7 @@ export default function ModalWrapper(props){
 
 		}
 	}
-    console.log("render")
-
+    
     useEffect(()=>{
         const scrollBarWidth = String(Math.round(window.innerWidth - document.body.clientWidth))
         modalSetter(props.modalState, scrollBarWidth)

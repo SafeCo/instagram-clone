@@ -1,0 +1,184 @@
+.vC__position{
+    position: absolute;
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    
+  }
+
+.vC__box__container{
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/* .vC__container{
+    z-index: 4;
+    background-color: white;
+    border-radius: 12px;
+    max-width: 648px;
+    min-width: 348px;
+    min-height: 391px;
+    max-height: 691px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    flex: 1 1 auto;
+} */
+
+.vC__container{
+    z-index: 4;
+    width: 100%;
+    border: solid red 2px;
+    background-color: transparent;
+    max-height: calc(100vh - 40px);
+    /* max-width: calc(100% - 64px - 64px); */
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: stretch;
+    overflow-x: auto;
+    overflow-y: auto;
+    border-radius: 4px;
+}
+
+.vC__box{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    max-width: 100%;
+    align-items: stretch;
+    align-content: stretch;
+    flex: 0 0 auto;
+}
+
+.vC__image__ult{
+    background-color: rgb(0, 0, 0);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: center;
+    min-height: 450px;
+    max-width: 390px;
+    min-width: auto;
+    overflow: hidden;
+}
+
+.vC__image__holder{
+    position: relative;
+    max-height: inherit;
+    background-color: black;
+    display: block;
+    width: 100%;
+}
+
+.vC__image__container{
+    position: relative;
+    background-color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: block;
+    overflow: hidden;
+}
+
+.vC__image{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.vC__info__container{
+    position: relative;
+    align-items: stretch;
+    max-width: 500px;
+    min-width: 405px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 2;
+}
+
+.vC__info{
+    border: solid blue 2px;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    min-height: 0;
+    min-width: 0;
+}
+
+.vC__info__box{
+    position: relative;
+    border: solid green 2px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: rgb(255,255,255);
+    border-radius: 0 4px 4px 0;
+}
+
+.vC__info__profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    border-left: solid lightgray 1px;
+    border-bottom: solid lightgray 1px;
+    background-color: rgb(255,255,255);
+    flex: 0 0 auto;
+}
+
+.vC__info__avatar{
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: calc(100% - 48px);
+    padding: 14px 4px 14px 16px;
+    position: relative;
+}
+
+.vc__avatar__name{
+    margin-left: 14px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.vC__info__buttonContainer{
+    display: flex;
+    justify-content: center;
+    padding-right: 8px;
+}
+
+.vC__info__button{
+    align-items: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+}
+
+.vC__commentsBox{
+    border: solid blue 2px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    
+}
