@@ -8,16 +8,41 @@ import heart from './icons/heart.svg'
 import send from './icons/send.svg'
 import save from './icons/save.svg'
 import DeleteModal from './DeleteModal';
+import ModalWrapper from './ModalWrapper';
 
-function Post({switchModalFunc, filename, postId, user, username, caption, imageUrl, modalSetter}) {
+function Post({modalSwitch, filename, postId, user, username, caption, imageUrl}) {
   const [comments, setComments] = useState([]);
   const [reducedComments, setReducedComments] = useState([])
   const [comment, setComment] = useState('');
   const [deletePost, setDeletePost] = useState(false);
+  const [modalChild, setModalChild]= useState("")
+	const [modalOpen, setModalOpen] = useState(false)
+  // const modalSwitch = props.modalSwitch
+  // const filename = props.filename
+  // const postId = props.postId
+  // const user = props.user
+  // const username= props.username
+  // const imageUrl = props.imageUrl
+  
+  const modalSwitchOpen= (e)=>{
+		switch(e.target.name){
+			case "deletePost":
+				setModalChild(
+					<DeleteModal  
+            id={postId} 
+            filename={filename} 
+            switchDeleteOpen={switchDeleteOpen} 
+          />
+					)
+				break;
+			default :
+				break;
+		}
+		setModalOpen(!modalOpen)
+	}
 
   const switchDeleteOpen = ()=>{
     setDeletePost(!deletePost)
-    modalSetter(deletePost)
   }
 
   useEffect(()=> {
@@ -59,7 +84,11 @@ function Post({switchModalFunc, filename, postId, user, username, caption, image
 
   return (
     <>
-    {deletePost && <DeleteModal id={postId} filename={filename} switchDeleteOpen={switchDeleteOpen} />}
+    {modalOpen&& 
+      <ModalWrapper modalState={modalOpen} modalSwitch={modalSwitchOpen}>
+        {modalChild}
+      </ModalWrapper>
+    }
     <div key={postId} className="post">
       <div className="post__header" >
         <div className="post__headerProfile">
@@ -71,11 +100,9 @@ function Post({switchModalFunc, filename, postId, user, username, caption, image
           <h3 className="post__username">{username}</h3>
         </div>
         <div className="post__headerButtonContainer">
-          <div className="post__headerButton">
-            <div className="post__headerButtonDots" onClick={()=>switchDeleteOpen()}>
+          <button name="deletePost" onClick={(e)=>modalSwitchOpen(e)} className="post__headerButton">
               &bull; &bull; &bull;
-            </div>
-          </div>
+          </button>
         </div>
         
       </div>
@@ -142,7 +169,11 @@ function Post({switchModalFunc, filename, postId, user, username, caption, image
         </div>
         {
             comments.length > 2 ? 
-              <p onClick={()=>{switchModalFunc()}} className="post__viewAll">View all comments</p> : null
+              <button className="post__viewAll" name="viewComments" onClick={(e)=> console.log(e) }>
+                View all comments 
+              </button>
+              
+              : null
           }
           <form className="post__commentBox">
             <input

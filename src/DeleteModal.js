@@ -30,7 +30,6 @@ function DeleteModal({id, filename, switchDeleteOpen}) {
 
   return (
     <div className="deleteModal__container"> 
-      <div className="deleteModal__darkBg" onClick={()=> {switchDeleteOpen()}}  ></div>
       <div className="deleteModal__position">
         <div className="deleteModal__boxContainer">
               <button className="deleteModal__boxButton top" onClick={()=>{deletePost()}}>Delete</button>

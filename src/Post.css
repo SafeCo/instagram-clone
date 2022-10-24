@@ -66,16 +66,14 @@
     padding-right: 4px;
 }
 .post__headerButton{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    letter-spacing: -2px;
     position: relative;
     padding: 8px 8px 8px 8px;
     
 }
-.post__headerButtonDots{
-    cursor: pointer;
-    height: fit-content;
-    letter-spacing: -2px;
-}
-
 
 .post__avatar{
     margin-right: 10px;
@@ -102,10 +100,12 @@
 
 .post__viewAll{
     cursor: pointer;
+    border: none;
+    background-color: transparent;
     color: rgb(142, 142, 142);
     font-size: 14px;
     font-weight: 400;
-    padding-left: 10px;
+    margin-left: 10px;
 }
 .post__input{
     flex: 1;

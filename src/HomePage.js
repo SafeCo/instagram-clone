@@ -2,24 +2,18 @@ import React, {useEffect, useRef, useState, useContext} from 'react';
 import './HomePage.css';
 import './ImageUpload.css'
 import Post from './Post';
-import Reel from './Reel';
 import AuthContext from './hooks/useAuth'
 import FriendSuggestion from './FriendSuggestion';
 import { db } from './firebase';
-import Avatar from "@mui/material/Avatar"
-import ImageUpload from './ImageUpload';
 import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
-import home_inUse from './icons/home_inUse.svg'
-import send from './icons/send.svg'
-import post from './icons/post.svg'
-import explore from './icons/explore.svg'
-import heart from './icons/heart.svg'
-import CustomModal from './CustomModal'
 import ReelCarousel from './ReelCarousel';
 import TestModal from './TestModal';
 import ModalWrapper from './ModalWrapper';
 import PostModal from './PostModal';
+import ViewCommentsModal from './ViewCommentsModal';
+import NavIcons from './NavIcons';
+
 
 
 
@@ -36,14 +30,7 @@ function HomePage() {
 	const shouldLogOne = useRef(true)
 	const shouldLogTwo = useRef(true)
 
-
-	const [open, setOpen] = useState(false);
-
-
-	const [customIsOpen, setCustomIsOpen] = useState(false);
-	const [checkPostModalIsOpen, setCheckPostModalIsOpen] = useState(false)
 	const [modalSwitch, setModalSwitch] = useState(false)
-	const [modalName, setModalName]= useState("")
 	const [modalChild, setModalChild]= useState("")
 
 //Putting posts on page
@@ -86,7 +73,7 @@ function HomePage() {
 			});
 		}
 	}, [posts]);
-
+	
 	const modalSwitchOpen= (e)=>{
 		switch(e.target.name){
 			case "newPost":
@@ -96,45 +83,47 @@ function HomePage() {
 					/>
 					)
 				break;
+			case "viewComments":
+				setModalChild(
+					<ViewCommentsModal
+
+					/>
+					)
+				break;
 			case "TestName":
 				setModalChild(<TestModal/>)
+				break;
 			default :
 				break;
 		}
 		setModalSwitch(!modalSwitch)
-		modalSetter(modalSwitch)
+		// modalSetter(modalSwitch)
 	}
 
-	const switchCheckPostModalOpen= () =>{
-		setCheckPostModalIsOpen(!checkPostModalIsOpen)
-		modalSetter(checkPostModalIsOpen)
-	}
 
-	const switchOpen = ()=>{
-		setCustomIsOpen(!customIsOpen)
-		modalSetter(customIsOpen)
-	}
 
-	const modalSetter = (modalState)=>{
-		if(window.matchMedia("(max-width: 480px)").matches && modalState === false ){
-			document.body.style.paddingRight = "0px"
-			document.body.classList.add("noMobileScroll")
 
-		}else if(window.matchMedia("(max-width: 480px)").matches && modalState === true){
-			document.body.style.paddingRight = "0px"
-			document.body.classList.remove("noMobileScroll")
 
-		}else if (modalState === false){	
-			const scrollBarWidth = window.innerWidth - document.body.clientWidth;
-			document.body.style.overflow = 'hidden';
-			document.body.style.paddingRight = scrollBarWidth + "px"
+	// const modalSetter = (modalState)=>{
+	// 	if(window.matchMedia("(max-width: 480px)").matches && modalState === false ){
+	// 		document.body.style.paddingRight = "0px"
+	// 		document.body.classList.add("noMobileScroll")
 
-		}else{
-			document.body.style.overflowY = 'scroll'
-			document.body.style.paddingRight = "0px"
+	// 	}else if(window.matchMedia("(max-width: 480px)").matches && modalState === true){
+	// 		document.body.style.paddingRight = "0px"
+	// 		document.body.classList.remove("noMobileScroll")
 
-		}
-	}
+	// 	}else if (modalState === false){	
+	// 		const scrollBarWidth = window.innerWidth - document.body.clientWidth;
+	// 		document.body.style.overflow = 'hidden';
+	// 		document.body.style.paddingRight = scrollBarWidth + "px"
+
+	// 	}else{
+	// 		document.body.style.overflowY = 'scroll'
+	// 		document.body.style.paddingRight = "0px"
+
+	// 	}
+	// }
 
 
 	// Each element like insta logo, search bar and icons have their container within the main contianer
@@ -144,15 +133,14 @@ function HomePage() {
 	return (
 		<>
 
-		{modalSwitch && 
-			<ModalWrapper switch={modalSwitchOpen}> 
+		{/* {modalSwitch && 
+			<ModalWrapper modalState={modalSwitch} modalSwitch={modalSwitchOpen}> 
 				{modalChild}
 			</ModalWrapper>
-		}
+		} */}
 
-	  	{customIsOpen && <CustomModal username={user.displayName} setCustomIsOpen={switchOpen} />}
 
-		<button name="TestName" style={{height: 50, width: 50}} onClick={(e)=>{modalSwitchOpen(e)}}></button>
+		{/* <button name="TestName" style={{height: 50, width: 50}} onClick={(e)=>{modalSwitchOpen(e)}}></button> */}
 
 		<nav className='app__headerContainer'>
 			<div className="app__header">
@@ -175,7 +163,8 @@ function HomePage() {
 				</div>  
 					
 				<div className="app__headerIconsFlex">
-					<div className="app__headerIcons">
+					<NavIcons username={user.Displayname}/>
+					{/* <div className="app__headerIcons">
 						<div className="app__headerIconContainer">
 							<button className="app__headerIconButton" >
 								<img className="app__headerIcon" src={home_inUse} alt='home use button'/>
@@ -214,7 +203,7 @@ function HomePage() {
 							/>
 						</div>
 						
-					</div>
+					</div> */}
 				</div>
 			</div>	
 		</nav>
@@ -227,7 +216,7 @@ function HomePage() {
 					<div className="app__posts">
 							{
 								posts.map(({id, post}) =>(
-									<Post key={id} switchModalFunc={switchCheckPostModalOpen} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} modalSetter={modalSetter} />
+									<Post key={id} modalSwitch={modalSwitchOpen} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
 								))
 							}
 					</div>

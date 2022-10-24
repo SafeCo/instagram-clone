@@ -1,0 +1,29 @@
+.vCM__position{
+    position: absolute;
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    
+  }
+
+.vCM__box__container{
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vCM__container{
+    z-index: 4;
+    background-color: white;
+    border-radius: 12px;
+    max-width: 648px;
+    min-width: 348px;
+    min-height: 391px;
+    max-height: 691px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    flex: 1 1 auto;
+}
