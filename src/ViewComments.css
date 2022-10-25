@@ -190,8 +190,8 @@
     flex-grow: 1;
     flex-shrink: 1;
     padding: 0 16px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-y: hidden;
+    overflow-x: hidden; */
 }
 
 .vC__comments{
@@ -209,6 +209,13 @@
     vertical-align: baseline;
     width: calc(100% - 32px);
 }
+.vC__comments::-webkit-scrollbar {
+    width: 10px;
+}
+.vC__comments::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
 
 .vC__commentContainer{
     border: 0;
@@ -228,6 +235,7 @@
     word-wrap: break-word;
 }
 .vC__comment{
+    font-size: 14px;
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
@@ -240,6 +248,9 @@
     margin-right: 18px;
 }
 .vC__icons{
+    margin-top: 4px;
+    display: flex;
+    flex-direction: row;
 
 }
 

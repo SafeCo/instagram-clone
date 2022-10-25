@@ -1,0 +1,29 @@
+.postIcons{
+    margin-top: 4px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.postIcons__img{
+    object-fit: contain;
+}
+.postIcons__iconContainer{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.postIcons__iconContainer button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.postIcons__Icon{
+    height: 23px;
+
+}
+
+.postIcons :nth-child(4){
+    margin-left: auto;
+}

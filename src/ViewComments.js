@@ -1,6 +1,7 @@
 import React from 'react'
 import './ViewComments.css'
 import Avatar from "@mui/material/Avatar"
+import PostIcons from './PostIcons'
 
 function ViewComments({ caption, postId, username, comments, imageUrl}) {
   return (
@@ -59,7 +60,7 @@ function ViewComments({ caption, postId, username, comments, imageUrl}) {
 											
 											{
 												comments.map((comment, index)=> (
-													<div className="vC__commentContainer">
+													<div key={index+postId} className="vC__commentContainer">
 														<div className="vC__commentArea">
 															<div className="vC__comment">
 																<Avatar
@@ -68,7 +69,7 @@ function ViewComments({ caption, postId, username, comments, imageUrl}) {
 																	src="/static/images/avatar/1.jpg"
 																/>
 
-																<p key={index+postId}>
+																<p>
 																	<strong>{comment.username}</strong> {comment.text}
 																</p>
 															</div>
@@ -79,8 +80,8 @@ function ViewComments({ caption, postId, username, comments, imageUrl}) {
 											}
 											</div>
 										</div>
-										<div className="vC__icon test">
-											<div>icons</div>
+										<div >
+											<PostIcons/>
 										</div>
 										<div className="vC__addComment test">
 											<div>add comment</div>

@@ -10,6 +10,7 @@ import save from './icons/save.svg'
 import DeleteModal from './DeleteModal';
 import ModalWrapper from './ModalWrapper';
 import ViewComments from './ViewComments';
+import PostIcons from './PostIcons';
 
 function Post({filename, postId, user, username, caption, imageUrl}) {
   const [comments, setComments] = useState([]);
@@ -123,46 +124,8 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
       src={imageUrl} 
       alt="Not Working"
       />
-      <section className="post__iconBar">
-        <div className="post__iconBar__iconContainer">
-          <button>
-            <img
-            className="post__iconBar__Icon"
-						src={heart}
-						alt="Heart Icon"/>
-          </button>
-          
-        </div>
-
-        <div className="post__iconBar__iconContainer">
-          <button>
-            <img
-            className="post__iconBar__Icon"
-						src={commentIcon}
-						alt="Comment Icon"/>
-          </button>
-        </div>
-
-        <div className="post__iconBar__iconContainer">
-          <button>
-            <img
-            className="post__iconBar__Icon"
-						src={send}
-						alt="Send Icon"
-					  />
-          </button>
-        </div>
-
-        <div className="post__iconBar__iconContainer">
-          <button>
-            <img
-            className="post__iconBar__Icon"
-						src={save}
-						alt="Save Icon"
-					  />
-          </button>
-        </div>
-      </section>
+      
+      <PostIcons/>
       
       
       
