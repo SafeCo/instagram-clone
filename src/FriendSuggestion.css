@@ -1,0 +1,52 @@
+.friendSuggestion__profile{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 66px;
+	margin-top: 10px;
+	margin-bottom: 16px;
+}
+
+.post__avatar{
+	flex: 0 0 auto;
+	height: 50px;
+	width: 50px;
+}
+
+.friendSuggestion__profileName{
+	flex: 1 1 auto;
+	font-size: 14px;
+	font-weight: 600;
+}
+.friendSuggestion__profileLogout{
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	flex: 0 0 auto;
+	font-size: 12px;
+	color: #0095f6;
+	font-weight: 600;
+}
+
+
+
+.friendSuggestion__suggestTitle{
+	color: rgb(142, 142, 142);
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+
+.friendSuggestion__suggest{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.friendSuggestion__avatar{
+	height: 30px;
+	width: 30px;
+	margin-right: 10px;
+}
+

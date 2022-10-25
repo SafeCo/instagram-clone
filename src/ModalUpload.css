@@ -1,0 +1,109 @@
+.modalUpload__container {
+    background-color: white;
+    border-radius: 12px;
+    width: 730px;
+    max-width: 988px;
+    min-width: 390px;
+    min-height: 391px;
+    max-height: 691px;
+    z-index: 4;
+}
+.modalUpload__header{
+    display: flex;
+    height: 40px;
+    flex-direction: row;   
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid lightgray 1px;
+}
+
+.modalUpload__header__backButtonContainer{
+    margin: 9px;
+    flex: 0;
+}
+
+.modalUpload__header__backButtonContainer button{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+}
+
+.modalUpload__header__text{
+    font-size: 16px;
+    font-weight: 600;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalUpload__header__postButtonContainer{
+    flex: 0;
+    margin: 9px;
+}
+
+.modalUpload__header__postButtonContainer button{
+    cursor: pointer;
+    font-size: 14;
+    font-weight: 600;
+    color: #0095F6;
+    border: none;
+    background-color: transparent;
+}
+
+
+
+
+.modalUpload__previewContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.modalUpload__imageContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: solid lightgray 1px;
+    flex: 1;
+    object-fit: contain;
+    height: 400px;
+}
+
+.modalUpload__captionProfile{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.modalUpload__captionContainer{
+    flex: 1;
+}
+
+.modalUpload__caption{
+    border: none;
+    outline: none;
+    resize: none;
+    width: 100%;
+    height: 50%;
+    padding: 0 16px;
+    font-size: 16px;
+}
+.modalUpload__image{
+   object-fit: contain;
+   max-height: 400px;
+   max-width: 100%;
+}
+
+
+
+
+@media (max-width: 480px) {
+    .modalUpload__container{
+        width: 100%;
+    }
+    
+}

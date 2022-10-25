@@ -9,7 +9,23 @@ Username: BTestguy2
 email: tester1234@mail.com 
 pass: tester1234 
 
-TODO LIST
+OVERALLL TODO LIST
 1. make a login page
 2 sort out reels
 3. sort out friend suggestion
+
+
+ISSUES NOW
+1. Logging in using login function in useAuth custom hook
+2. dont know why 'post' message error pops up in browser console window
+4. change hooks folder to context and change in APP.js etc.
+5. Make CSS for sign in and out the same
+6. image transition for loginpage
+7. img tags are not dynamically adding classes
+8. signing up results in user.displayname not working and diplaying
+9. Issue if you try to sign in with a new user that doesnt exist and then switch to create new account, the email and pass is recorded but the username is not recorded.
+
+
+attributions:
+
+comment icon = <a href="https://www.flaticon.com/free-icons/instagram-comment" title="instagram comment icons">Instagram comment icons created by QudaDesign - Flaticon</a>

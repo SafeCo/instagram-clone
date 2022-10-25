@@ -1,0 +1,35 @@
+.loginImage__box{
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	margin-bottom: 12px;
+	margin-right: 32px;
+}
+
+.loginImage_imageParent{
+	position: absolute;
+	height: 100%;
+	transform: translate(43%,-96%);
+}
+
+.loginImage__images{
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	height: 92%;
+	transform: translate(44.2%,0.6%);
+}
+
+.first{
+	z-index: 2;
+	visibility: visible;
+	opacity: 1;
+}
+
+.second{
+	z-index: 3;
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 1.5s ease-in;
+}
+

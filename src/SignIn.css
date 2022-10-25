@@ -1,0 +1,116 @@
+*{
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+}
+.signIn__container{
+	max-width: 350px;
+	width: 100%;
+
+}
+
+.signIn__box {
+	border: solid #dbdbdb 1px;
+	background-color: #FFFFFF;
+	margin: 0 0 10px;
+	padding: 10px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+.signIn__formBox{
+	margin-bottom: 10px;
+	
+	width: 100%;
+
+}
+
+.signIn__form{
+	margin-top: 24px;
+	display: flex;
+	flex-direction: column;
+}
+.signIn__emailInput{
+	background-color: #fafafa;
+	border: 1px solid #dbdbdb;
+	border-radius: 4px;
+	font-size: 12px;
+	padding: 9px 0 7px 8px;
+	height: 30px;
+	margin: 0 40px 6px;
+
+}
+
+.signIn__submitButton{
+	background-color: #0095F6;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	padding: 5px 9px 5px 9px;
+	color: #FFFFFF;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+	min-height: auto;
+	min-width: auto;
+	margin: 8px 40px 8px 40px;
+	
+}
+
+.signIn__password{
+	display:flex;
+}
+
+.signIn__passwordInput{
+	flex: 8;
+	background-color: #fafafa;
+	border: 1px solid #dbdbdb;
+	border-right: 0;
+	border-radius: 4px 0px 0px 4px;
+	font-size: 12px;
+	padding: 9px 0 7px 8px;
+	height: 30px;
+	margin: 0 0 6px 40px ;
+}
+
+.signIn__showButton{
+	flex: 2;
+	cursor: pointer;
+	background-color: #fafafa;
+	color: #262626;
+	border: 1px solid #dbdbdb;
+	border-left: 0;
+	border-radius: 0px 4px 4px 0px;
+	font-size: 14px;
+	font-weight: 600;
+	height: 30px;
+	margin: 0 40px 6px 0 ;	
+}
+
+
+
+
+
+.signIn__headerImageBox{
+	height: 51px;
+	width: 175px;
+	display: flex;
+	justify-content: center;
+	margin-top: 36px;
+	margin-bottom: 12px;
+}
+.signIn__headerImage {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+
+.signIn__signUp{
+	display: flex;
+	font-size: 14px;
+}
+
+.signIn__signUp :nth-child(2){
+	font-weight: 600;
+	color: #0095F6;
+}
