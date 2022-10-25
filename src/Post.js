@@ -39,6 +39,8 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
       case "viewComments":
         setModalChild(
           <ViewComments 
+          caption={caption}
+          postId={postId}
           username={username}
           comments={comments}
           imageUrl={imageUrl}  

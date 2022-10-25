@@ -2,7 +2,7 @@ import React from 'react'
 import './ViewComments.css'
 import Avatar from "@mui/material/Avatar"
 
-function ViewComments({username, comments, imageUrl}) {
+function ViewComments({ caption, postId, username, comments, imageUrl}) {
   return (
 		<div className="vC__position">
 			<div className="vC__box__container">
@@ -40,9 +40,51 @@ function ViewComments({username, comments, imageUrl}) {
 										</div>
 									</div>
 									<div className="vC__commentsBox">
-										<div>comments Box</div>
-										<div>Icons</div>
-										<div>Add comments Box</div>
+										<div className="vC__commentsContainer test">
+											<div className="vC__comments">
+												<div className="vC__commentContainer">
+													<div className="vC__commentArea">
+														<div className="vC__comment">
+															<Avatar
+																className="vC__commentAvatar"
+																alt={username}
+																src="/static/images/avatar/1.jpg"
+															/>
+															<p> 
+																<strong>{username}</strong> {caption}
+															</p>
+														</div>
+													</div>
+												</div>
+											
+											{
+												comments.map((comment, index)=> (
+													<div className="vC__commentContainer">
+														<div className="vC__commentArea">
+															<div className="vC__comment">
+																<Avatar
+																	className="vC__commentAvatar"
+																	alt={comment.username}
+																	src="/static/images/avatar/1.jpg"
+																/>
+
+																<p key={index+postId}>
+																	<strong>{comment.username}</strong> {comment.text}
+																</p>
+															</div>
+														</div>
+													</div>
+												
+												)) 
+											}
+											</div>
+										</div>
+										<div className="vC__icon test">
+											<div>icons</div>
+										</div>
+										<div className="vC__addComment test">
+											<div>add comment</div>
+										</div>
 									</div>
 
 								</div>
