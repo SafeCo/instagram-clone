@@ -34,6 +34,13 @@ function LoginPage() {
     authUser.user.updateProfile({
       displayName: username
     })
+
+   auth.currentUser.reload()
+
+  db.collection('usernames').doc(authUser.user.uid).set({
+    username: username,
+    id: authUser.user.uid
+  })
   })
   .then(() => {
     auth.currentUser.reload()

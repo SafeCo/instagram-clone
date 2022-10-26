@@ -11,6 +11,8 @@ function SearchBar() {
     const onBlur = () => setFocused(false)
     const itemsStyle = focused ? {display: 'none'} : {display: 'flex'}
 
+    
+
     return (
         <div className="sB__searchBar">
             <input 
