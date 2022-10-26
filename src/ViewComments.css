@@ -1,8 +1,8 @@
 .vC__position{
     position: absolute;
     display: flex;    
-    align-items: center;
     justify-content: center;
+    min-height: 0;
     z-index: 4;
     
   }
@@ -33,7 +33,6 @@
 .vC__container{
     z-index: 4;
     width: 100%;
-    border: solid red 2px;
     background-color: transparent;
     max-height: calc(100vh - 40px);
     /* max-width: calc(100% - 64px - 64px); */
@@ -106,7 +105,6 @@
 }
 
 .vC__info{
-    border: solid blue 2px;
     display: flex;
     flex: 1 1 auto;
     justify-content: flex-start;
@@ -118,7 +116,6 @@
 
 .vC__info__box{
     position: relative;
-    border: solid green 2px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -174,17 +171,14 @@
 }
 
 .vC__commentsBox{
-    border: solid blue 2px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     flex-shrink: 1;
 }
 
-.test{
-   border: solid red 1px;
-}
 .vC__commentsContainer{
+    border-bottom: solid lightgray 1px;
     position: relative;
     display: flex;
     flex-grow: 1;
@@ -218,12 +212,9 @@
 
 
 .vC__commentContainer{
-    border: 0;
     font: inherit;
     font-size: 100%;
-    margin: 0;
     margin-bottom: 16px;
-    padding: 0;
     vertical-align: baseline;
 }
 .vC__commentArea{

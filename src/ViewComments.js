@@ -1,9 +1,34 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './ViewComments.css'
 import Avatar from "@mui/material/Avatar"
 import PostIcons from './PostIcons'
+import AddComment from './AddComment'
+import { db } from './firebase';
 
-function ViewComments({ caption, postId, username, comments, imageUrl}) {
+
+
+function ViewComments({ user, caption, postId, username, imageUrl}) {
+
+	const [comments, setComments] = useState([]);
+
+
+	useEffect(()=> {
+		let unsubscribe;
+		if(postId) {
+			unsubscribe = db
+			.collection("posts")
+			.doc(postId)
+			.collection("comments")
+			.orderBy('timestamp', 'desc')
+			.onSnapshot((snapshot) => {
+			setComments(snapshot.docs.map((doc) => doc.data()));
+			});
+		}
+		return()=>{
+			unsubscribe();
+		};
+		}, [postId]);
+
   return (
 		<div className="vC__position">
 			<div className="vC__box__container">
@@ -16,7 +41,7 @@ function ViewComments({ caption, postId, username, comments, imageUrl}) {
 									<img
 									className="vC__image"
 									src={imageUrl}
-									alt="Post Image"
+									alt="PostImage"
 									/>
 								</div>
 							</div>
@@ -41,7 +66,7 @@ function ViewComments({ caption, postId, username, comments, imageUrl}) {
 										</div>
 									</div>
 									<div className="vC__commentsBox">
-										<div className="vC__commentsContainer test">
+										<div className="vC__commentsContainer">
 											<div className="vC__comments">
 												<div className="vC__commentContainer">
 													<div className="vC__commentArea">
@@ -83,8 +108,8 @@ function ViewComments({ caption, postId, username, comments, imageUrl}) {
 										<div >
 											<PostIcons/>
 										</div>
-										<div className="vC__addComment test">
-											<div>add comment</div>
+										<div className="vC__addComment">
+											<AddComment postId={postId} user={user}/>
 										</div>
 									</div>
 

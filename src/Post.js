@@ -2,20 +2,15 @@ import React, { useEffect, useState }from 'react'
 import './Post.css';
 import Avatar from "@mui/material/Avatar"
 import { db } from './firebase';
-import firebase from 'firebase/compat/app';
-import commentIcon from './icons/comment.svg'
-import heart from './icons/heart.svg'
-import send from './icons/send.svg'
-import save from './icons/save.svg'
 import DeleteModal from './DeleteModal';
 import ModalWrapper from './ModalWrapper';
 import ViewComments from './ViewComments';
 import PostIcons from './PostIcons';
+import AddComment from './AddComment';
 
 function Post({filename, postId, user, username, caption, imageUrl}) {
   const [comments, setComments] = useState([]);
   const [reducedComments, setReducedComments] = useState([])
-  const [comment, setComment] = useState('');
   const [deletePost, setDeletePost] = useState(false);
   const [modalChild, setModalChild]= useState("")
 	const [modalOpen, setModalOpen] = useState(false)
@@ -40,10 +35,10 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
       case "viewComments":
         setModalChild(
           <ViewComments 
+          user={user}
           caption={caption}
           postId={postId}
           username={username}
-          comments={comments}
           imageUrl={imageUrl}  
           />
         )
@@ -75,25 +70,10 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
     };
   }, [postId]);
 
-  const postComment = (event) => {
-    event.preventDefault();
-      db.collection("posts").doc(postId).collection("comments").add({
-        text: comment,
-        username: user.displayName,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-      });
-      setComment('');
-  }
-
-
   useEffect(()=>{
     let filter = comments.slice(0, 2)
     setReducedComments(filter)
   },[comments])
-
-
-
-  const postButtonColor = comment? {color: '#0095F6'} : {color: '#6082a3'}
 
   return (
     <>
@@ -150,21 +130,7 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
               
               : null
           }
-          <form className="post__commentBox">
-            <input
-              className="post__input"
-              type="text"
-              placeholder="Add a comment..."
-              value={comment}
-              onChange={(e)=> setComment(e.target.value)}
-            />
-            <button
-              disabled={!comment}
-              className="post__button"
-              type="submit"
-              onClick={postComment}
-            ><div style={postButtonColor}>Post</div></button>
-          </form>              
+          <AddComment postId={postId} user={user}/>             
     </div>
     </>
   )

@@ -1,0 +1,22 @@
+.addComment__commentBox {
+    display: flex;
+    margin-top: 10px;
+}
+.addComment__input{
+    flex: 1;
+    border: none;
+    border-radius: 0 0 0 8px;
+    padding: 10px;
+    border-top: 1px solid lightgray;
+    outline: none;
+}
+.addComment__button{
+    flex: 0;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding-right: 12px;
+    background-color: transparent;
+    border-top: 1px solid lightgray;
+    cursor: pointer;
+}
