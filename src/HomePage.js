@@ -9,6 +9,7 @@ import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
 import ReelCarousel from './ReelCarousel';
 import NavIcons from './NavIcons';
+import SearchBar from './SearchBar';
 
 
 
@@ -69,50 +70,12 @@ function HomePage() {
 		}
 	}, [posts]);
 	
-	
-
-
-
-
-
-	// const modalSetter = (modalState)=>{
-	// 	if(window.matchMedia("(max-width: 480px)").matches && modalState === false ){
-	// 		document.body.style.paddingRight = "0px"
-	// 		document.body.classList.add("noMobileScroll")
-
-	// 	}else if(window.matchMedia("(max-width: 480px)").matches && modalState === true){
-	// 		document.body.style.paddingRight = "0px"
-	// 		document.body.classList.remove("noMobileScroll")
-
-	// 	}else if (modalState === false){	
-	// 		const scrollBarWidth = window.innerWidth - document.body.clientWidth;
-	// 		document.body.style.overflow = 'hidden';
-	// 		document.body.style.paddingRight = scrollBarWidth + "px"
-
-	// 	}else{
-	// 		document.body.style.overflowY = 'scroll'
-	// 		document.body.style.paddingRight = "0px"
-
-	// 	}
-	// }
-
-
 	// Each element like insta logo, search bar and icons have their container within the main contianer
 	// flex grow and shrink is used on the individual containers rather than the element
 	// the element is merely moved around with justify content flex start and end
 
 	return (
 		<>
-
-		{/* {modalSwitch && 
-			<ModalWrapper modalState={modalSwitch} modalSwitch={modalSwitchOpen}> 
-				{modalChild}
-			</ModalWrapper>
-		} */}
-
-
-		{/* <button name="TestName" style={{height: 50, width: 50}} onClick={(e)=>{modalSwitchOpen(e)}}></button> */}
-
 		<nav className='app__headerContainer'>
 			<div className="app__header">
 				<div className="app__headerImageFlex">
@@ -124,57 +87,18 @@ function HomePage() {
 				</div>
 
 				<div className="app__header__searchBarFlex">
-					<div className="app__header__searchBar">
+					<SearchBar/>
+					{/* <div className="app__header__searchBar">
 						<input type="text" className="app__headerInput" />
 							<div className="app__headerSearchItems">
 								<img className="app__header__searchIcon" src={searchIcon} alt='Search Icon'/>
 								<span>Search</span>
 							</div>
-					</div>
+					</div> */}
 				</div>  
 					
 				<div className="app__headerIconsFlex">
 					<NavIcons username={user.Displayname}/>
-					{/* <div className="app__headerIcons">
-						<div className="app__headerIconContainer">
-							<button className="app__headerIconButton" >
-								<img className="app__headerIcon" src={home_inUse} alt='home use button'/>
-							</button>
-						</div>
-						
-						<div className="app__headerIconContainer">
-							<button className="app__headerIconButton" >
-							<img className="app__headerIcon" src={send} alt='send button'/>
-							</button>
-						</div>
-
-						<div className="app__headerIconContainer">
-							<button onClick={(e) => modalSwitchOpen(e)} className="app__headerIconButton" >
-								<img name="newPost" className="app__headerIcon" src={post} alt='post button'/>
-							</button>
-						</div>
-
-						<div className="app__headerIconContainer">
-							<button className="app__headerIconButton" >
-								<img className="app__headerIcon" src={explore} alt='explore button'/>
-							</button>
-						</div>
-
-						<div className="app__headerIconContainer">
-							<button className="app__headerIconButton" >
-								<img className="app__headerIcon" src={heart} alt='heart button'/>
-							</button>
-						</div>
-						<div className="app__headerIconContainer">
-							<Avatar
-							className="app__headerIcon"
-							alt={user.displayName}
-							sx={{ width: 23, height: 23 }}
-							src="/static/images/avatar/1.jpg"
-							/>
-						</div>
-						
-					</div> */}
 				</div>
 			</div>	
 		</nav>
