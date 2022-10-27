@@ -1,5 +1,72 @@
+.reel__container{
+	padding-top: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.reel__profile{
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+}
+
+.reel__image{
+    position: relative;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	width: fit-content;
+}
+.reel__avatar{
+    z-index: 2;
+    border: solid white 2px;
+}
+
+.reel__avatarRing{
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.app__reelsNameContainer{
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.reelName{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app__reelsName{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+
+
 .RC2__container{
-	background-color: red;
 	border: solid lightgray 1px;
 	border-radius: 8px;
 	margin-bottom: 0;
@@ -21,3 +88,51 @@
 	height: 119px;
     position: relative;
 }
+
+.slide-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-100%);
+}
+
+
+
+.slick-arrow{
+	display: block;
+}
+.slick-prev {
+	font-size: 15px !important;
+	border: solid blue 1px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	  }
+
+
+  .slick-next {
+	font-size: 15px !important;
+	border: solid blue 1px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	height: 50px;
+	width: 60px;
+	border-radius: 50%;
+  }
+
+
+.slickArrowImage{
+	border: solid orange 1px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+   .slick-prev:before, .slick-next:before  {
+	content: '' !important;
+  }
+
+
+ 

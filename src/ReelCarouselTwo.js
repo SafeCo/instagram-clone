@@ -5,8 +5,7 @@ import './Reel.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { Avatar } from '@mui/material';
-
-
+import rightChevron from './icons/rightChevron.svg'
 
 
 
@@ -31,23 +30,33 @@ function ReelCarouselTwo({list}) {
 
 
 	const settings = {
+		centerPadding: 0,
 		infinite: false,
 		speed: 500,
-		slidesToShow: 5,
-		slidesToScroll: 1,
-		arrows: true,
+		slidesToShow: 6,
+		slidesToScroll: 4,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
 	};
 
+	const rightStyle= {
+		background: "white",
+	}
+
+
+
 	function SampleNextArrow(props) {
-        const { className, style, onClick } = props;
+        const { className, style,  onClick } = props;
+		console.log(className)
         return (
-          <div
+			<div
             className={className}
-            style={{ ...style, display: "block", background: "red" }}
+            style={{display: "block" }}
             onClick={onClick}
-          />
+          >
+			<img className="slickArrowImage" src={rightChevron}/>
+		  </div>
+         
         );
       }
 
@@ -65,25 +74,27 @@ function ReelCarouselTwo({list}) {
 	  function generateReels() {
         
 		return  list2.map(({username, id}) =>{
-		  return <div key={id} className="reel__profile">
-					<div className="reel__image">
-					  <Avatar
-					  className="reel__avatar"
-					  sx={{ width: 55, height: 55 }}
-					  alt= {username}
-					  src="/static/images/avatar/1.jpg"
-					  />
-  
-					  <div className="reel__avatarRing"></div>         
-  
-					</div>
-					<div className="reelName">
-						<div className="app__reelsNameContainer">
-							<div className="app__reelsName">{username}</div>
-						</div>
+		  return <div key={id} className="reel__container">
+					<div className="reel__profile">
+						<div className="reel__image">
+							<Avatar
+							className="reel__avatar"
+							sx={{ width: 55, height: 55 }}
+							alt= {username}
+							src="/static/images/avatar/1.jpg"
+							/>
+		
+							<div className="reel__avatarRing"></div>         
+		
+							</div>
+							<div className="reelName">
+								<div className="app__reelsNameContainer">
+									<div className="app__reelsName">{username}</div>
+								</div>
+							</div>
+						</div> 
 					</div>
 					
-				  </div> 
 		  }) 
 	}
 	
