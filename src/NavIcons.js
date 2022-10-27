@@ -10,7 +10,6 @@ import ModalWrapper from './ModalWrapper'
 import PostModal from './PostModal'
 
 function NavIcons({username}) {
-
 	const [modalChild, setModalChild]= useState("")
 	const [modalOpen, setModalOpen] = useState(false)
 

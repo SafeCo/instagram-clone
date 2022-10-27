@@ -8,8 +8,11 @@ import { db } from './firebase';
 import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
 import ReelCarousel from './ReelCarousel';
+import ReelCarouselTwo from './ReelCarouselTwo';
 import NavIcons from './NavIcons';
 import SearchBar from './SearchBar';
+
+import SimpleSlider from './SimpleSlider'
 
 
 
@@ -26,7 +29,6 @@ function HomePage() {
 
 	const shouldLogOne = useRef(true)
 	const shouldLogTwo = useRef(true)
-
 
 
 //Putting posts on page
@@ -76,6 +78,8 @@ function HomePage() {
 
 	return (
 		<>
+		<SimpleSlider list={suggestion}/>
+
 		<nav className='app__headerContainer'>
 			<div className="app__header">
 				<div className="app__headerImageFlex">
@@ -98,7 +102,7 @@ function HomePage() {
 				</div>  
 					
 				<div className="app__headerIconsFlex">
-					<NavIcons username={user.Displayname}/>
+					<NavIcons username={user.displayName}/>
 				</div>
 			</div>	
 		</nav>
@@ -107,7 +111,7 @@ function HomePage() {
 		<main className="app__main">
 			<section className="app__section">
 			<div className="app__sectionLeft">
-						<ReelCarousel list={suggestion}/>
+						<ReelCarouselTwo list={suggestion}/>
 					<div className="app__posts">
 							{
 								posts.map(({id, post}) =>(

@@ -1,0 +1,11 @@
+.RC2__container{
+	background-color: transparent;
+	border: solid lightgray 1px;
+	border-radius: 8px;
+	margin-bottom: 0;
+	margin-top: 16px;
+	padding: 16px 0;
+    padding-left: 16px;
+	height: 119px;
+    position: relative;
+}

@@ -8,7 +8,6 @@ import back from './icons/back.svg'
 function PostModal({username}) {
   const [selectedFile, setSelectedFile] = useState()
   const [preview, setPreview] = useState()
-
   const inputElement = useRef(null)
 
   // const onButtonClick = (e) => {

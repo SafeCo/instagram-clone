@@ -1,3 +1,7 @@
+.reel__container{
+    display: flex;
+}
+
 .reel__profile{
     display: flex;
     flex-direction: column;

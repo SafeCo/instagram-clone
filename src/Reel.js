@@ -16,7 +16,7 @@ const Reel = ({list}) => {
     });
 
   return (
-    <>
+    <div className="reel__container">
       {
         unique.map(({username, id}) =>{
         return <div key={id} className="reel__profile">
@@ -37,7 +37,7 @@ const Reel = ({list}) => {
                 </div> 
       }) 
       }
-    </>
+    </div>
   )
 }
 
