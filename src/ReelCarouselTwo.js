@@ -1,24 +1,44 @@
 import React, {useState, useRef, useEffect} from 'react'
-import Reel from './Reel'
 import Slider from "react-slick";
 import './ReelCarouselTwo.css'
+import './Reel.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { Avatar } from '@mui/material';
 
 
 
-function ReelCarousel({list}) {
+
+
+
+
+function ReelCarouselTwo({list}) {
+
+	const list2 = 
+	[
+		{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
+		{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
+		{username: 'Tester', id: 'aHTiFthtrFi7Q5wpwzNg'},
+		{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
+		{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
+		{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
+		{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
+		{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
+		{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
+		{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
+		{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
+	];
+
+
 	const settings = {
 		infinite: false,
 		speed: 500,
-		slidesToShow: 1,
+		slidesToShow: 5,
 		slidesToScroll: 1,
 		arrows: true,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
 	};
-
 
 	function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -44,7 +64,7 @@ function ReelCarousel({list}) {
 
 	  function generateReels() {
         
-		return  list.map(({username, id}) =>{
+		return  list2.map(({username, id}) =>{
 		  return <div key={id} className="reel__profile">
 					<div className="reel__image">
 					  <Avatar
@@ -57,19 +77,22 @@ function ReelCarousel({list}) {
 					  <div className="reel__avatarRing"></div>         
   
 					</div>
-					<div className="app__reelsNameContainer">
-						<div className="app__reelsName">{username}</div>
-					  </div>
+					<div className="reelName">
+						<div className="app__reelsNameContainer">
+							<div className="app__reelsName">{username}</div>
+						</div>
+					</div>
+					
 				  </div> 
 		  }) 
 	}
 	
-   const reels= generateReels() 
+   const reels = generateReels() 
 
 
 
   return (
-			<div className="RC2__container">
+			<div className="test">
 				<Slider {...settings}>
 					{reels}
 				</Slider>
@@ -79,4 +102,4 @@ function ReelCarousel({list}) {
   )
 }
 
-export default ReelCarousel
+export default ReelCarouselTwo

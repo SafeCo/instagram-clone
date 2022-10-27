@@ -78,7 +78,7 @@ function HomePage() {
 
 	return (
 		<>
-		<SimpleSlider list={suggestion}/>
+		{/* <SimpleSlider list={suggestion}/> */}
 
 		<nav className='app__headerContainer'>
 			<div className="app__header">
