@@ -6,6 +6,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Avatar } from '@mui/material';
 import rightChevron from './icons/rightChevron.svg'
+import leftChevron from './icons/leftChevron.svg'
+import heart from './icons/heart.svg'
 
 
 
@@ -39,19 +41,15 @@ function ReelCarouselTwo({list}) {
         prevArrow: <SamplePrevArrow />
 	};
 
-	const rightStyle= {
-		background: "white",
-	}
-
 
 
 	function SampleNextArrow(props) {
         const { className, style,  onClick } = props;
 		console.log(className)
         return (
-			<div
+		<div
             className={className}
-            style={{display: "block" }}
+            style={{}}
             onClick={onClick}
           >
 			<img className="slickArrowImage" src={rightChevron}/>
@@ -63,11 +61,13 @@ function ReelCarouselTwo({list}) {
       function SamplePrevArrow(props) {
         const { className, style, onClick } = props;
         return (
-          <div
+		<div
             className={className}
-            style={{ ...style, display: "block", background: "green" }}
+            style={{}}
             onClick={onClick}
-          />
+			>
+			<img className="slickArrowImage" src={leftChevron}/>
+		  </div>
         );
       }
 
