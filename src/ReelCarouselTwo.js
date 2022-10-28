@@ -45,7 +45,7 @@ function ReelCarouselTwo({list}) {
 
 	function SampleNextArrow(props) {
         const { className, style,  onClick } = props;
-		console.log(className)
+		
         return (
 		<div
             className={className}

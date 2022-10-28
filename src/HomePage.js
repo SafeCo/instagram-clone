@@ -4,7 +4,7 @@ import './ImageUpload.css'
 import Post from './Post';
 import AuthContext from './hooks/useAuth'
 import FriendSuggestion from './FriendSuggestion';
-import { db } from './firebase';
+import { db, auth } from './firebase';
 import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
 import ReelCarousel from './ReelCarousel';
@@ -20,16 +20,28 @@ import SimpleSlider from './SimpleSlider'
 
 function HomePage() {
 	
+	// NORMALLY BELOW CONTEXT BUT ADDED USEFFECT TO CALL DIRECTLY FROM FIREBASE
+	//THERE IS AN ISSUE WHERE NEW ACCOUNT ARE NOT GETTING THE DISPLAYNAME 
+	//MOST LIKELY DUE TO THE PAGE CHANGING BEFORE FIREBASE CAN BE UPDATED
 	
-	const { user } = useContext(AuthContext);
+	// const { user } = useContext(AuthContext);
 	
 	const [posts, setPosts] = useState([]);
 	const [suggestion, setSuggestion] = useState([]);
-
+	const [user, setUser]= useState([])
 
 	const shouldLogOne = useRef(true)
 	const shouldLogTwo = useRef(true)
 
+
+	useEffect(()=>{
+		auth.onAuthStateChanged((userObj)=>{
+			if(userObj){
+				setUser(userObj)
+			}
+		})
+
+	},[])
 
 //Putting posts on page
 	useEffect(()=>{

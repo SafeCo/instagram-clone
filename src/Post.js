@@ -20,12 +20,14 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
   // const user = props.user
   // const username= props.username
   // const imageUrl = props.imageUrl
-  
+
   const modalSwitchOpen= (e)=>{
 		switch(e.target.name){
 			case "deletePost":
 				setModalChild(
 					<DeleteModal  
+            username={username}
+            user={user}
             id={postId} 
             filename={filename} 
             switchDeleteOpen={switchDeleteOpen} 
