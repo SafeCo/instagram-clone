@@ -11,7 +11,6 @@ import AddComment from './AddComment';
 function Post({filename, postId, user, username, caption, imageUrl}) {
   const [comments, setComments] = useState([]);
   const [reducedComments, setReducedComments] = useState([])
-  const [deletePost, setDeletePost] = useState(false);
   const [modalChild, setModalChild]= useState("")
 	const [modalOpen, setModalOpen] = useState(false)
   // const modalSwitch = props.modalSwitch
@@ -30,7 +29,6 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
             user={user}
             id={postId} 
             filename={filename} 
-            switchDeleteOpen={switchDeleteOpen} 
           />
 					)
 				break;
@@ -51,9 +49,7 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
 		setModalOpen(!modalOpen)
 	}
 
-  const switchDeleteOpen = ()=>{
-    setDeletePost(!deletePost)
-  }
+
 
   useEffect(()=> {
     let unsubscribe;

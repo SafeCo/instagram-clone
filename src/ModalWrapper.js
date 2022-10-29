@@ -44,11 +44,13 @@ export default function ModalWrapper(props){
     return (
         <div className="modalWrapper__container">
             <div className="modalWrapper__darkBg" onClick={(e)=>  {
-                if(e.currentTarget === e.target){
+                if(e.currentTarget === e.target ){
                     modalSetter(!props.modalState)
-                    props.modalSwitch(e)
-
-                    } 
+                    props.modalSwitch(e) 
+                    } else if (e.target.name === "cancelModal"){
+                        modalSetter(!props.modalState)
+                        props.modalSwitch(e) 
+                    }
                 } 
             }
             >

@@ -4,7 +4,7 @@ import firebase from 'firebase/compat/app';
 import { db } from './firebase';
 
 
-function DeleteModal({id, user, username, filename, switchDeleteOpen}) {
+function DeleteModal({id, user, username, filename}) {
   
   const deletePost =()=>{
 
@@ -23,7 +23,6 @@ function DeleteModal({id, user, username, filename, switchDeleteOpen}) {
       }).catch((error) => {
           console.error("Error removing document: ", error);
       });
-      switchDeleteOpen()
   }
   
 
@@ -35,7 +34,7 @@ function DeleteModal({id, user, username, filename, switchDeleteOpen}) {
                 <button className="deleteModal__boxButton top" onClick={()=>{deletePost()}}>Delete</button>:
                 null
               }
-              <button className="deleteModal__boxButton bottom" onClick={()=> {switchDeleteOpen()}}>Cancel</button>
+              <button className="deleteModal__boxButton bottom" name="cancelModal" >Cancel</button>
         </div>
       </div>
     </div>

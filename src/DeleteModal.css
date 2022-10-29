@@ -13,11 +13,11 @@
   border-radius: 12px;
   max-width: 648px;
   min-width: 348px;
-
   display: flex;
   flex-direction: column;
   margin: 20px;
   flex: 1 1 auto;
+  overflow: hidden;
   }
 
 .deleteModal__boxButton{
@@ -33,12 +33,10 @@
   }
 
 .top{
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+
 
   }
 .bottom{
   border-top: solid lightgray 1px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+
   }
