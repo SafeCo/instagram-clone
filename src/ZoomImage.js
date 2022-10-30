@@ -4,20 +4,27 @@ const SCROLL_SENSITIVITY = 0.0005;
 const MAX_ZOOM = 5;
 const MIN_ZOOM = 0.1;
 
-const ZoomImage = ({ image }) => {
+const ZoomImage = ({ image, getNewImage }) => {
   
   const styles = {
     border: '2px solid red', 
 };
-  
+
+  const circleStyle ={
+    border: '2px solid green',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+    
+  }
+
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [draggind, setDragging] = useState(false);
 
   const touch = useRef({ x: 0, y: 0 });
   const canvasRef = useRef(null);
-  const containerRef = useRef(null);
-  const observer = useRef(null);
   const background = useMemo(() => new Image(), [image]);
 
   const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
@@ -57,8 +64,8 @@ const ZoomImage = ({ image }) => {
       const context = canvasRef.current.getContext("2d");
 
       // Set canvas dimensions
-      canvasRef.current.width = "300";
-      canvasRef.current.height = "300";
+      canvasRef.current.width = "200";
+      canvasRef.current.height = "200";
 
       // Clear canvas and scale it
       context.translate(-offset.x, -offset.y);
@@ -73,20 +80,6 @@ const ZoomImage = ({ image }) => {
       context.drawImage(background, x, y);
     }
   };
-
-  // useEffect(() => {
-  //   observer.current = new ResizeObserver((entries) => {
-  //     entries.forEach(({ target }) => {
-  //       // target is the canvas
-
-  //       // this is the width and height of the image, the image is also called background
-        
-  //     });
-  //   });
-  //   observer.current.observe(containerRef.current);
-
-  //   return () => observer.current.unobserve(containerRef.current);
-  // }, []);
 
   useEffect(() => {
     background.src = image;
@@ -106,8 +99,37 @@ const ZoomImage = ({ image }) => {
     draw();
   }, [zoom, offset]);
 
+
+//Conversion functions
+//Converts base64String to a file object
+  function base64StringtoFile(base64String, filename) {
+    var arr = base64String.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type:mime});
+}
+
+// extracts file extension from a base64 string
+  function extractImageFileExtensionFromBase64(base64Data){
+    return base64Data.substring("data:image/".length, base64Data.indexOf(";base64"))
+}
+
+
+  //converts canvas image into base64 and then coversts it to file object
+  const convertCanvas = (canvasRef)=>{
+    const base64data = canvasRef.toDataURL()
+    const fileExtension = extractImageFileExtensionFromBase64(base64data)
+    const myFilename = "previewfile." + fileExtension
+    const newCroppedFile = base64StringtoFile(base64data, myFilename)
+    getNewImage(newCroppedFile)
+  }
+
+
+//container ref to do with observer, might want to remove
   return (
-    <div ref={containerRef}>
+    <div style={circleStyle}>
       <canvas
         style={styles}
         onMouseDown={handleMouseDown}
@@ -116,6 +138,7 @@ const ZoomImage = ({ image }) => {
         onMouseMove={handleMouseMove}
         ref={canvasRef}
       />
+      <button onClick={()=> convertCanvas(canvasRef.current)}>click</button>
     </div>
   );
 };

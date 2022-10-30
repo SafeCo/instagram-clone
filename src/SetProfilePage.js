@@ -5,13 +5,13 @@ import ZoomImage from './ZoomImage'
 function SetProfilePage() {
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
+    const [newImage, setNewImage]= useState()
 
     useEffect(() => {
         if (!selectedFile) {
             setPreview(undefined)
             return
         }
-    
         const objectUrl = URL.createObjectURL(selectedFile)
         setPreview(objectUrl)
     
@@ -24,21 +24,22 @@ function SetProfilePage() {
             setSelectedFile(undefined)
             return
         }
-        setSelectedFile(e.target.files[0])   
-        
+        setSelectedFile(e.target.files[0])
     }
 
+    const getNewImage = (newimage)=>{
+        const objectUrl = URL.createObjectURL(newimage)
+        setNewImage(objectUrl)
+    }
 
+//TASK IS TO CALL CONVERTCANVAS FUNCTION FROM ZOOMIMAGE BY CLICKING BUTTON IN SETPROFILEPAGE
 
   return (
     <div className="sPP__container">
         <div className="sPP__box">
-           
-                <ZoomImage image={preview} />
-            
-            
+                <ZoomImage image={preview} getNewImage={getNewImage}/>
             <div className="sPP__imageContainer">
-            {selectedFile && <img className="modalUpload__image" src={preview} />}
+            {newImage && <img className="modalUpload__image" src={newImage} />}
             </div>
             <div>message that says add a profile pic</div>
             <div className="sPP__buttonContainer">
@@ -48,6 +49,9 @@ function SetProfilePage() {
                       accept="image/png, image/jpeg" 
                       onChange={onSelectFile} 
                       />
+            </div>
+            <div>
+                <button>accept preview image</button>
             </div>
             <div>button that says skip</div>
         </div>
