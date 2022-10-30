@@ -28,3 +28,39 @@
     width: 150px;
 }
 
+.sPP__body__inputContainer{
+    margin-top: 18px;
+    padding: 4px;
+}
+.sPP__body__button{
+    height: 30px;
+    width: 162px;
+    position: relative;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(0, 149, 246);
+    color: white;
+
+}
+
+.sPP__body__buttonText{
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.sPP__body__input{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+}

@@ -1,13 +1,19 @@
-import React, { useRef, useMemo, useEffect, useState } from "react";
+import React, { useRef, useMemo, useEffect, useState, useImperativeHandle } from "react";
 
 const SCROLL_SENSITIVITY = 0.0005;
 const MAX_ZOOM = 5;
 const MIN_ZOOM = 0.1;
 
-const ZoomImage = ({ image, getNewImage }) => {
+const ZoomImage = ({ image, getNewImage }, ref) => {
+
+  useImperativeHandle(ref, ()=>{
+    return{
+      convertFunc: ()=> convertCanvas(canvasRef?.current)
+    }
+  })
   
   const styles = {
-    border: '2px solid red', 
+    border: '2px solid red',
 };
 
   const circleStyle ={
@@ -15,13 +21,13 @@ const ZoomImage = ({ image, getNewImage }) => {
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
     
   }
 
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
-  const [draggind, setDragging] = useState(false);
+  const [dragging, setDragging] = useState(false);
 
   const touch = useRef({ x: 0, y: 0 });
   const canvasRef = useRef(null);
@@ -31,7 +37,7 @@ const ZoomImage = ({ image, getNewImage }) => {
 
   const handleWheel = (event) => {
     const { deltaY } = event;
-    if (!draggind) {
+    if (!dragging) {
       setZoom((zoom) =>
         clamp(zoom + deltaY * SCROLL_SENSITIVITY * -1, MIN_ZOOM, MAX_ZOOM)
       );
@@ -39,7 +45,7 @@ const ZoomImage = ({ image, getNewImage }) => {
   };
 
   const handleMouseMove = (event) => {
-    if (draggind) {
+    if (dragging) {
       const { x, y } = touch.current;
       const { clientX, clientY } = event;
       setOffset({
@@ -85,13 +91,14 @@ const ZoomImage = ({ image, getNewImage }) => {
     background.src = image;
     // Canvasref.current checks if something exists in the canvas, in this case an image was added
     if (canvasRef.current) {
-      background.onload = () => {   
+      background.onload = () => { 
         
-        // const { width, height } = background;
-     
+        // canvasRef.current.width = 200;
+        // canvasRef.current.height = 200;
         //the image is drawn on to the canvas, as there is no size determined the default canvas of 300 x150 is applied 
-        canvasRef.current.getContext("2d").drawImage(background, 0, 0);
+         canvasRef.current.getContext("2d").drawImage(background, 0, 0);
       };
+
     }
   }, [background]);
 
@@ -118,11 +125,13 @@ const ZoomImage = ({ image, getNewImage }) => {
 
 
   //converts canvas image into base64 and then coversts it to file object
-  const convertCanvas = (canvasRef)=>{
-    const base64data = canvasRef.toDataURL()
+  const convertCanvas = (canvasExist)=>{
+ 
+    const base64data = canvasExist.toDataURL()
     const fileExtension = extractImageFileExtensionFromBase64(base64data)
     const myFilename = "previewfile." + fileExtension
     const newCroppedFile = base64StringtoFile(base64data, myFilename)
+    console.log(newCroppedFile)
     getNewImage(newCroppedFile)
   }
 
@@ -138,9 +147,8 @@ const ZoomImage = ({ image, getNewImage }) => {
         onMouseMove={handleMouseMove}
         ref={canvasRef}
       />
-      <button onClick={()=> convertCanvas(canvasRef.current)}>click</button>
     </div>
   );
 };
 
-export default ZoomImage;
+export default React.forwardRef(ZoomImage);
