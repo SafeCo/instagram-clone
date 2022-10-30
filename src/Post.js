@@ -13,12 +13,7 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
   const [reducedComments, setReducedComments] = useState([])
   const [modalChild, setModalChild]= useState("")
 	const [modalOpen, setModalOpen] = useState(false)
-  // const modalSwitch = props.modalSwitch
-  // const filename = props.filename
-  // const postId = props.postId
-  // const user = props.user
-  // const username= props.username
-  // const imageUrl = props.imageUrl
+
 
   const modalSwitchOpen= (e)=>{
 		switch(e.target.name){
@@ -48,8 +43,6 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
 		}
 		setModalOpen(!modalOpen)
 	}
-
-
 
   useEffect(()=> {
     let unsubscribe;

@@ -238,3 +238,12 @@
 .vC__commentAvatar{
     margin-right: 18px;
 }
+@media (max-width: 490px) {
+    .vC__image__ult{
+        display: none;
+    }
+    .vC__info__container{
+        height: 500px;
+    }
+   
+  }

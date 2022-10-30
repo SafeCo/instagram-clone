@@ -1,21 +1,67 @@
 import React,{useState} from 'react'
 import Avatar from "@mui/material/Avatar"
-import home_inUse from './icons/home_inUse.svg'
-import send from './icons/send.svg'
-import post from './icons/post.svg'
-import explore from './icons/explore.svg'
-import heart from './icons/heart.svg'
 
+
+//Components
+import HomeIcon from './icons/HomeIcon'
 import ModalWrapper from './ModalWrapper'
 import PostModal from './PostModal'
+import SendIcon from './icons/SendIcon'
+import PostIcon from './icons/PostIcon'
+import ExploreIcon from './icons/ExploreIcon'
+import HeartIcon from './icons/HeartIcon'
 
 function NavIcons({username}) {
 	const [modalChild, setModalChild]= useState("")
 	const [modalOpen, setModalOpen] = useState(false)
 
+
+    // Checks which buttons are active
+    const [buttonState, setButtonState] = useState([
+        {name: "home", isActive: true},
+        {name: "send", isActive: false},
+        {name: "post", isActive: false},
+        {name: "explore", isActive: false},
+        {name: "heart", isActive: false},
+        {name: "profile", isActive: false},
+    ])
+
+    //used to track the last active button
+    const [buttonStateHistory, setButtonStateHistory] = useState()
+    const setHistory =()=>{
+       const wasActive = buttonState.filter((item)=>{
+            return item.isActive === true
+        })
+        setButtonStateHistory(wasActive)
+    }
+
+    // When button clicked updates button state as the active button and switches the others to not active
+    const updateButtonState = (e)=>{
+        if(e?.currentTarget){
+            const update = buttonState.map((item)=>{
+                if(item.name === e.currentTarget.name){
+                    return {name: item.name, isActive: true}
+                }else{
+                    return{name: item.name, isActive: false}
+                }
+            })
+            setButtonState(update)
+        } else{
+            const update = buttonState.map((item)=>{
+                if(item.name === e){
+                    return {name: item.name, isActive: true}
+                }else{
+                    return{name: item.name, isActive: false}
+                }
+            })
+            setButtonState(update)
+        }        
+    }
+
+
 	const modalSwitchOpen= (e)=>{
-		switch(e.target.name){
-			case "newPost":
+		switch(e.currentTarget.name){
+			case "post":
 				setModalChild(
 					<PostModal
 						username={username}
@@ -30,44 +76,59 @@ function NavIcons({username}) {
 
   return (
     <>
+        {/* Added button props to modalwrapper so when modal exits the active button is reverted to the button prior to the modal being opened e.g. Home, then post button, exit post modal, button reverts to home */}
         {modalOpen && 
-					<ModalWrapper modalState={modalOpen} modalSwitch={modalSwitchOpen}>
-						{modalChild}
-					</ModalWrapper>
-				}
+            <ModalWrapper modalState={modalOpen} modalSwitch={modalSwitchOpen} buttonStateHistory={buttonStateHistory} updateButtonState={updateButtonState}>
+                {modalChild}
+            </ModalWrapper>
+		}
 
         <div className="app__headerIcons">
             <div className="app__headerIconContainer">
-                <button className="app__headerIconButton" >
-                    <img className="app__headerIcon" src={home_inUse} alt='home use button'/>
+                <button name="home" onClick={(e)=>{setHistory(); updateButtonState(e)}} className="app__headerIconButton" >
+                    <HomeIcon buttonState={buttonState[0]}/>
                 </button>
+     
             </div>
             
             <div className="app__headerIconContainer">
-                <button className="app__headerIconButton" >
-                <img className="app__headerIcon" src={send} alt='send button'/>
+                <button 
+                    name="send"  
+                    onClick={(e)=>{setHistory(); updateButtonState(e)}} 
+                    className="app__headerIconButton" >
+                        <SendIcon buttonState={buttonState[1]}/>
                 </button>
             </div>
 
             <div className="app__headerIconContainer">
-                <button onClick={(e) => { 
+                <button 
+                    name="post" 
+                    onClick={(e) => { 
+                    setHistory(); 
+                    updateButtonState(e);
                     modalSwitchOpen(e)
-                	}} 
-									className="app__headerIconButton" 
-								>
-                    <img name="newPost" className="app__headerIcon" src={post} alt='post button'/>
+                }} 
+				className="app__headerIconButton">
+                    {/* <img name="post" className="app__headerIcon" src={post} alt='post button'/> */}
+                    <PostIcon buttonState={buttonState[2]} />
                 </button>
             </div>
 
             <div className="app__headerIconContainer">
-                <button className="app__headerIconButton" >
-                    <img className="app__headerIcon" src={explore} alt='explore button'/>
+                <button 
+                    name="explore" 
+                    onClick={(e)=>{setHistory(); updateButtonState(e)}} 
+                    className="app__headerIconButton" >
+                    <ExploreIcon buttonState={buttonState[3]}/>
                 </button>
             </div>
 
             <div className="app__headerIconContainer">
-                <button className="app__headerIconButton" >
-                    <img className="app__headerIcon" src={heart} alt='heart button'/>
+                <button 
+                    name="heart" 
+                    onClick={(e)=>{setHistory(); updateButtonState(e)}} 
+                    className="app__headerIconButton" >
+                    <HeartIcon buttonState={buttonState[4]}/>
                 </button>
             </div>
             <div className="app__headerIconContainer">
