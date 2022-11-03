@@ -19,7 +19,7 @@ function SetProfilePage() {
 
     
     return (
-        <div className="sPP__container">
+        <div className="sPPage__container">
         {skip? (
             <SetProfileBio switchSkip={switchSkip} newImage={newImage} />
         ):(

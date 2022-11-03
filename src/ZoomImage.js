@@ -6,6 +6,7 @@ const MIN_ZOOM = 0.1;
 
 const ZoomImage = ({ image, getNewImage }, ref) => {
 
+  // Alternative to forward ref would be to have the function constantly firing off which is very bad for performance
   useImperativeHandle(ref, ()=>{
     return{
       convertFunc: ()=> convertCanvas(canvasRef?.current)
@@ -22,6 +23,7 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    
     
   }
 
@@ -92,13 +94,15 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
     // Canvasref.current checks if something exists in the canvas, in this case an image was added
     if (canvasRef.current) {
       background.onload = () => { 
-        
+        let backgroundHeight = background.height;
+        let backgroundWidth = background.width;
+        let imageHeight = canvasRef.current.height / 2 - background.height / 2
+        let imageWidth = canvasRef.current.width / 2 - background.width / 2
         // canvasRef.current.width = 200;
         // canvasRef.current.height = 200;
         //the image is drawn on to the canvas, as there is no size determined the default canvas of 300 x150 is applied 
-         canvasRef.current.getContext("2d").drawImage(background, 0, 0);
+         canvasRef.current.getContext("2d").drawImage(background, imageWidth, imageHeight );
       };
-
     }
   }, [background]);
 
