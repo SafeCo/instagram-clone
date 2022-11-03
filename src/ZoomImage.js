@@ -23,11 +23,9 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    overflow:'hidden'
     
   }
 
-  const [isResize, setIsResize] = useState(true)
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [dragging, setDragging] = useState(false);
@@ -123,6 +121,14 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
     }
   }, []);
 
+  useEffect(()=>{
+    setZoom(1)
+    setOffset({
+      x: 0,
+      y: 0,
+    });
+  },[background])
+
   useEffect(() => {
     background.src = image;
     // Canvasref.current checks if something exists in the canvas, in this case an image was added
@@ -130,8 +136,6 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
       background.onload = () => { 
         canvasRef.current.width = 200;
         canvasRef.current.height = 200;
-
-
 
         // to use below set drawimage to below height and width
         let imageWidth = canvasRef.current.width / 2 - background.width / 2
