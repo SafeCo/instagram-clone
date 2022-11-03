@@ -7,7 +7,6 @@ function SetProfilePic({switchSkip, getFileObj}) {
 
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
-    const [newImage, setNewImage]= useState()
     const clickRef = useRef()
 
     useEffect(() => {
@@ -32,7 +31,6 @@ function SetProfilePic({switchSkip, getFileObj}) {
 
     const getNewImage = (base)=>{
         const objectUrl = URL.createObjectURL(base)
-        setNewImage(objectUrl)
         getFileObj(objectUrl)
     }
     const canvasToObj = ()=>{

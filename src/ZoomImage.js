@@ -23,7 +23,7 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    
+    overflow: 'hidden'
   }
 
   const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -172,7 +172,6 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
 
   //converts canvas image into base64 and then coversts it to file object
   const convertCanvas = (canvasExist)=>{
-
     const base64data = canvasExist.toDataURL()
     const fileExtension = extractImageFileExtensionFromBase64(base64data)
     const myFilename = "previewfile." + fileExtension
