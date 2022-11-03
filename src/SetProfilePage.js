@@ -9,7 +9,6 @@ function SetProfilePage() {
     const [newImage, setNewImage] =useState()
 
     const switchSkip = ()=>{
-        console.log(skip)
         setSkip(!skip)
     }
 

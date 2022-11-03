@@ -9,7 +9,7 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
   // Alternative to forward ref would be to have the function constantly firing off which is very bad for performance
   useImperativeHandle(ref, ()=>{
     return{
-      convertFunc: ()=> convertCanvas(canvasRef?.current)
+      convertFunc: ()=> convertCanvas(canvasRef?.current),
     }
   })
   
@@ -23,10 +23,11 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    
+    overflow:'hidden'
     
   }
 
+  const [isResize, setIsResize] = useState(true)
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [dragging, setDragging] = useState(false);
@@ -34,6 +35,10 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
   const touch = useRef({ x: 0, y: 0 });
   const canvasRef = useRef(null);
   const background = useMemo(() => new Image(), [image]);
+
+  //observer useEffect 
+  const containerRef = useRef(null);
+  const observer = useRef(null);
 
   const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
@@ -90,18 +95,51 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
   };
 
   useEffect(() => {
+    observer.current = new ResizeObserver((entries) => {
+      entries.forEach(({ target }) => {
+        const { width, height } = background;
+        // If width of the container is smaller than image, scale image down
+        if (target.clientWidth < width) {
+          // Calculate scale
+          const scale = target.clientWidth / width;
+
+          // Redraw image
+          canvasRef.current.width = width * scale;
+          canvasRef.current.height = height * scale;
+          canvasRef.current
+            .getContext("2d")
+            .drawImage(background, 0, 0, width * scale, height * scale);
+        }
+      });
+    });
+    observer.current.observe(containerRef.current);
+
+    return () => {
+      if(containerRef.current){
+        observer.current.unobserve(containerRef.current);
+      }
+      
+    
+    }
+  }, []);
+
+  useEffect(() => {
     background.src = image;
     // Canvasref.current checks if something exists in the canvas, in this case an image was added
     if (canvasRef.current) {
       background.onload = () => { 
-        let backgroundHeight = background.height;
-        let backgroundWidth = background.width;
-        let imageHeight = canvasRef.current.height / 2 - background.height / 2
+        canvasRef.current.width = 200;
+        canvasRef.current.height = 200;
+
+
+
+        // to use below set drawimage to below height and width
         let imageWidth = canvasRef.current.width / 2 - background.width / 2
-        // canvasRef.current.width = 200;
-        // canvasRef.current.height = 200;
+        let imageHeight = canvasRef.current.height / 2 - background.height / 2
+        
+       
         //the image is drawn on to the canvas, as there is no size determined the default canvas of 300 x150 is applied 
-         canvasRef.current.getContext("2d").drawImage(background, imageWidth, imageHeight );
+         canvasRef.current.getContext("2d").drawImage(background, imageWidth, imageHeight);
       };
     }
   }, [background]);
@@ -130,19 +168,22 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
 
   //converts canvas image into base64 and then coversts it to file object
   const convertCanvas = (canvasExist)=>{
- 
+
     const base64data = canvasExist.toDataURL()
     const fileExtension = extractImageFileExtensionFromBase64(base64data)
     const myFilename = "previewfile." + fileExtension
     const newCroppedFile = base64StringtoFile(base64data, myFilename)
     console.log(newCroppedFile)
+    console.log("height: " + newCroppedFile.height, "width: " + newCroppedFile.width )
     getNewImage(newCroppedFile)
   }
 
 
 //container ref to do with observer, might want to remove
   return (
-    <div style={circleStyle}>
+    <div 
+      ref={containerRef}
+      style={circleStyle}>
       <canvas
         style={styles}
         onMouseDown={handleMouseDown}

@@ -36,6 +36,7 @@ function SetProfilePic({switchSkip, getFileObj}) {
         getFileObj(objectUrl)
     }
     const canvasToObj = ()=>{
+        clickRef.current?.removeResize()
         clickRef.current?.convertFunc()
     }
 
