@@ -59,31 +59,33 @@ function SetProfilePic({switchSkip, getFileObj}) {
                 </div>
                 <div className="sPP__body__inputContainer">
                         <button className="sPP__body__button"> 
-                        <p className="sPP__body__buttonText">Select From Computer</p>
-                        <input 
-                        className="sPP__body__input"
-                        name="file"
-                        type='file'  
-                        accept="image/png, image/jpeg" 
-                        onChange={onSelectFile} 
-                        />
+                            <p className="sPP__body__buttonText">Select From Computer</p>
+                            <input 
+                            className="sPP__body__input"
+                            name="file"
+                            type='file'  
+                            accept="image/png, image/jpeg" 
+                            onChange={onSelectFile} 
+                            />
                         </button>
                     </div>
                 <div>
                     {selectedFile && (
-                        <button onClick={()=>{canvasToObj(); switchSkip()}} 
-                        >accept preview image
+                        <button className="sPP__body__button" onClick={()=>{canvasToObj(); switchSkip()}}>
+                            <p>Continue</p>
                         </button>
                         )
                     }
                 </div>
-                <button 
-                    onClick={()=> {
-                    
-                        switchSkip() 
-                        }} 
-                    >Skip
-                </button>
+                <div className="sPP__buttonContainer__alt">
+                    <button 
+                        onClick={()=> {switchSkip()}}
+                        className="sPP__button__alt"
+                    >
+                        <p>Skip</p>
+                    </button> 
+                </div>
+                
             </div>
         </div>
   )

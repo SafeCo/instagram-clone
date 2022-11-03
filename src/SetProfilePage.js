@@ -20,7 +20,7 @@ function SetProfilePage() {
     return (
         <div className="sPPage__container">
         {skip? (
-            <SetProfileBio switchSkip={switchSkip} newImage={newImage} />
+            <SetProfileBio switchSkip={switchSkip} newImage={newImage} setNewImage={setNewImage}/>
         ):(
             <SetProfilePic switchSkip={switchSkip} getFileObj={getFileObj}/>
         )}

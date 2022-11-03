@@ -1,7 +1,6 @@
 
 .sPB__boxContainer {
-	/* border: solid #dbdbdb 1px; */
-    border: solid blue 1px;
+	border: solid #dbdbdb 1px;
 	background-color: #FFFFFF;
 	margin: 0 0 10px;
 	padding: 10px 0;
@@ -12,11 +11,15 @@
 }
 
 .sPB__box{
-    border: solid green 1px;
     display: flex;
 	flex-direction: column;
 	align-items: center;
     width: 340px;
+}
+
+.sPB__captionContainer{
+    width: 100%;
+    padding: 0 16px;
 }
 
 .sPB__caption{
@@ -24,7 +27,41 @@
     outline: none;
     resize: none;
     width: 100%;
-    height: 50%;
     padding: 0 16px;
     font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+
+.sPB__buttonContainer{
+    height: 30px;
+    width: 162px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.sPB__button{
+    background-color: rgb(0, 149, 246);
+    color: white;
+    cursor: pointer;
+    border: none;
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sPB__buttonContainer__alt{
+    padding: 4px;
+}
+
+.sPB__button__alt{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: rgb(0, 149, 246);
+    font-weight: 600;
+    font-size: 14px;
 }

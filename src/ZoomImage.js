@@ -18,7 +18,6 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
 };
 
   const circleStyle ={
-    border: '2px solid green',
     borderRadius: '50%',
     display: 'flex',
     alignItems: 'center',
@@ -188,7 +187,7 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
       ref={containerRef}
       style={circleStyle}>
       <canvas
-        style={styles}
+
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onWheel={handleWheel}
