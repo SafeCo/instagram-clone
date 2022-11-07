@@ -175,8 +175,7 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
     const fileExtension = extractImageFileExtensionFromBase64(base64data)
     const myFilename = "previewfile." + fileExtension
     const newCroppedFile = base64StringtoFile(base64data, myFilename)
-    console.log(newCroppedFile)
-    console.log("height: " + newCroppedFile.height, "width: " + newCroppedFile.width )
+
     getNewImage(newCroppedFile)
   }
 

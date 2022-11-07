@@ -3,7 +3,7 @@ import React,{useState, useEffect, useRef} from 'react'
 import ZoomImage from './ZoomImage'
 import './SetProfilePic.css'
 
-function SetProfilePic({switchSkip, getFileObj}) {
+function SetProfilePic({switchSkip, getFile}) {
 
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
@@ -31,7 +31,7 @@ function SetProfilePic({switchSkip, getFileObj}) {
 
     const getNewImage = (base)=>{
         const objectUrl = URL.createObjectURL(base)
-        getFileObj(objectUrl)
+        getFile(objectUrl, base)
     }
     const canvasToObj = ()=>{
         clickRef.current?.convertFunc()

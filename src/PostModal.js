@@ -10,9 +10,6 @@ function PostModal({username}) {
   const [preview, setPreview] = useState()
   const inputElement = useRef(null)
 
-  // const onButtonClick = (e) => {
-  //   console.log(inputElement)
-  // };
 
   // create a preview as a side effect, whenever selected file is changed
   useEffect(() => {

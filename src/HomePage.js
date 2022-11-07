@@ -12,7 +12,6 @@ import ReelCarouselTwo from './ReelCarouselTwo';
 import NavIcons from './NavIcons';
 import SearchBar from './SearchBar';
 
-import SimpleSlider from './SimpleSlider'
 
 
 
@@ -23,19 +22,15 @@ function HomePage() {
 	// NORMALLY BELOW CONTEXT BUT ADDED USEFFECT TO CALL DIRECTLY FROM FIREBASE
 	//THERE IS AN ISSUE WHERE NEW ACCOUNT ARE NOT GETTING THE DISPLAYNAME 
 	//MOST LIKELY DUE TO THE PAGE CHANGING BEFORE FIREBASE CAN BE UPDATED
-	
+	console.log("working")
 	const { user } = useContext(AuthContext);
-
-	const [isLoading, setIsLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
 	const [suggestion, setSuggestion] = useState([]);
 
 	const shouldLogOne = useRef(true)
 	const shouldLogTwo = useRef(true)
 
-	const handleLoading = () => {
-		setIsLoading(false);
-		}
+	
 	
 	
 			
@@ -94,14 +89,9 @@ function HomePage() {
 	// Each element like insta logo, search bar and icons have their container within the main contianer
 	// flex grow and shrink is used on the individual containers rather than the element
 	// the element is merely moved around with justify content flex start and end
-	useEffect(()=>{
-		window.addEventListener("load",handleLoading);
-		console.log("Loading running")
-		console.log(isLoading)
-		return () => {window.removeEventListener("load",handleLoading);console.log("Loading closed")}
-		},[])
 
-	return !isLoading ? (
+
+	return (
 		<>
 			<nav className='app__headerContainer'>
 				<div className="app__header">
@@ -115,17 +105,10 @@ function HomePage() {
 
 					<div className="app__header__searchBarFlex">
 						<SearchBar/>
-						{/* <div className="app__header__searchBar">
-							<input type="text" className="app__headerInput" />
-								<div className="app__headerSearchItems">
-									<img className="app__header__searchIcon" src={searchIcon} alt='Search Icon'/>
-									<span>Search</span>
-								</div>
-						</div> */}
 					</div>  
 						
 					<div className="app__headerIconsFlex">
-						<NavIcons username={user.displayName}/>
+						<NavIcons profilePic={user.photoURL} username={user.displayName}/>
 					</div>
 				</div>	
 			</nav>
@@ -155,8 +138,7 @@ function HomePage() {
 			</main>
 			
     	</>
-		
-	) : (<div className="Loading">Loading</div>)
+	)
 
 }
 

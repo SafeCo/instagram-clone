@@ -11,7 +11,7 @@ import PostIcon from './icons/PostIcon'
 import ExploreIcon from './icons/ExploreIcon'
 import HeartIcon from './icons/HeartIcon'
 
-function NavIcons({username}) {
+function NavIcons({username, profilePic}) {
 	const [modalChild, setModalChild]= useState("")
 	const [modalOpen, setModalOpen] = useState(false)
 
@@ -136,7 +136,7 @@ function NavIcons({username}) {
                 className="app__headerIcon"
                 alt={username}
                 sx={{ width: 23, height: 23 }}
-                src="/static/images/avatar/1.jpg"
+                src={profilePic}
                 />
             </div>
             

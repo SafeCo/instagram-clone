@@ -1,11 +1,58 @@
 import { Avatar } from '@mui/material'
 import React,{useState} from 'react'
+import { useNavigate } from "react-router-dom";
+import {storage, db } from "./firebase"; 
+import firebase from 'firebase/compat/app';
 import './SetProfileBio.css'
 
-function SetProfileBio({switchSkip, newImage, setNewImage}) {
-    const [biography, setBiography] = useState()
 
-    console.log(newImage)
+function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
+    const [biography, setBiography] = useState()
+    const navigate = useNavigate();
+
+  
+// firebase only takes a photo URL!!! that means no file
+// you have to upload it to storage and then provide the photo link to firebase
+// createobjecturl is a url lifetime tied to the window it was created, it represents sepcified file or blob
+//
+    const updateUserProfile = ()=>{
+      const user = firebase.auth().currentUser;
+      let userId = user.uid
+      let fileName = userId + ".png"
+      const uploadTask = storage.ref(`profilePictures/${fileName}`).put(imageFile);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {              
+        },
+        (error) => {
+            console.log(error);
+        },
+        () => {
+            //complete function...
+            storage
+                .ref("profilePictures")
+                .child(fileName)
+                .getDownloadURL()
+                .then(url => {
+                    // post image inside db
+                    db.collection("posts").add({
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        imageUrl: url,
+                        username: user.displayName,
+                        filename: fileName                              
+                    });
+  
+                });
+          }
+      );
+
+      console.log(userId)
+
+      navigate("/home")
+    
+    }
+    
 
   return (
     <div className="sPB__boxContainer">
@@ -32,9 +79,9 @@ function SetProfileBio({switchSkip, newImage, setNewImage}) {
             onChange={event => setBiography(event.target.value) } value={biography}>
           </textarea>
         </div>
-       
+
         <div className="sPB__buttonContainer" >
-          <button className="sPB__button">
+          <button onClick={updateUserProfile} className="sPB__button">
             <p>Continue</p>
           </button>
         </div>
