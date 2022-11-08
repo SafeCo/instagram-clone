@@ -1,11 +1,11 @@
 import React, {useState, useEffect, useRef} from 'react'
 
-import postImage from './images/postimage.svg'
-import './PostModal.css'
-import ModalUpload from './ModalUpload'
-import back from './icons/back.svg'
+import postImage from '../postimage.svg'
+import './ImageSelect.css'
+import ImageUpload from '../imageUpload/ImageUpload'
+import back from '../../../icons/back.svg'
 
-function PostModal({username, photoUrl}) {
+function ImageSelect({username, photoUrl}) {
   const [selectedFile, setSelectedFile] = useState()
   const [preview, setPreview] = useState()
   const inputElement = useRef(null)
@@ -35,12 +35,12 @@ const onSelectFile = e => {
 }
 
   return (
-    <div className="postModal__position">
+    <div className="imageSelect__position">
           {
             selectedFile ? (
-              <div className="postModal__box__container">
+              <div className="imageSelect__box__container">
                 
-                  <ModalUpload 
+                  <ImageUpload
                     setSelectedFile={setSelectedFile} 
                     selectedFile={selectedFile} 
                     preview={preview}  
@@ -51,31 +51,31 @@ const onSelectFile = e => {
               </div>
               
             ):(
-              <div className="postModal__container">
-                <div className="postModal__header"> 
-                  <div className="postModal__header__backButtonContainer">
+              <div className="imageSelect__container">
+                <div className="imageSelect__header"> 
+                  <div className="imageSelect__header__backButtonContainer">
                     {selectedFile && <button><img src={back} alt="back button"/>  </button>}
                   </div>
-                  <div className="postModal__header__text">
+                  <div className="imageSelect__header__text">
                     <p>Create new post</p> 
                   </div>
-                  <div className="postModal__header__postButtonContainer">
+                  <div className="imageSelect__header__postButtonContainer">
                     {selectedFile && <button> <p>Post</p> </button>}
                   </div>
                 </div> 
-                <div className="postModal__body">
+                <div className="imageSelect__body">
                   <div >
                     <img src={postImage} alt="post modal image"/> 
                   </div>
-                  <div className="postModal__body__textContainer">
-                    <p className="postModal__body__text" >Upload a Picture!</p>
+                  <div className="imageSelect__body__textContainer">
+                    <p className="imageSelect__body__text" >Upload a Picture!</p>
                   </div>
                   
-                  <div className="postModal__body__inputContainer">
-                    <button className="postModal__body__button"> 
-                      <p className="postModal__body__buttonText">Select From Computer</p>
+                  <div className="imageSelect__body__inputContainer">
+                    <button className="imageSelect__body__button"> 
+                      <p className="imageSelect__body__buttonText">Select From Computer</p>
                       <input 
-                      className="postModal__body__input"
+                      className="imageSelect__body__input"
                       name="file"
                       type='file'  
                       accept="image/png, image/jpeg" 
@@ -91,4 +91,4 @@ const onSelectFile = e => {
   )
 }
 
-export default PostModal
+export default ImageSelect

@@ -3,13 +3,13 @@ import Avatar from "@mui/material/Avatar"
 
 
 //Components
-import HomeIcon from './icons/HomeIcon'
-import ModalWrapper from './ModalWrapper'
-import PostModal from './PostModal'
-import SendIcon from './icons/SendIcon'
-import PostIcon from './icons/PostIcon'
-import ExploreIcon from './icons/ExploreIcon'
-import HeartIcon from './icons/HeartIcon'
+import HomeIcon from '../../icons/HomeIcon'
+import ModalWrapper from '../modalWrapper/ModalWrapper'
+import ImageSelect from '../uploadImage/imageSelect/ImageSelect'
+import SendIcon from '../../icons/SendIcon'
+import PostIcon from '../../icons/PostIcon'
+import ExploreIcon from '../../icons/ExploreIcon'
+import HeartIcon from '../../icons/HeartIcon'
 
 function NavIcons({username, profilePic}) {
 	const [modalChild, setModalChild]= useState("")
@@ -63,7 +63,7 @@ function NavIcons({username, profilePic}) {
 		switch(e.currentTarget.name){
 			case "post":
 				setModalChild(
-					<PostModal
+					<ImageSelect
 						username={username}
                         photoUrl={profilePic}
 					/>

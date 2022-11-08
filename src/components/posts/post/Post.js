@@ -1,11 +1,11 @@
 import React, { useEffect, useState }from 'react'
 import './Post.css';
 import Avatar from "@mui/material/Avatar"
-import { db } from '../../firebase';
+import { db } from '../../../firebase';
 import DeleteModal from '../deleteModal/DeleteModal';
-import ModalWrapper from '../../ModalWrapper';
+import ModalWrapper from '../../modalWrapper/ModalWrapper';
 import ViewComments from '../viewComments/ViewComments';
-import PostIcons from '../../PostIcons';
+import PostIcons from '../postIcons/PostIcons';
 import AddComment from '../addComments/AddComment';
 
 function Post({filename, postId, user, username, caption, imageUrl, postPhotoUrl}) {

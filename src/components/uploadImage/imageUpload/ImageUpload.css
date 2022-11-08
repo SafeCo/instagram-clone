@@ -1,4 +1,4 @@
-.modalUpload__container {
+.imageUpload__container {
     background-color: white;
     border-radius: 12px;
     width: 730px;
@@ -8,7 +8,7 @@
     max-height: 691px;
     z-index: 4;
 }
-.modalUpload__header{
+.imageUpload__header{
     display: flex;
     height: 40px;
     flex-direction: row;   
@@ -17,12 +17,12 @@
     border-bottom: solid lightgray 1px;
 }
 
-.modalUpload__header__backButtonContainer{
+.imageUpload__header__backButtonContainer{
     margin: 9px;
     flex: 0;
 }
 
-.modalUpload__header__backButtonContainer button{
+.imageUpload__header__backButtonContainer button{
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@
     background-color: transparent;
 }
 
-.modalUpload__header__text{
+.imageUpload__header__text{
     font-size: 16px;
     font-weight: 600;
     flex: 1;
@@ -39,12 +39,12 @@
     align-items: center;
 }
 
-.modalUpload__header__postButtonContainer{
+.imageUpload__header__postButtonContainer{
     flex: 0;
     margin: 9px;
 }
 
-.modalUpload__header__postButtonContainer button{
+.imageUpload__header__postButtonContainer button{
     cursor: pointer;
     font-size: 14;
     font-weight: 600;
@@ -56,13 +56,13 @@
 
 
 
-.modalUpload__previewContainer{
+.imageUpload__previewContainer{
     display: flex;
     flex-direction: row;
     width: 100%;
 }
 
-.modalUpload__imageContainer{
+.imageUpload__imageContainer{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,18 +72,18 @@
     height: 400px;
 }
 
-.modalUpload__captionProfile{
+.imageUpload__captionProfile{
     padding: 10px;
     display: flex;
     flex-direction: row;
 }
 
 
-.modalUpload__captionContainer{
+.imageUpload__captionContainer{
     flex: 1;
 }
 
-.modalUpload__caption{
+.imageUpload__caption{
     border: none;
     outline: none;
     resize: none;
@@ -92,7 +92,7 @@
     padding: 0 16px;
     font-size: 16px;
 }
-.modalUpload__image{
+.imageUpload__image{
    object-fit: contain;
    max-height: 400px;
    max-width: 100%;
@@ -102,7 +102,7 @@
 
 
 @media (max-width: 480px) {
-    .modalUpload__container{
+    .imageUpload__container{
         width: 100%;
     }
     

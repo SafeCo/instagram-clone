@@ -1,11 +1,11 @@
 import React,{useState} from 'react'
-import {storage, db } from "./firebase"; 
+import {storage, db } from "../../../firebase"; 
 import firebase from 'firebase/compat/app';
 import Avatar  from '@mui/material/Avatar';
-import back from './icons/back.svg'
-import './ModalUpload.css'
+import back from '../../../icons/back.svg'
+import './ImageUpload.css'
 
-function ModalUpload({setSelectedFile, selectedFile, preview, username, photoUrl}) {
+function ImageUpload({setSelectedFile, selectedFile, preview, username, photoUrl}) {
 	const [caption, setCaption] = useState('');
 	const [progress, setProgress] = useState(0);
 
@@ -59,27 +59,27 @@ function ModalUpload({setSelectedFile, selectedFile, preview, username, photoUrl
 
 	return (
     <>
-			<div className="modalUpload__container">
-				<div className="modalUpload__header"> 
-					<div className="modalUpload__header__backButtonContainer">
+			<div className="imageUpload__container">
+				<div className="imageUpload__header"> 
+					<div className="imageUpload__header__backButtonContainer">
 						<button onClick={()=>{setSelectedFile(null)}}><img src={back} alt="back button"/></button>
 					</div>
-					<div className="modalUpload__header__text">
+					<div className="imageUpload__header__text">
 						<p>Create new Post</p> 
 					</div>
-					<div className="modalUpload__header__postButtonContainer">
+					<div className="imageUpload__header__postButtonContainer">
 						<button onClick={handleUpload}>
 							<p>Post</p>
 						</button>
 					</div>
 				</div> 
 
-				<div className="modalUpload__previewContainer">
-					<div className="modalUpload__imageContainer">
-						{selectedFile && <img className="modalUpload__image" src={preview} />}
+				<div className="imageUpload__previewContainer">
+					<div className="imageUpload__imageContainer">
+						{selectedFile && <img className="imageUpload__image" src={preview} />}
 					</div>
-					<div className="modalUpload__captionContainer">
-						<div className="modalUpload__captionProfile">
+					<div className="imageUpload__captionContainer">
+						<div className="imageUpload__captionProfile">
 							<Avatar
 							alt={username}
 							sx={{ width: 23, height: 23, marginRight: 1 }}
@@ -87,7 +87,7 @@ function ModalUpload({setSelectedFile, selectedFile, preview, username, photoUrl
 							/>
 							<div>{username}</div>
 						</div>
-						<textarea className="modalUpload__caption" type="text" placeholder="Write a caption..." onChange={event => setCaption(event.target.value) } value={caption}></textarea>
+						<textarea className="imageUpload__caption" type="text" placeholder="Write a caption..." onChange={event => setCaption(event.target.value) } value={caption}></textarea>
 					</div>
 				</div>
 			</div>
@@ -95,4 +95,4 @@ function ModalUpload({setSelectedFile, selectedFile, preview, username, photoUrl
   )
 }
 
-export default ModalUpload
+export default ImageUpload

@@ -1,19 +1,18 @@
 import React, {useState, useRef, useEffect} from 'react'
 import Slider from "react-slick";
-import './ReelCarouselTwo.css'
-import './Reel.css'
+import './ReelCarousel.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { Avatar } from '@mui/material';
-import rightChevron from './icons/rightChevron.svg'
-import leftChevron from './icons/leftChevron.svg'
-import heart from './icons/heart.svg'
+import rightChevron from '../../icons/rightChevron.svg'
+import leftChevron from '../../icons/leftChevron.svg'
+import heart from '../../icons/heart.svg'
 
 
 
 
 
-function ReelCarouselTwo({list}) {
+function ReelCarousel({list}) {
 
 	const list2 = 
 	[
@@ -113,4 +112,4 @@ function ReelCarouselTwo({list}) {
   )
 }
 
-export default ReelCarouselTwo
+export default ReelCarousel

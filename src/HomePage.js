@@ -1,16 +1,13 @@
 import React, {useEffect, useRef, useState, useContext} from 'react'; 
 import './HomePage.css';
-import './ImageUpload.css'
-import Post from './components/posts/Post';
+import Post from './components/posts/post/Post';
 import AuthContext from './hooks/useAuth'
 import FriendSuggestion from './components/suggestions/FriendSuggestion';
 import { db, auth } from './firebase';
-import searchIcon from './search.svg';
 import InstaLogo from './instagram-text-icon.svg'
-import ReelCarousel from './ReelCarousel';
-import ReelCarouselTwo from './ReelCarouselTwo';
-import NavIcons from './NavIcons';
-import SearchBar from './SearchBar';
+import ReelCarousel from './components/reelCarousel/ReelCarousel';
+import NavIcons from './components/navIcon/NavIcons';
+import SearchBar from './components/searchBar/SearchBar';
 
 
 
@@ -119,7 +116,7 @@ function HomePage() {
 			<main className="app__main">
 				<section className="app__section">
 				<div className="app__sectionLeft">
-							<ReelCarouselTwo list={suggestion}/>
+							<ReelCarousel list={suggestion}/>
 						<div className="app__posts">
 								{
 									posts.map(({id, post}) =>(

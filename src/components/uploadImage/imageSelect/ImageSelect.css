@@ -1,4 +1,4 @@
-.postModal__position{
+.imageSelect__position{
     position: absolute;
     display: flex;    
     align-items: center;
@@ -7,14 +7,14 @@
     
   }
 
-.postModal__box__container{
+.imageSelect__box__container{
     z-index: 4;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.postModal__container{
+.imageSelect__container{
     z-index: 4;
     background-color: white;
     border-radius: 12px;
@@ -28,7 +28,7 @@
     flex: 1 1 auto;
 }
 
-.postModal__header{
+.imageSelect__header{
     width: 100%;
     display: flex;
     height: 40px;
@@ -43,12 +43,12 @@
     border: none;
     background-color: transparent;
 }
-.postModal__header__backButtonContainer{
+.imageSelect__header__backButtonContainer{
     margin: 8px;
     flex: 0;
 }
 
-.postModal__header__backButtonContainer button{
+.imageSelect__header__backButtonContainer button{
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -56,7 +56,7 @@
     background-color: transparent;
 }
 
-.postModal__header__text{
+.imageSelect__header__text{
     font-size: 16px;
     font-weight: 600;
     flex: 1;
@@ -64,12 +64,12 @@
     justify-content: center;
     align-items: center;
 }
-.postModal__header__postButtonContainer{
+.imageSelect__header__postButtonContainer{
     flex: 0;
     margin: 8px;
 }
 
-.postModal__header__postButtonContainer button{
+.imageSelect__header__postButtonContainer button{
     cursor: pointer;
     font-size: 14;
     font-weight: 600;
@@ -78,7 +78,7 @@
     background-color: transparent;
 }
 
-.postModal__body{
+.imageSelect__body{
     display: flex;
     height: 390px;
     width: 390px;
@@ -91,7 +91,7 @@
 }
 
 
-.postModal__body__textContainer{
+.imageSelect__body__textContainer{
     margin-top: 16px;
     display: flex;
     flex-direction: column;
@@ -99,18 +99,18 @@
     align-content: stretch;
     justify-content: flex-start;
 }
-.postModal__body__text{
+.imageSelect__body__text{
     font-weight: 300;
     font-size: 22px;
     line-height: 26px;
     margin: -4px 0 -5px;
 }
 
-.postModal__body__inputContainer{
+.imageSelect__body__inputContainer{
     margin-top: 18px;
     padding: 4px;
 }
-.postModal__body__button{
+.imageSelect__body__button{
     height: 30px;
     width: 162px;
     position: relative;
@@ -121,7 +121,7 @@
 
 }
 
-.postModal__body__buttonText{
+.imageSelect__body__buttonText{
     position: absolute;
     height: inherit;
     width: inherit;
@@ -136,7 +136,7 @@
 }
 
 
-.postModal__body__input{
+.imageSelect__body__input{
     height: 100%;
     width: 100%;
     cursor: pointer;

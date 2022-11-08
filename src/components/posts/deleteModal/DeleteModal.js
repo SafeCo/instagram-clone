@@ -1,7 +1,7 @@
 import React from 'react'
 import './DeleteModal.css'
 import firebase from 'firebase/compat/app';
-import { db } from '../../firebase';
+import { db } from '../../../firebase';
 
 
 function DeleteModal({id, user, username, filename}) {

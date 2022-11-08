@@ -1,9 +1,9 @@
 import React from 'react'
 import './PostIcons.css'
-import commentIcon from './icons/comment.svg'
-import heart from './icons/heart.svg'
-import send from './icons/send.svg'
-import save from './icons/save.svg'
+import commentIcon from '../../../icons/comment.svg'
+import heart from '../../../icons/heart.svg'
+import send from '../../../icons/send.svg'
+import save from '../../../icons/save.svg'
 
 function PostIcons() {
   return (
