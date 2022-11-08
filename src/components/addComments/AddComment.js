@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './AddComment.css'
 import firebase from 'firebase/compat/app';
-import { db } from './firebase';
+import { db } from '../../firebase';
 
 
 

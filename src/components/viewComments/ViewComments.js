@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import './ViewComments.css'
 import Avatar from "@mui/material/Avatar"
-import PostIcons from './PostIcons'
-import AddComment from './AddComment'
-import { db } from './firebase';
+import PostIcons from '../../PostIcons'
+import AddComment from '../addComments/AddComment'
+import { db } from '../../firebase';
 
 
 

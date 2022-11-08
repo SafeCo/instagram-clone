@@ -1,11 +1,49 @@
-import React,{useContext, useStat} from "react"
+import React,{useContext, useState, useRef, useEffect} from "react"
+import { db } from '../../firebase';
+
 import Avatar from "@mui/material/Avatar"
 import "./FriendSuggestion.css"
-import AuthContext from "./hooks/useAuth"
+import AuthContext from "../../hooks/useAuth"
 
+//Filtered suggestions need to be from usernames collection which will contain photoUrl
 
-const FriendSuggestion = ({profileUsername, suggestion, photoUrl}) => {
+const FriendSuggestion = ({profileUsername, photoUrl}) => {
   const { logout } = useContext(AuthContext)
+  const shouldLogOne = useRef(true)
+  const [suggestion, setSuggestion] = useState([]);
+
+
+
+  useEffect(()=>{
+		if(shouldLogOne.current){
+      shouldLogOne.current = false
+			db.collection("usernames").get().then((querySnapshot) => {
+				for(let i = 0; i < 11; i++){
+					if(querySnapshot.docs[i]){
+						let data = querySnapshot.docs[i].data().username
+						let id = querySnapshot.docs[i].id
+            let profilePic = querySnapshot.docs[i].data().photoUrl
+
+						setSuggestion((suggest)=>
+						[
+							...suggest,
+							{
+								username: data,
+								id: id,
+                photoUrl: profilePic
+							}
+						]
+						
+					)
+					}else{
+						break;
+					}
+				}
+			});
+		}
+	}, []);
+
+
 
   const reducedList = []
   for(let i = 0; i < 5; i++){
