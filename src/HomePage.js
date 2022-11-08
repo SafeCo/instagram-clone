@@ -23,7 +23,7 @@ function HomePage() {
 	//THERE IS AN ISSUE WHERE NEW ACCOUNT ARE NOT GETTING THE DISPLAYNAME 
 	//MOST LIKELY DUE TO THE PAGE CHANGING BEFORE FIREBASE CAN BE UPDATED
 	console.log("working")
-	const { user } = useContext(AuthContext);
+	// const { user } = useContext(AuthContext);
 	const [posts, setPosts] = useState([]);
 	const [suggestion, setSuggestion] = useState([]);
 
@@ -35,15 +35,15 @@ function HomePage() {
 	
 			
 
-	// const [user, setUser]= useState([])
-	// useEffect(()=>{
-	// 	auth.onAuthStateChanged((userObj)=>{
-	// 		if(userObj){
-	// 			console.log("authstatechanged")
-	// 			setUser(userObj)
-	// 		}
-	// 	})
-	// },[])
+	const [user, setUser]= useState([])
+	useEffect(()=>{
+		auth.onAuthStateChanged((userObj)=>{
+			if(userObj){
+				console.log("authstatechanged")
+				setUser(userObj)
+			}
+		})
+	},[])
 
 //Putting posts on page
 	useEffect(()=>{
@@ -90,7 +90,6 @@ function HomePage() {
 	// flex grow and shrink is used on the individual containers rather than the element
 	// the element is merely moved around with justify content flex start and end
 
-
 	return (
 		<>
 			<nav className='app__headerContainer'>
@@ -121,7 +120,7 @@ function HomePage() {
 						<div className="app__posts">
 								{
 									posts.map(({id, post}) =>(
-										<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+										<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} photoUrl={post.photoUrl}/>
 									))
 								}
 						</div>

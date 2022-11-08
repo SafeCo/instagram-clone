@@ -5,7 +5,7 @@ import Avatar  from '@mui/material/Avatar';
 import back from './icons/back.svg'
 import './ModalUpload.css'
 
-function ModalUpload({setSelectedFile, selectedFile, preview, username}) {
+function ModalUpload({setSelectedFile, selectedFile, preview, username, photoUrl}) {
 	const [caption, setCaption] = useState('');
 	const [progress, setProgress] = useState(0);
 
@@ -43,7 +43,8 @@ function ModalUpload({setSelectedFile, selectedFile, preview, username}) {
 											caption: caption,
 											imageUrl: url,
 											username: username,
-											filename: fileName                              
+											filename: fileName,
+											photoUrl: photoUrl                              
 									});
 
 									setCaption("");

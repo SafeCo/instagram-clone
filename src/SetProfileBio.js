@@ -36,18 +36,17 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
                 .getDownloadURL()
                 .then(url => {
                     // post image inside db
-                    db.collection("posts").add({
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                        imageUrl: url,
-                        username: user.displayName,
-                        filename: fileName                              
-                    });
-  
+                    user.updateProfile({
+                      photoURL: url
+                    })
+                    db.collection("usernames").doc(userId).update({
+											photoURL: url                          
+									});
                 });
           }
       );
-
-      console.log(userId)
+      
+      console.log(user.photoURL)
 
       navigate("/home")
     

@@ -5,7 +5,7 @@ import './PostModal.css'
 import ModalUpload from './ModalUpload'
 import back from './icons/back.svg'
 
-function PostModal({username}) {
+function PostModal({username, photoUrl}) {
   const [selectedFile, setSelectedFile] = useState()
   const [preview, setPreview] = useState()
   const inputElement = useRef(null)
@@ -45,6 +45,7 @@ const onSelectFile = e => {
                     selectedFile={selectedFile} 
                     preview={preview}  
                     username={username}
+                    photoUrl={photoUrl}
                   />
 
               </div>

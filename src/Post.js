@@ -8,7 +8,7 @@ import ViewComments from './ViewComments';
 import PostIcons from './PostIcons';
 import AddComment from './AddComment';
 
-function Post({filename, postId, user, username, caption, imageUrl}) {
+function Post({filename, postId, user, username, caption, imageUrl, photoUrl}) {
   const [comments, setComments] = useState([]);
   const [reducedComments, setReducedComments] = useState([])
   const [modalChild, setModalChild]= useState("")
@@ -66,6 +66,7 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
     setReducedComments(filter)
   },[comments])
 
+
   return (
     <>
     {modalOpen&& 
@@ -76,11 +77,21 @@ function Post({filename, postId, user, username, caption, imageUrl}) {
     <div key={postId} className="post">
       <div className="post__header" >
         <div className="post__headerProfile">
-          <Avatar
-          className="post__avatar"
-          alt={username}
-          src="/static/images/avatar/1.jpg"
-          />
+        {
+          photoUrl ? (
+            <Avatar
+            className="post__avatar"
+            alt={username}
+            src={photoUrl}
+            />
+          ): (
+            <Avatar
+            className="post__avatar"
+            alt={username}
+            src="/static/images/avatar/1.jpg"
+            />
+          )
+        }
           <h3 className="post__username">{username}</h3>
         </div>
         <div className="post__headerButtonContainer">

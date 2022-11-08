@@ -65,6 +65,7 @@ function NavIcons({username, profilePic}) {
 				setModalChild(
 					<PostModal
 						username={username}
+                        photoUrl={profilePic}
 					/>
 					)
 				break;
@@ -134,7 +135,9 @@ function NavIcons({username, profilePic}) {
             <div className="app__headerIconContainer">
                 <Avatar
                 className="app__headerIcon"
-                alt={username}
+                alt={
+                    profilePic? profilePic : username
+                }
                 sx={{ width: 23, height: 23 }}
                 src={profilePic}
                 />
