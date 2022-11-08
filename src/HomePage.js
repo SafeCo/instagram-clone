@@ -33,7 +33,7 @@ function HomePage() {
 	
 	
 	
-			
+	//  None of the Firebase Authentication APIs cost money, except for phone authentication after the free monthly quota has been exhausted
 
 	const [user, setUser]= useState([])
 	useEffect(()=>{
@@ -44,6 +44,9 @@ function HomePage() {
 			}
 		})
 	},[])
+
+
+	console.log(user.photoURL)
 
 //Putting posts on page
 	useEffect(()=>{
@@ -120,7 +123,7 @@ function HomePage() {
 						<div className="app__posts">
 								{
 									posts.map(({id, post}) =>(
-										<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} photoUrl={post.photoUrl}/>
+										<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} postPhotoUrl={post.photoUrl}/>
 									))
 								}
 						</div>
@@ -129,7 +132,7 @@ function HomePage() {
 
 
 					<div className="app__friendSugg">
-						<FriendSuggestion suggestion={suggestion} profileUsername={user.displayName}/>
+						<FriendSuggestion suggestion={suggestion} profileUsername={user.displayName} photoUrl={user.photoURL}/>
 					</div> 
 				</section>
 				

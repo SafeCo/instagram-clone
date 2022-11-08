@@ -8,7 +8,7 @@ import ViewComments from './ViewComments';
 import PostIcons from './PostIcons';
 import AddComment from './AddComment';
 
-function Post({filename, postId, user, username, caption, imageUrl, photoUrl}) {
+function Post({filename, postId, user, username, caption, imageUrl, postPhotoUrl}) {
   const [comments, setComments] = useState([]);
   const [reducedComments, setReducedComments] = useState([])
   const [modalChild, setModalChild]= useState("")
@@ -31,6 +31,7 @@ function Post({filename, postId, user, username, caption, imageUrl, photoUrl}) {
         setModalChild(
           <ViewComments 
           user={user}
+          postPhotoUrl={postPhotoUrl}
           caption={caption}
           postId={postId}
           username={username}
@@ -78,11 +79,11 @@ function Post({filename, postId, user, username, caption, imageUrl, photoUrl}) {
       <div className="post__header" >
         <div className="post__headerProfile">
         {
-          photoUrl ? (
+          postPhotoUrl ? (
             <Avatar
             className="post__avatar"
             alt={username}
-            src={photoUrl}
+            src={postPhotoUrl}
             />
           ): (
             <Avatar
@@ -132,7 +133,7 @@ function Post({filename, postId, user, username, caption, imageUrl, photoUrl}) {
               
               : null
           }
-          <AddComment postId={postId} user={user}/>             
+          <AddComment  postId={postId} user={user}/>             
     </div>
     </>
   )

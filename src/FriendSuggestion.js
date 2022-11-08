@@ -4,7 +4,7 @@ import "./FriendSuggestion.css"
 import AuthContext from "./hooks/useAuth"
 
 
-const FriendSuggestion = ({profileUsername, suggestion}) => {
+const FriendSuggestion = ({profileUsername, suggestion, photoUrl}) => {
   const { logout } = useContext(AuthContext)
 
   const reducedList = []
@@ -27,11 +27,21 @@ const FriendSuggestion = ({profileUsername, suggestion}) => {
   return (
     <>
       <div className="friendSuggestion__profile">
-        <Avatar
-        className="post__avatar"
-        alt= {profileUsername}
-        src="/static/images/avatar/1.jpg"
-        />
+        {
+          photoUrl ? (
+            <Avatar
+            className="post__avatar"
+            alt={profileUsername}
+            src={photoUrl}
+            />
+          ): (
+            <Avatar
+            className="post__avatar"
+            alt={profileUsername}
+            src="/static/images/avatar/1.jpg"
+            />
+          )
+        }
         <div className="friendSuggestion__profileName">{profileUsername}</div>
         <div ><button className="friendSuggestion__profileLogout" onClick={()=>{logout()}} >Logout</button> </div>
       </div>

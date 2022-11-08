@@ -7,7 +7,7 @@ import { db } from './firebase';
 
 
 
-function ViewComments({ user, caption, postId, username, imageUrl}) {
+function ViewComments({ user, caption, postId, username, imageUrl, postPhotoUrl}) {
 
 	const [comments, setComments] = useState([]);
 
@@ -52,12 +52,22 @@ function ViewComments({ user, caption, postId, username, imageUrl}) {
 								<div className="vC__info__box">
 									<div className="vC__info__profile">
 										<header className="vC__info__avatar">
-											<Avatar
-											className="vC__avatar"
-											alt={username}
-											src="/static/images/avatar/1.jpg"
-											/>
-											<div className="vc__avatar__name">Name</div>
+											{
+												postPhotoUrl ? (
+													<Avatar
+													className="post__avatar"
+													alt={username}
+													src={postPhotoUrl}
+													/>
+												): (
+													<Avatar
+													className="post__avatar"
+													alt={username}
+													src="/static/images/avatar/1.jpg"
+													/>
+												)
+											}
+											<div className="vc__avatar__name">{username}</div>
 										</header>
 										<div className="vC__info__buttonContainer">
 											<button className="vC__info__button">
@@ -71,11 +81,21 @@ function ViewComments({ user, caption, postId, username, imageUrl}) {
 												<div className="vC__commentContainer">
 													<div className="vC__commentArea">
 														<div className="vC__comment">
-															<Avatar
-																className="vC__commentAvatar"
-																alt={username}
-																src="/static/images/avatar/1.jpg"
-															/>
+																{
+																	postPhotoUrl ? (
+																		<Avatar
+																		className="vC__commentAvatar"
+																		alt={username}
+																		src={postPhotoUrl}
+																		/>
+																	):(
+																		<Avatar
+																		className="vC__commentAvatar"
+																		alt={username}
+																		src="/static/images/avatar/1.jpg"
+																		/>
+																	)
+																}
 															<p> 
 																<strong>{username}</strong> {caption}
 															</p>
@@ -88,11 +108,21 @@ function ViewComments({ user, caption, postId, username, imageUrl}) {
 													<div key={index+postId} className="vC__commentContainer">
 														<div className="vC__commentArea">
 															<div className="vC__comment">
-																<Avatar
-																	className="vC__commentAvatar"
-																	alt={comment.username}
-																	src="/static/images/avatar/1.jpg"
-																/>
+																{
+																	comment.photoUrl ? (
+																		<Avatar
+																		className="post__avatar"
+																		alt={username}
+																		src={comment.photoUrl}
+																		/>
+																	): (
+																		<Avatar
+																		className="post__avatar"
+																		alt={username}
+																		src="/static/images/avatar/1.jpg"
+																		/>
+																	)
+																}
 
 																<p>
 																	<strong>{comment.username}</strong> {comment.text}
@@ -109,7 +139,7 @@ function ViewComments({ user, caption, postId, username, imageUrl}) {
 											<PostIcons/>
 										</div>
 										<div className="vC__addComment">
-											<AddComment postId={postId} user={user}/>
+											<AddComment  postId={postId} user={user}/>
 										</div>
 									</div>
 
