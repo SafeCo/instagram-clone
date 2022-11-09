@@ -12,7 +12,7 @@ import heart from '../../../icons/heart.svg'
 
 
 
-function ReelCarousel({list}) {
+function ReelCarousel() {
 
 	const list2 = 
 	[

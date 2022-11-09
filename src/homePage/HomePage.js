@@ -57,33 +57,6 @@ function HomePage() {
 		})}
 		}, []);
 
-//Friend Suggestions
-	useEffect(()=>{
-		if(shouldLogOne.current){
-			shouldLogOne.current = false;
-			console.log("use effect 1")
-			db.collection("posts").get().then((querySnapshot) => {
-				for(let i = 0; i < 11; i++){
-					if(querySnapshot.docs[i]){
-						let data = querySnapshot.docs[i].data().username
-						let id = querySnapshot.docs[i].id
-						setSuggestion((suggest)=>
-						[
-							...suggest,
-							{
-								username: data,
-								id: id
-							}
-						]
-						
-					)
-					}else{
-						break;
-					}
-				}
-			});
-		}
-	}, [posts]);
 	
 	// Each element like insta logo, search bar and icons have their container within the main contianer
 	// flex grow and shrink is used on the individual containers rather than the element
@@ -115,7 +88,7 @@ function HomePage() {
 			<main className="app__main">
 				<section className="app__section">
 				<div className="app__sectionLeft">
-							<ReelCarousel list={suggestion}/>
+							<ReelCarousel />
 						<div className="app__posts">
 								{
 									posts.map(({id, post}) =>(
@@ -128,7 +101,7 @@ function HomePage() {
 
 
 					<div className="app__friendSugg">
-						<FriendSuggestion suggestion={suggestion} profileUsername={user.displayName} photoUrl={user.photoURL}/>
+						<FriendSuggestion profileUsername={user.displayName} userPhotoUrl={user.photoURL}/>
 					</div> 
 				</section>
 				
