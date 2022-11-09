@@ -40,7 +40,7 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
                       photoURL: url
                     })
                     db.collection("usernames").doc(userId).update({
-											photoURL: url                          
+											photoUrl: url                          
 									});
                 });
           }

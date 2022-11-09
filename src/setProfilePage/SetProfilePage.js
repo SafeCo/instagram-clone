@@ -1,4 +1,6 @@
 import React,{useState, useEffect} from 'react'
+import {auth } from '../firebase';
+
 import './SetProfilePage.css'
 import SetProfileBio from './components/setProfileBio/SetProfileBio'
 import SetProfilePic from './components/setProfilePic/SetProfilePic'
@@ -8,6 +10,16 @@ function SetProfilePage() {
     const [skip, setSkip] = useState(false)
     const [newImage, setNewImage] =useState()
     const [file, setFile] = useState()
+    const [user, setUser]= useState([])
+
+	useEffect(()=>{
+		auth.onAuthStateChanged((userObj)=>{
+			if(userObj){
+				setUser(userObj)
+			}
+		})
+	},[])
+
 
     const switchSkip = ()=>{
         setSkip(!skip)
@@ -19,14 +31,13 @@ function SetProfilePage() {
         setNewImage(fileObj)
         setFile(base)
     }
-
     
     return (
         <div className="sPPage__container">
         {skip? (
             <SetProfileBio switchSkip={switchSkip} newImage={newImage} imageFile={file}  setNewImage={setNewImage}/>
         ):(
-            <SetProfilePic switchSkip={switchSkip} getFile={getFile}/>
+            <SetProfilePic photoUrl={user.photoURL} switchSkip={switchSkip} getFile={getFile}/>
         )}
         </div>
     )

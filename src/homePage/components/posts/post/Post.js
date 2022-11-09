@@ -8,11 +8,12 @@ import ViewComments from '../viewComments/ViewComments';
 import PostIcons from '../postIcons/PostIcons';
 import AddComment from '../addComments/AddComment';
 
-function Post({filename, postId, user, username, caption, imageUrl, postPhotoUrl}) {
+function Post({filename, postId, user, username, caption, imageUrl, postPhotoUrl, userId}) {
   const [comments, setComments] = useState([]);
   const [reducedComments, setReducedComments] = useState([])
   const [modalChild, setModalChild]= useState("")
 	const [modalOpen, setModalOpen] = useState(false)
+  const [profilePic, setProfilePic] = useState()
 
 
   const modalSwitchOpen= (e)=>{
@@ -45,6 +46,15 @@ function Post({filename, postId, user, username, caption, imageUrl, postPhotoUrl
 		setModalOpen(!modalOpen)
 	}
 
+  useEffect(()=>{
+    db.collection('usernames').doc(userId).get().then((doc)=>{
+      setProfilePic(doc.get('photoUrl'))
+    }).catch((error) => {
+      console.log("Error getting document:", error);
+    });
+    console.log("useffect get image profile")
+  },[postId])
+
   useEffect(()=> {
     let unsubscribe;
     if(postId) {
@@ -67,6 +77,21 @@ function Post({filename, postId, user, username, caption, imageUrl, postPhotoUrl
     setReducedComments(filter)
   },[comments])
 
+  //this useeffect checks the posts userId then looks into firebase's usernames collection to find the photurl
+  
+  const getProfilePic = ()=>{
+    db.collection('usernames').doc(userId).get().then((doc)=>{
+      setProfilePic(doc.get('photoUrl'))
+    }).catch((error) => {
+      console.log("Error getting document:", error);
+    });
+  }
+    
+  
+  
+  
+  
+  
 
   return (
     <>
@@ -79,11 +104,11 @@ function Post({filename, postId, user, username, caption, imageUrl, postPhotoUrl
       <div className="post__header" >
         <div className="post__headerProfile">
         {
-          postPhotoUrl ? (
+          profilePic ? (
             <Avatar
             className="post__avatar"
             alt={username}
-            src={postPhotoUrl}
+            src={profilePic}
             />
           ): (
             <Avatar

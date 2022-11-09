@@ -5,7 +5,7 @@ import './ImageSelect.css'
 import ImageUpload from '../imageUpload/ImageUpload'
 import back from '../../../../icons/back.svg'
 
-function ImageSelect({username, photoUrl}) {
+function ImageSelect({username, userProfilePic, userId}) {
   const [selectedFile, setSelectedFile] = useState()
   const [preview, setPreview] = useState()
   const inputElement = useRef(null)
@@ -45,7 +45,8 @@ const onSelectFile = e => {
                     selectedFile={selectedFile} 
                     preview={preview}  
                     username={username}
-                    photoUrl={photoUrl}
+                    userProfilePic={userProfilePic}
+                    userId={userId}
                   />
 
               </div>

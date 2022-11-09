@@ -30,7 +30,6 @@ function HomePage() {
 
 	
 	
-	
 	//  None of the Firebase Authentication APIs cost money, except for phone authentication after the free monthly quota has been exhausted
 
 	const [user, setUser]= useState([])
@@ -107,7 +106,7 @@ function HomePage() {
 					</div>  
 						
 					<div className="app__headerIconsFlex">
-						<NavIcons profilePic={user.photoURL} username={user.displayName}/>
+						<NavIcons userProfilePic={user.photoURL} username={user.displayName} userId={user.uid}/>
 					</div>
 				</div>	
 			</nav>
@@ -120,7 +119,7 @@ function HomePage() {
 						<div className="app__posts">
 								{
 									posts.map(({id, post}) =>(
-										<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} postPhotoUrl={post.photoUrl}/>
+										<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} postPhotoUrl={post.photoUrl} userId={post.userId}/>
 									))
 								}
 						</div>

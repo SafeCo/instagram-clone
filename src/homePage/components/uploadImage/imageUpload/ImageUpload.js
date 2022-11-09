@@ -5,7 +5,7 @@ import Avatar  from '@mui/material/Avatar';
 import back from '../../../../icons/back.svg'
 import './ImageUpload.css'
 
-function ImageUpload({setSelectedFile, selectedFile, preview, username, photoUrl}) {
+function ImageUpload({setSelectedFile, selectedFile, preview, username, userProfilePic, userId}) {
 	const [caption, setCaption] = useState('');
 	const [progress, setProgress] = useState(0);
 
@@ -44,7 +44,7 @@ function ImageUpload({setSelectedFile, selectedFile, preview, username, photoUrl
 											imageUrl: url,
 											username: username,
 											filename: fileName,
-											photoUrl: photoUrl                              
+											userId: userId
 									});
 
 									setCaption("");
@@ -83,7 +83,7 @@ function ImageUpload({setSelectedFile, selectedFile, preview, username, photoUrl
 							<Avatar
 							alt={username}
 							sx={{ width: 23, height: 23, marginRight: 1 }}
-							src="/static/images/avatar/1.jpg"
+							src={userProfilePic}
 							/>
 							<div>{username}</div>
 						</div>

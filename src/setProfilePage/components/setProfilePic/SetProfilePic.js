@@ -3,7 +3,7 @@ import React,{useState, useEffect, useRef} from 'react'
 import ZoomImage from './ZoomImage'
 import './SetProfilePic.css'
 
-function SetProfilePic({switchSkip, getFile}) {
+function SetProfilePic({photoUrl, switchSkip, getFile}) {
 
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
@@ -48,7 +48,11 @@ function SetProfilePic({switchSkip, getFile}) {
             <div className="sPP__box">
                     {selectedFile ? 
                         (<ZoomImage ref={clickRef} image={preview} getNewImage={getNewImage} />):
-                        (<Avatar sx={{ width: 200, height: 200 }} />)
+                        photoUrl ? (
+                            (<Avatar sx={{ width: 200, height: 200 }} src={photoUrl} />)
+                        ) : (
+                            (<Avatar sx={{ width: 200, height: 200 }} />)
+                        )
                     }
 
                 <div className="sPP__textContainer">

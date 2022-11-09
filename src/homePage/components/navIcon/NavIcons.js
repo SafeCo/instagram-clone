@@ -11,7 +11,7 @@ import PostIcon from '../../../icons/PostIcon'
 import ExploreIcon from '../../../icons/ExploreIcon'
 import HeartIcon from '../../../icons/HeartIcon'
 
-function NavIcons({username, profilePic}) {
+function NavIcons({username, userProfilePic, userId}) {
 	const [modalChild, setModalChild]= useState("")
 	const [modalOpen, setModalOpen] = useState(false)
 
@@ -65,7 +65,8 @@ function NavIcons({username, profilePic}) {
 				setModalChild(
 					<ImageSelect
 						username={username}
-                        photoUrl={profilePic}
+                        userProfilePic={userProfilePic}
+                        userId={userId}
 					/>
 					)
 				break;
@@ -136,10 +137,10 @@ function NavIcons({username, profilePic}) {
                 <Avatar
                 className="app__headerIcon"
                 alt={
-                    profilePic? profilePic : username
+                    userProfilePic? userProfilePic : username
                 }
                 sx={{ width: 23, height: 23 }}
-                src={profilePic}
+                src={userProfilePic}
                 />
             </div>
             
