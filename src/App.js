@@ -1,11 +1,11 @@
 import React from 'react'
 import './App.css'
 import { Routes, Route } from "react-router-dom";
-import LoginPage from './LoginPage'
-import HomePage from './HomePage'
+import LoginPage from './loginPage/LoginPage'
+import HomePage from './homePage/HomePage'
 import { ProtectedRoute } from "./ProtectedRoute";
 import {AuthProvider} from "./hooks/useAuth"
-import SetProfilePage from './SetProfilePage';
+import SetProfilePage from './setProfilePage/SetProfilePage';
 
 function App() {
   return (
