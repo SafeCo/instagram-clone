@@ -92,7 +92,7 @@ function HomePage() {
 						<div className="app__posts">
 								{
 									posts.map(({id, post}) =>(
-										<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} postPhotoUrl={post.photoUrl} userId={post.userId}/>
+										<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} userId={post.userId}/>
 									))
 								}
 						</div>

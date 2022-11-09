@@ -8,9 +8,9 @@ import { db } from '../../../../firebase';
 
 
 function ViewComments({ user, caption, postId, username, imageUrl, postPhotoUrl}) {
-
+	//Component used by Post.js
+	
 	const [comments, setComments] = useState([]);
-
 
 	useEffect(()=> {
 		let unsubscribe;

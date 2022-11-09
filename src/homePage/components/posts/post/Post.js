@@ -8,7 +8,7 @@ import ViewComments from '../viewComments/ViewComments';
 import PostIcons from '../postIcons/PostIcons';
 import AddComment from '../addComments/AddComment';
 
-function Post({filename, postId, user, username, caption, imageUrl, postPhotoUrl, userId}) {
+function Post({filename, postId, user, username, caption, imageUrl, userId}) {
   const [comments, setComments] = useState([]);
   const [reducedComments, setReducedComments] = useState([])
   const [modalChild, setModalChild]= useState("")
@@ -32,7 +32,7 @@ function Post({filename, postId, user, username, caption, imageUrl, postPhotoUrl
         setModalChild(
           <ViewComments 
           user={user}
-          postPhotoUrl={postPhotoUrl}
+          postPhotoUrl={profilePic}
           caption={caption}
           postId={postId}
           username={username}

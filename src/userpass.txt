@@ -10,6 +10,7 @@ email: tester1234@mail.com
 pass: tester1234 
 
 OVERALLL TODO LIST
+
 1. Make a profile picture component for sign up?
 2. make a loading screen... Sort of done child componenets ha
  3. followers and saved for users?
