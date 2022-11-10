@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import Avatar from "@mui/material/Avatar"
+import './NavIcons.css'
 
 
 //Components
@@ -85,24 +86,24 @@ function NavIcons({username, userProfilePic, userId}) {
             </ModalWrapper>
 		}
 
-        <div className="app__headerIcons">
-            <div className="app__headerIconContainer">
-                <button name="home" onClick={(e)=>{setHistory(); updateButtonState(e)}} className="app__headerIconButton" >
+        <div className="nI__headerIcons">
+            <div className="nI__headerIconContainer">
+                <button name="home" onClick={(e)=>{setHistory(); updateButtonState(e)}} className="nI__headerIconButton" >
                     <HomeIcon buttonState={buttonState[0]}/>
                 </button>
      
             </div>
             
-            <div className="app__headerIconContainer">
+            <div className="nI__headerIconContainer">
                 <button 
                     name="send"  
                     onClick={(e)=>{setHistory(); updateButtonState(e)}} 
-                    className="app__headerIconButton" >
+                    className="nI__headerIconButton" >
                         <SendIcon buttonState={buttonState[1]}/>
                 </button>
             </div>
 
-            <div className="app__headerIconContainer">
+            <div className="nI__headerIconContainer">
                 <button 
                     name="post" 
                     onClick={(e) => { 
@@ -110,32 +111,32 @@ function NavIcons({username, userProfilePic, userId}) {
                     updateButtonState(e);
                     modalSwitchOpen(e)
                 }} 
-				className="app__headerIconButton">
-                    {/* <img name="post" className="app__headerIcon" src={post} alt='post button'/> */}
+				className="nI__headerIconButton">
+                    {/* <img name="post" className="nI__headerIcon" src={post} alt='post button'/> */}
                     <PostIcon buttonState={buttonState[2]} />
                 </button>
             </div>
 
-            <div className="app__headerIconContainer">
+            <div className="nI__headerIconContainer">
                 <button 
                     name="explore" 
                     onClick={(e)=>{setHistory(); updateButtonState(e)}} 
-                    className="app__headerIconButton" >
+                    className="nI__headerIconButton" >
                     <ExploreIcon buttonState={buttonState[3]}/>
                 </button>
             </div>
 
-            <div className="app__headerIconContainer">
+            <div className="nI__headerIconContainer">
                 <button 
                     name="heart" 
                     onClick={(e)=>{setHistory(); updateButtonState(e)}} 
-                    className="app__headerIconButton" >
+                    className="nI__headerIconButton" >
                     <HeartIcon buttonState={buttonState[4]}/>
                 </button>
             </div>
-            <div className="app__headerIconContainer">
+            <div className="nI__headerIconContainer">
                 <Avatar
-                className="app__headerIcon"
+                className="nI__headerIcon"
                 alt={
                     userProfilePic? userProfilePic : username
                 }

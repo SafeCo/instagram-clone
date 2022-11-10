@@ -1,0 +1,19 @@
+.nI__headerIcons{
+    display: flex;
+    align-items: center;    
+    justify-content: flex-end;
+}
+
+.nI__headerIconContainer{
+    padding-left: 25px;
+}
+
+.nI__headerIconButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
