@@ -1,0 +1,39 @@
+.nB__headerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white ;
+    border-bottom: 1px solid lightgray;
+    width: 100%;
+}
+.nB__header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    height: 60px;
+    width: 970px;
+    object-fit: contain;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+}
+.nB__headerImageFlex{
+    display: flex;
+    flex: 1 0 127px;
+    margin-top: 7px;
+}
+.nB__headerImage {
+    height: 30px;  
+    display: flex;
+    flex: 0 0 auto;  
+}
+
+.nB__header__searchBarFlex{
+    display: flex;
+    flex: 0 1 auto;
+}
+
+.nB__headerIconsFlex{
+    flex: 1 0 127px;
+}

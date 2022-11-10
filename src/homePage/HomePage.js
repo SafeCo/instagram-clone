@@ -8,6 +8,7 @@ import InstaLogo from '../instagram-text-icon.svg'
 import ReelCarousel from './components/reelCarousel/ReelCarousel';
 import NavIcons from './components/navIcon/NavIcons';
 import SearchBar from './components/searchBar/SearchBar';
+import NavBar from './components/navBar/NavBar';
 
 
 
@@ -64,26 +65,7 @@ function HomePage() {
 
 	return (
 		<>
-			<nav className='app__headerContainer'>
-				<div className="app__header">
-					<div className="app__headerImageFlex">
-						<img
-							className="app__headerImage"
-							src={InstaLogo}
-							alt="instagram logo"
-						/>
-					</div>
-
-					<div className="app__header__searchBarFlex">
-						<SearchBar/>
-					</div>  
-						
-					<div className="app__headerIconsFlex">
-						<NavIcons userProfilePic={user.photoURL} username={user.displayName} userId={user.uid}/>
-					</div>
-				</div>	
-			</nav>
-			
+			<NavBar userProfilePic={user.photoURL} username={user.displayName} userId={user.uid} />
 
 			<main className="app__main">
 				<section className="app__section">
