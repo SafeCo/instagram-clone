@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   // Having issue as the data is stored on LOCAL STORAGE not state
   const login = async (data) => {
     setUser(data);
-    navigate("/home")
+    navigate("/")
   };
 
   // call this function to sign out logged in user
@@ -33,7 +33,9 @@ export const AuthProvider = ({ children }) => {
     }),
     [user]
   );
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return  <AuthContext.Provider value={value}>
+            {children}
+          </AuthContext.Provider>;
 };
 
 export const useAuth = () => {
