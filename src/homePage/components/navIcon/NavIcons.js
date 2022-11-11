@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import Avatar from "@mui/material/Avatar"
 import './NavIcons.css'
+import { Link } from 'react-router-dom'
 
 
 //Components
@@ -89,7 +90,9 @@ function NavIcons({username, userProfilePic, userId}) {
         <div className="nI__headerIcons">
             <div className="nI__headerIconContainer">
                 <button name="home" onClick={(e)=>{setHistory(); updateButtonState(e)}} className="nI__headerIconButton" >
-                    <HomeIcon buttonState={buttonState[0]}/>
+                    <Link to="/">
+                        <HomeIcon buttonState={buttonState[0]}/>
+                    </Link>
                 </button>
      
             </div>
@@ -135,14 +138,23 @@ function NavIcons({username, userProfilePic, userId}) {
                 </button>
             </div>
             <div className="nI__headerIconContainer">
-                <Avatar
-                className="nI__headerIcon"
-                alt={
-                    userProfilePic? userProfilePic : username
-                }
-                sx={{ width: 23, height: 23 }}
-                src={userProfilePic}
-                />
+                <Link to="addprofile">
+                    <button
+                    name="profile" 
+                    onClick={(e)=>{setHistory(); updateButtonState(e)}} 
+                    className="nI__headerIconButton" 
+                    >
+                        <Avatar
+                        className="nI__headerIcon"
+                        alt={
+                            userProfilePic? userProfilePic : username
+                        }
+                        sx={{ width: 23, height: 23 }}
+                        src={userProfilePic}
+                        />    
+                    </button>
+                    
+                </Link>
             </div>
             
         </div>

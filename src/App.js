@@ -7,6 +7,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import {AuthProvider} from "./hooks/useAuth"
 import SetProfilePage from './setProfilePage/SetProfilePage';
 import TestNav from './TestNav'
+import NavBar from './homePage/components/navBar/NavBar';
 function App() {
   return (
 
@@ -15,7 +16,7 @@ function App() {
     <AuthProvider>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<TestNav/>}>
+        <Route path="/" element={ <NavBar/> }>
           <Route path="/" element={
           <ProtectedRoute>
             <HomePage />

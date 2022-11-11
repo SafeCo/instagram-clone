@@ -65,7 +65,7 @@ function HomePage() {
 
 	return (
 		<>
-			<NavBar userProfilePic={user.photoURL} username={user.displayName} userId={user.uid} />
+			{/* <NavBar userProfilePic={user.photoURL} username={user.displayName} userId={user.uid} /> */}
 
 			<main className="app__main">
 				<section className="app__section">
