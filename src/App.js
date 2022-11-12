@@ -12,7 +12,6 @@ function App() {
   return (
 
 
-    // NEED TO GIVE TESTNAV PROPS FROM LOGGING IN 
     <AuthProvider>
       <Routes>
         <Route path="/login" element={<LoginPage />} />

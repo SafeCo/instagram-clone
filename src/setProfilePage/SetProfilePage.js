@@ -1,5 +1,8 @@
 import React,{useState, useEffect} from 'react'
+import { useOutletContext } from 'react-router-dom';
+
 import {auth } from '../firebase';
+
 
 import './SetProfilePage.css'
 import SetProfileBio from './components/setProfileBio/SetProfileBio'
@@ -11,6 +14,14 @@ function SetProfilePage() {
     const [newImage, setNewImage] =useState()
     const [file, setFile] = useState()
     const [user, setUser]= useState([])
+    const {navBarHeight} = useOutletContext()
+
+
+        // To get the height of the Navbar to minus from the outlet page height
+    useEffect(()=>{
+        document.documentElement.style.setProperty('--navBarHeight', (navBarHeight + 1 )+ "px");
+	},[navBarHeight])
+
 
 	useEffect(()=>{
 		auth.onAuthStateChanged((userObj)=>{
@@ -19,6 +30,7 @@ function SetProfilePage() {
 			}
 		})
 	},[])
+
 
 
     const switchSkip = ()=>{
