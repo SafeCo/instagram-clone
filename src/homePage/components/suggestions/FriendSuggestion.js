@@ -106,4 +106,5 @@ const FriendSuggestion = ({profileUsername, userPhotoUrl}) => {
   )
 }
 
+
 export default FriendSuggestion

@@ -1,14 +1,10 @@
-import React, {useEffect, useRef, useState, useContext} from 'react'; 
+import React, {useEffect, useRef, useState } from 'react'; 
 import './HomePage.css';
 import Post from './components/posts/post/Post';
-import AuthContext from '../hooks/useAuth'
 import FriendSuggestion from './components/suggestions/FriendSuggestion';
 import { db, auth } from '../firebase';
-import InstaLogo from '../instagram-text-icon.svg'
 import ReelCarousel from './components/reelCarousel/ReelCarousel';
-import NavIcons from './components/navIcon/NavIcons';
-import SearchBar from './components/searchBar/SearchBar';
-import NavBar from './components/navBar/NavBar';
+
 
 
 
@@ -24,7 +20,6 @@ function HomePage() {
 	// const { user } = useContext(AuthContext);
 	
 	const [posts, setPosts] = useState([]);
-	const [suggestion, setSuggestion] = useState([]);
 
 	const shouldLogOne = useRef(true)
 	const shouldLogTwo = useRef(true)
@@ -69,16 +64,16 @@ function HomePage() {
 
 			<main className="app__main">
 				<section className="app__section">
-				<div className="app__sectionLeft">
-							<ReelCarousel />
-						<div className="app__posts">
-								{
-									posts.map(({id, post}) =>(
-										<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} userId={post.userId}/>
-									))
-								}
-						</div>
-				</div>
+					<div className="app__sectionLeft">
+								<ReelCarousel />
+							<div className="app__posts">
+									{
+										posts.map(({id, post}) =>(
+											<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} userId={post.userId}/>
+										))
+									}
+							</div>
+					</div>
 					
 
 

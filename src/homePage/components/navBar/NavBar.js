@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useOutletContext} from 'react'
+import React, {useState, useEffect} from 'react'
 import './NavBar.css'
 import AuthContext from '../../../hooks/useAuth'
 
@@ -17,14 +17,10 @@ import { Outlet } from 'react-router-dom'
 function NavBar() {
 
     // To find out the height of the Navbar to minus from the outlet page height.
-    const navBarRef = useRef(null)
-    const [navBarHeight, setNavBarHeight] = useState()
 
     const [user, setUser]= useState([])
 	useEffect(()=>{
-        setNavBarHeight(
-            navBarRef.current.clientHeight
-        )
+        
 		auth.onAuthStateChanged((userObj)=>{
 			if(userObj){
 				setUser(userObj)
@@ -35,7 +31,7 @@ function NavBar() {
 
     return (
         <>
-            <nav ref={navBarRef} className='nB__headerContainer'>
+            <nav className='nB__headerContainer'>
                 <div className="nB__header">
                     <div className="nB__headerImageFlex">
                         <img
@@ -54,7 +50,7 @@ function NavBar() {
                     </div>
                 </div>	
             </nav>
-            <Outlet context={{navBarHeight}} />
+            <Outlet />
         </>
         
     )
