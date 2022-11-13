@@ -9,17 +9,25 @@ function ProfilePage() {
             <header className="pP__header__container">
                 <div className="pP__profilePic__container">
                     <div className="pP__profilePic__buttonContainer">
-                        <button>
+                        <button className="pP__profilePic__button">
                             <Avatar
                             alt="Remy Sharp"
                             src="/static/images/avatar/1.jpg"
                             sx={{ width: 150, height: 150 }}
                             />
                         </button>
-                    </div>
-                    
-                    
+                    </div>                    
                 </div>
+                <section className="pP__profileInfo__container">
+                    <div className="pP__profileInfo__firstRow" >
+                        <h2 className="firstRow__name" >USERNAME</h2>
+                        <div className="firstRow__editButtonContainer" >
+                            <button>
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                </section>
 
             </header>
         </main>
