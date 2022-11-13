@@ -2,6 +2,10 @@
     --navBarHeight: 0px
 }
 
+body{
+    overflow-y: scroll;
+}
+
 .sPPage__container{
     height: calc(100vh - 61px);
     display: flex;

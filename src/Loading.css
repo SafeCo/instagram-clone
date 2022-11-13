@@ -4,16 +4,23 @@
 
 
 .loading__container{
-    background-color: red;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: white;
+   
     height: calc(100vh - 61px);
     width: 100%;
 }
 
-.loading__logo{
-    height: 100px;
-    width: 100px;
+.loading__loaderContainer{
+    width: 100%;
+    height: 3px;
 }
+.loading__loader{
+    background: #fdfd2e; 
+    background: -moz-linear-gradient(45deg, #fdfd2e 0%,#e6683c 25%,#ff2d4d 50%,#cc2366 75%,#ae478d 100%); 
+    background: -webkit-linear-gradient(45deg, #fdfd2e 0%,#e6683c 25%,#ff2d4d 50%,#cc2366 75%,#ae478d 100%); 
+    background: linear-gradient(45deg, #fdfd2e 0%,#e6683c 25%,#ff2d4d 50%,#cc2366 75%,#ae478d 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    
+    height: 100%;
+}
+

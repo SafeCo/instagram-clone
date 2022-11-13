@@ -131,12 +131,14 @@ function NavIcons({username, userProfilePic, userId}) {
             </div>
 
             <div className="nI__headerIconContainer">
-                <button 
-                    name="heart" 
-                    onClick={(e)=>{setHistory(); updateButtonState(e)}} 
-                    className="nI__headerIconButton" >
-                    <HeartIcon buttonState={buttonState[4]}/>
-                </button>
+                <Link to="profile">
+                    <button 
+                        name="heart" 
+                        onClick={(e)=>{setHistory(); updateButtonState(e)}} 
+                        className="nI__headerIconButton" >
+                        <HeartIcon buttonState={buttonState[4]}/>
+                    </button>
+                </Link>
             </div>
             <div className="nI__headerIconContainer">
                 <Link to="addprofile">

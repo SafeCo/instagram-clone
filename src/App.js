@@ -11,11 +11,10 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import {AuthProvider} from "./hooks/useAuth"
 import NavBar from './navBar/NavBar';
 import Loading from './Loading';
-import Spinner from './Spinner';
-
 
 const HomePage = lazy(() => import('./homePage/HomePage'))
 const SetProfilePage = lazy(() => import('./setProfilePage/SetProfilePage'))
+const ProfilePage  = lazy(() => import('./profilePage/ProfilePage'))
 
 
 
@@ -26,7 +25,9 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
+
           <Route path="/" element={ <NavBar/> }>
+
             <Route path="/" element={
             <ProtectedRoute>
               <Suspense fallback={<Loading/>}>
@@ -34,6 +35,7 @@ function App() {
               </Suspense>
             </ProtectedRoute>
             } />
+
             <Route path="/addprofile" element={
               <ProtectedRoute>
                 <Suspense fallback={<Loading/>}>
@@ -41,6 +43,15 @@ function App() {
                 </Suspense>
               </ProtectedRoute>
             } />
+
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <Suspense fallback={<Loading/>}>
+                  <ProfilePage />
+                </Suspense>
+              </ProtectedRoute>
+            } />
+
           </Route>
           
         </Routes>
