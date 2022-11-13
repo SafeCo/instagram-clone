@@ -1,19 +1,12 @@
 import React, {useEffect, useRef, useState, lazy, Suspense } from 'react'; 
 import './HomePage.css';
-// import Post from './components/posts/post/Post';
 import FriendSuggestion from './components/suggestions/FriendSuggestion';
 import { db, auth } from '../firebase';
 import ReelCarousel from './components/reelCarousel/ReelCarousel';
-import Spinner from '../Spinner';
-import LazyPost from '../LazyPost';
+import LazyPost from './components/lazyComponents/LazyPost';
 
-
-// import Post from './components/posts/post/Post';
 
 const Post = lazy(() => import('./components/posts/post/Post'))
-
-
-
 
 
 
@@ -74,12 +67,11 @@ function HomePage() {
 					<div className="app__sectionLeft">
 								<ReelCarousel />
 							<div className="app__posts">
-								<LazyPost/>
 									{
 										
 										posts.map(({id, post}) =>(
-											<Suspense fallback={ <Spinner/> } >
-											<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} userId={post.userId}/>
+											<Suspense fallback={ <LazyPost/> } >
+												<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} userId={post.userId}/>
 											</Suspense>
 										))
 									}

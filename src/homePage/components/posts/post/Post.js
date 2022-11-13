@@ -7,6 +7,7 @@ import ModalWrapper from '../../modalWrapper/ModalWrapper';
 import ViewComments from '../viewComments/ViewComments';
 import PostIcons from '../postIcons/PostIcons';
 import AddComment from '../addComments/AddComment';
+import {motion} from "framer-motion";
 
 function Post({filename, postId, user, username, caption, imageUrl, userId}) {
   const [comments, setComments] = useState([]);
@@ -100,7 +101,10 @@ function Post({filename, postId, user, username, caption, imageUrl, userId}) {
         {modalChild}
       </ModalWrapper>
     }
-    <div key={postId} className="post">
+    <motion.div 
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      key={postId} className="post">
       <div className="post__header" >
         <div className="post__headerProfile">
         {
@@ -159,7 +163,7 @@ function Post({filename, postId, user, username, caption, imageUrl, userId}) {
               : null
           }
           <AddComment  postId={postId} user={user}/>             
-    </div>
+    </motion.div>
     </>
   )
 }

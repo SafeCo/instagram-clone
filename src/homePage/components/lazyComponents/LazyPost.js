@@ -1,6 +1,6 @@
 import React from 'react'
 import './LazyPost.css'
-import { Avatar } from '@mui/material'
+
 
 function LazyPost() {
     return (

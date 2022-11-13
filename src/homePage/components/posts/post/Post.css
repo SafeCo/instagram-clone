@@ -3,6 +3,7 @@
     border: 1px solid lightgray;
     margin-top: 16px;
     border-radius: 8px;
+    min-width: 470px;
 }
 .post__image{
     width: 100%;
