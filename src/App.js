@@ -11,6 +11,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import {AuthProvider} from "./hooks/useAuth"
 import NavBar from './homePage/components/navBar/NavBar';
 import Loading from './Loading';
+import Spinner from './Spinner';
 
 
 const HomePage = lazy(() => import('./homePage/HomePage'))
@@ -44,7 +45,6 @@ function App() {
           
         </Routes>
       </AuthProvider>
-  
     </>
     
  
