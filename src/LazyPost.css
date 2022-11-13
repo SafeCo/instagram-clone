@@ -1,48 +1,52 @@
-.post{
+.lazyPost{
     background-color: white;
     border: 1px solid lightgray;
     margin-top: 16px;
     border-radius: 8px;
+    width: 470px;
+    height: 500px;
 }
-.post__image{
+.lazyPost__image{
     width: 100%;
+    height: 100%;
+    background-color: lightgrey;
     object-fit: contain;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
 }
 
-.post__iconBar{
+.lazyPost__iconBar{
     margin-top: 4px;
     display: flex;
     flex-direction: row;
   
 }
 
-.post__iconBar__img{
+.lazyPost__iconBar__img{
     object-fit: contain;
 }
-.post__iconBar__iconContainer{
+.lazyPost__iconBar__iconContainer{
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.post__iconBar__iconContainer button{
+.lazyPost__iconBar__iconContainer button{
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.post__iconBar__Icon{
+.lazyPost__iconBar__Icon{
     height: 23px;
 
 }
 
-.post__iconBar :nth-child(4){
+.lazyPost__iconBar :nth-child(4){
     margin-left: auto;
 }
 
 
-.post__header{
+.lazyPost__header{
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -50,7 +54,7 @@
    justify-content: space-between;
 }
 
-.post__headerProfile{
+.lazyPost__headerProfile{
     margin: 8px 4px 8px 12px;
     display: flex;
     flex-direction: row;
@@ -59,13 +63,13 @@
     flex-shrink: 1;
 }
 
-.post__headerButtonContainer{
+.lazyPost__headerButtonContainer{
     display: flex;
     justify-content: center;
     align-items: center;
     padding-right: 4px;
 }
-.post__headerButton{
+.lazyPost__headerButton{
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -75,24 +79,27 @@
     
 }
 
-.post__avatar{
+.lazyPost__avatar{
+    border-radius: 50%;
+    background-color: lightgray;
     margin-right: 10px;
     height: 30px;
 	width: 30px;
 }
 
-.post__username{
-    font-size: 14px;
-    font-weight: 600;
+.lazyPost__username{
+    background-color: lightgray;
+    width: 100px;
+    height: 18px;
 }
 
-.post__comments {
+.lazyPost__comments {
     padding: 10px;
     font-size: 14px;
     font-weight: 400;
 }
 
-.post__viewAll{
+.lazyPost__viewAll{
     cursor: pointer;
     border: none;
     background-color: transparent;
@@ -101,6 +108,4 @@
     font-weight: 400;
     margin-left: 10px;
 }
-
-
 
