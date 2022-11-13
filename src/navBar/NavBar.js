@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import './NavBar.css'
-import AuthContext from '../../../hooks/useAuth'
+import AuthContext from '../hooks/useAuth'
 
-import InstaLogo from '../../../instagram-text-icon.svg'
-import SearchBar from '../searchBar/SearchBar'
-import NavIcons from '../navIcon/NavIcons'
+import InstaLogo from '../instagram-text-icon.svg'
+import SearchBar from '../homePage/components/searchBar/SearchBar'
+import NavIcons from './navIcon/NavIcons'
 
-import { auth } from '../../../firebase';
+import { auth } from '../firebase';
 import { Outlet } from 'react-router-dom'
 
 

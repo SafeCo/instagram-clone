@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
-import {storage, db } from "../../../../firebase"; 
+import {storage, db } from "../../../firebase"; 
 import firebase from 'firebase/compat/app';
 import Avatar  from '@mui/material/Avatar';
-import back from '../../../../icons/back.svg'
+import back from '../../../icons/back.svg'
 import './ImageUpload.css'
 
 function ImageUpload({setSelectedFile, selectedFile, preview, username, userProfilePic, userId}) {

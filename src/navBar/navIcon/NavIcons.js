@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom'
 
 
 //Components
-import HomeIcon from '../../../icons/HomeIcon'
-import ModalWrapper from '../modalWrapper/ModalWrapper'
+import ModalWrapper from '../../globalComponents/modalWrapper/ModalWrapper';
 import ImageSelect from '../uploadImage/imageSelect/ImageSelect'
-import SendIcon from '../../../icons/SendIcon'
-import PostIcon from '../../../icons/PostIcon'
-import ExploreIcon from '../../../icons/ExploreIcon'
-import HeartIcon from '../../../icons/HeartIcon'
+
+import HomeIcon from '../../icons/HomeIcon'
+import SendIcon from '../../icons/SendIcon'
+import PostIcon from '../../icons/PostIcon'
+import ExploreIcon from '../../icons/ExploreIcon'
+import HeartIcon from '../../icons/HeartIcon'
 
 function NavIcons({username, userProfilePic, userId}) {
 	const [modalChild, setModalChild]= useState("")

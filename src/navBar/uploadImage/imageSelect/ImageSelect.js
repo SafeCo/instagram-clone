@@ -3,7 +3,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import postImage from '../postimage.svg'
 import './ImageSelect.css'
 import ImageUpload from '../imageUpload/ImageUpload'
-import back from '../../../../icons/back.svg'
+import back from '../../../icons/back.svg'
 
 function ImageSelect({username, userProfilePic, userId}) {
   const [selectedFile, setSelectedFile] = useState()

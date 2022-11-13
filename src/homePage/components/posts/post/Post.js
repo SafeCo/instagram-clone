@@ -3,7 +3,7 @@ import './Post.css';
 import Avatar from "@mui/material/Avatar"
 import { db } from '../../../../firebase';
 import DeleteModal from '../deleteModal/DeleteModal';
-import ModalWrapper from '../../modalWrapper/ModalWrapper';
+import ModalWrapper from '../../../../globalComponents/modalWrapper/ModalWrapper';
 import ViewComments from '../viewComments/ViewComments';
 import PostIcons from '../postIcons/PostIcons';
 import AddComment from '../addComments/AddComment';
