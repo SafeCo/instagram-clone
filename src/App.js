@@ -1,16 +1,21 @@
 import React, { lazy, Suspense } from 'react'
 import './App.css'
 import { Routes, Route } from "react-router-dom";
+
+//PAGES
 import LoginPage from './loginPage/LoginPage'
 // import HomePage from './homePage/HomePage'
+// import SetProfilePage from './setProfilePage/SetProfilePage';
+
 import { ProtectedRoute } from "./ProtectedRoute";
 import {AuthProvider} from "./hooks/useAuth"
-import SetProfilePage from './setProfilePage/SetProfilePage';
 import NavBar from './homePage/components/navBar/NavBar';
 import Loading from './Loading';
 
 
 const HomePage = lazy(() => import('./homePage/HomePage'))
+const SetProfilePage = lazy(() => import('./setProfilePage/SetProfilePage'))
+
 
 
 function App() {
