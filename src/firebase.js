@@ -15,6 +15,7 @@ import { initializeApp } from "firebase/app"
     measurementId: "G-WBTHGQ0GF3"
   });
 
+  
   const db = firebaseApp.firestore();
   const auth = firebase.auth();
   const storage = firebase.storage();

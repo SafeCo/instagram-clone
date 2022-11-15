@@ -23,8 +23,6 @@ function HomePage() {
 
 	const shouldLogOne = useRef(true)
 	const shouldLogTwo = useRef(true)
-
-	
 	
 	//  None of the Firebase Authentication APIs cost money, except for phone authentication after the free monthly quota has been exhausted
 
@@ -32,7 +30,6 @@ function HomePage() {
 	useEffect(()=>{
 		auth.onAuthStateChanged((userObj)=>{
 			if(userObj){
-				console.log("authstatechanged")
 				setUser(userObj)
 			}
 		})
@@ -44,7 +41,6 @@ function HomePage() {
 	useEffect(()=>{
 		if(shouldLogTwo.current){
 				shouldLogTwo.current = false;
-				console.log("use effect 2")
 				db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
 				setPosts(snapshot.docs.map(doc => ({
 				id: doc.id,
@@ -52,6 +48,7 @@ function HomePage() {
 				})));
 		})}
 		}, []);
+
 
 	
 	// Each element like insta logo, search bar and icons have their container within the main contianer

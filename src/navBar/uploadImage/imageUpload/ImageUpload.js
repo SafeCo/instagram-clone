@@ -45,7 +45,15 @@ function ImageUpload({setSelectedFile, selectedFile, preview, username, userProf
 											username: username,
 											filename: fileName,
 											userId: userId
-									});
+									})
+							.then(docRef =>{
+								// check if array exists as field value in the username doc if it doesnt then create
+								// after creating update the array with the docRefId
+								db.collection("usernames").doc(userId).update({
+									posts: firebase.firestore.FieldValue.arrayUnion(docRef.id)
+								});
+							})
+					
 
 									setCaption("");
 									setProgress(0)

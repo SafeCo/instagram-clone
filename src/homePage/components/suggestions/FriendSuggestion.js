@@ -62,7 +62,6 @@ const FriendSuggestion = ({profileUsername, userPhotoUrl}) => {
     }
   })
 
-  console.log(filteredList)
 
   return (
     <>
