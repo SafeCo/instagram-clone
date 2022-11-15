@@ -8,6 +8,8 @@ import postIcon from '../icons/postIcons.svg'
 import saveIcon from '../icons/save.svg'
 import taggedIcon from '../icons/taggedIcon.svg'
 
+import testImage from './diamond.png'
+
 function ProfilePage() {
   return (
     <section className="pP__page__container" >
@@ -96,7 +98,36 @@ function ProfilePage() {
                         <span className="category__name"  >TAGGED</span>
                     </div>
                 </div>
+            </div>
+            <div className="pP__posts__container">
+                <div className="pP__posts__collection">
+                    <div className="pP__posts__row" >
+                        <div className="pP__post__container" >
+                                <img  className="pP__post__image" src={testImage}  />
+                        </div>
+                        <div className="pP__post__container" >
+                                <img  className="pP__post__image" src={testImage}  />
+                        </div>
+                        <div className="pP__post__container" >
+                                <img  className="pP__post__image" src={testImage}  />
+                        </div>
+                    </div>
+                    <div className="pP__posts__row" >
+                        <div className="pP__post__container" >
+                            <div className="pP__post">Square</div>
+                        </div>
+                        <div className="pP__post__container" >
+                            <div className="pP__post">Square</div>
+                        </div>
+                        <div className="pP__post__container" >
+                            <div className="pP__post">Square</div>
+                        </div>
+                        
 
+                    </div>
+
+                </div>
+                
             </div>
 
 

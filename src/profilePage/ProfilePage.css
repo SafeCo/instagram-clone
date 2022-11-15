@@ -1,14 +1,11 @@
 
 .pP__page__container{
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid red 3px;
 }
 
 .pP__content__container{
-    border: solid blue 2px; 
     flex-grow: 1;
     margin: 0 auto 30px;
     max-width: 935px;
@@ -274,17 +271,62 @@
     .pP__categories:not(:last-child)   {
         margin-right: 60px;
     }
-  
-
-
 }
 
 
-@media (max-width: 736px) {
-    .category__name{
-        display: none;
-    }
 
+
+.pP__posts__container{
+    border: solid black 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pP__posts__collection{
+    border: solid orange 2px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.pP__posts__row{
+    border: solid green 3px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    justify-content: space-around;
+}
+
+.pP__post__container{
+    border: solid red 2px;
+    display: flex;
+    max-width: 280px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    justify-content: center;
+    aspect-ratio: 1/1;
+
+    
+}
+
+
+
+
+
+.pP__post__image{
+    max-height: 100%;
+}
+
+
+
+@media (min-width: 736px) {
+    .pP__post__container:not(:last-child){
+        margin-right: 28px;
+    }
+    .pP__posts__row{
+        margin-bottom: 28px;
+    }
 }
 
 

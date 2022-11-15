@@ -37,3 +37,10 @@
 .nB__headerIconsFlex{
     flex: 1 0 127px;
 }
+
+@media (max-width: 736px) {
+    .nB__header__searchBarFlex{
+        display: none;
+    }
+    
+}
