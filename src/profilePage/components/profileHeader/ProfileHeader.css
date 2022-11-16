@@ -61,7 +61,6 @@
 /* SORT OUT  edit BUTTON CONTAINER BELOW */
 
 .firstRow__editButtonContainer{
-    border: solid green 1px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -69,9 +68,11 @@
     flex: 0 1 auto;
     justify-content: flex-start;
     margin-left: 20px;
+    max-width: 250px;
 }
 
 .firstRow__editButton{
+    width: 100%;
     align-items: center;
     border-radius: 4px;
     border: solid lightgray 1px;
@@ -130,8 +131,6 @@
     margin-right:  40px;
 }
 
-
-
 .pH__profileInfo__thirdRow{
     border: solid yellow 1px;
 }
@@ -142,5 +141,12 @@
     line-height: 24px;
 }
 
+
+@media (max-width: 768px) {
+    .firstRow__editButtonContainer{
+        margin-left: 0px;
+    }
+
+}
 
 

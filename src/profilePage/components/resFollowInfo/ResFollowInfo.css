@@ -8,9 +8,7 @@
     justify-content: center;
 }
 
-.resFollowInfo__posts{
-    margin-right:  40px;
-}
+
 
 .resFollowInfo__text{
     display: flex;
@@ -25,13 +23,18 @@
     font-weight: 600;
 }
 
-.resFollowInfo__followers{
-    margin-right:  40px;
-}
 
 .spread{
     display: flex;
     flex-grow: 1;
     flex-shrink: 1;
     justify-content: center;
+}
+
+
+
+@media (min-width: 768px){
+    .spread:not(:last-child){
+        margin-right: 40px;
+    }
 }
