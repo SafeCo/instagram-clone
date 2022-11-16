@@ -46,9 +46,8 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
           }
       );
       
-      console.log(user.photoURL)
 
-      navigate("/home")
+      navigate("/")
     
     }
     

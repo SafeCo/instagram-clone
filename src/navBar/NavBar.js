@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import './NavBar.css'
-import AuthContext from '../hooks/useAuth'
 
 import InstaLogo from '../instagram-text-icon.svg'
 import SearchBar from '../homePage/components/searchBar/SearchBar'
@@ -50,7 +49,7 @@ function NavBar() {
                     </div>
                 </div>	
             </nav>
-            <Outlet />
+            <Outlet context={[user, setUser]} />
         </>
         
     )
