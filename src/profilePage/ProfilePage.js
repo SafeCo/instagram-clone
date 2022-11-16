@@ -1,9 +1,15 @@
 import { Avatar } from '@mui/material'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './ProfilePage.css'
 import { useOutletContext } from 'react-router-dom'
 
+//COMPONENT IMPORTS
+import FollowInfo from './components/followInfo/FollowInfo'
+import ResFollowInfo from './components/resFollowInfo/ResFollowInfo'
+import ProfileHeader from './components/profileHeader/ProfileHeader'
 
+
+//ICON IMPORTS
 import optionsIcon from '../icons/options.svg'
 import plusIcon from '../icons/plus.svg'
 import postIcon from '../icons/postIcons.svg'
@@ -16,10 +22,22 @@ function ProfilePage() {
 
     const [user, setUser] = useOutletContext()
 
+    const [matches, setMatches] = useState(
+        window.matchMedia("(min-width: 768px)").matches
+    )
+    
+    useEffect(() => {
+        window
+        .matchMedia("(min-width: 768px)")
+        .addEventListener('change', e => setMatches( e.matches ));
+    }, []);
+
     return (
         <section className="pP__page__container" >
             <main className="pP__content__container" >
-                <header className="pP__header__container">
+
+                <ProfileHeader/>
+                {/* <header className="pP__header__container">
                     <div className="pP__profilePic__container">
                         <div className="pP__profilePic__buttonContainer">
                             <button className="pP__profilePic__button">
@@ -45,34 +63,16 @@ function ProfilePage() {
                                 </button>
                             </div>
                         </div>
-                        <ul className="pP__profileInfo__secondRow" >
-                            <li className="secondRow__posts" >
-                                <div className="secondRow__text">
-                                    <span className="secondRow__num" >!! </span>
-                                    posts
-                                </div>
-                            </li>
-                            <li className="secondRow__followers" >
-                                <div className="secondRow__text">
-                                    <span className="secondRow__num" >!! </span>
-                                    followers
-                                </div>
-                            </li>
-                            <li className="secondRow__following" >
-                                <div className="secondRow__text">
-                                    <span className="secondRow__num" >!! </span>
-                                    following
-                                </div>
-                            </li>
-                        </ul>
+                        {matches && <FollowInfo/>}
                         <div className="pP__profileInfo__thirdRow" >
                             <div className="thirdRow__caption">
                             BIO SHOULD CONTAIN A MAX OF 150 CHARACTERS
                             </div>
                         </div>
                     </section>
+                </header> */}
 
-                </header>
+
                 <div className="pP__highlights__container" >
                     <div className="highlight__container">
                         <div className="highlight">
@@ -83,6 +83,8 @@ function ProfilePage() {
                         </div>
                     </div>
                 </div>
+
+                {!matches && <ResFollowInfo/>}
 
                 <div className="pP__category__container">
                     <div className="pP__categories borderTop">

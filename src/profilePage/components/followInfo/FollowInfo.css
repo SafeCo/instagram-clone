@@ -1,0 +1,25 @@
+
+.followInfo__container{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    list-style-type: none;
+}
+
+.followInfo__posts{
+    margin-right:  40px;
+}
+
+.followInfo__text{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.followInfo__num{
+    font-weight: 600;
+}
+
+.followInfo__followers{
+    margin-right:  40px;
+}

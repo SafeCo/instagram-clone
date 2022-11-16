@@ -1,0 +1,37 @@
+
+.resFollowInfo__container{
+    border: solid red 1px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    list-style-type: none;
+    justify-content: center;
+}
+
+.resFollowInfo__posts{
+    margin-right:  40px;
+}
+
+.resFollowInfo__text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.resFollowInfo__num{
+    font-weight: 600;
+}
+
+.resFollowInfo__followers{
+    margin-right:  40px;
+}
+
+.spread{
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    justify-content: center;
+}
