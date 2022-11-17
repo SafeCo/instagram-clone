@@ -6,7 +6,7 @@ function SaveIcon({color, height, width}) {
     return (
         <svg 
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="1.3 1.2 21 21"
+            viewBox="0 0 24 24"
             aria-label="Save" 
             color={color} 
             fill="#262626" 

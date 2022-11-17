@@ -10,12 +10,12 @@ import ProfileHeader from './components/profileHeader/ProfileHeader'
 
 //ICON IMPORTS
 import plusIcon from '../icons/plus.svg'
-import postIcon from '../icons/postIcons.svg'
-import saveIcon from '../icons/save.svg'
 import taggedIcon from '../icons/taggedIcon.svg'
 
 import CategoryPost from './components/categoryPost/CategoryPost'
 import SaveIcon from '../icons/SaveIcon'
+import CategoryPostIcon from '../icons/CategoryPostIcon'
+import TaggedIcon from '../icons/TaggedIcon'
 
 function ProfilePage() {
 
@@ -58,32 +58,45 @@ function ProfilePage() {
                 {!matches && <ResFollowInfo/>}
 
                 <div className="pP__category__container">
+
                     <div id={"1"} onClick={handleClick} 
                     className={active === "1" ? "pP__categories active":"pP__categories" 
                     }>
                         <div  className="category__labels">
-                            <img className="category__icon" src={postIcon} />
+                            {active === "1" ? (
+                                    <CategoryPostIcon color={"#262626"} />
+                                ): (
+                                    <CategoryPostIcon color={"#8e8e8e"} />
+                                )
+                            }
                             <span className="category__name"  >POSTS</span>
                         </div>
                     </div>
+
                     <div id={"2"} onClick={handleClick} 
                     className={active === "2" ? "pP__categories active":"pP__categories" 
                     }>
                         <div className="category__labels">
                             {active === "2" ? (
-                                <SaveIcon color={"#262626"} />
-                            ): (
-                                <SaveIcon color={"#8e8e8e"} />
-                            )
+                                    <SaveIcon color={"#262626"} />
+                                ): (
+                                    <SaveIcon color={"#8e8e8e"} />
+                                )
                             }
                             <span className="category__name"  >SAVED</span>
                         </div>
                     </div>
+
                     <div id={"3"} onClick={handleClick} 
                     className={active === "3" ? "pP__categories active":"pP__categories" 
                     }>
                         <div className="category__labels">
-                            <img  className="category__icon"src={taggedIcon} />
+                            {active === "3" ? (
+                                    <TaggedIcon color={"#262626"} />
+                                ): (
+                                    <TaggedIcon color={"#8e8e8e"} />
+                                )
+                            }
                             <span className="category__name"  >TAGGED</span>
                         </div>
                     </div>
