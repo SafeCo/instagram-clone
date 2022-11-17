@@ -4,7 +4,6 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-
 }
 
 .pP__content__container{
@@ -16,10 +15,6 @@
 }
 
 
-.pP__highlights__container{
-    border: solid red 1px;
-}
-
 .highlight__container{
     width: 125px;
     display: flex;
@@ -28,6 +23,7 @@
     justify-content: center;
     align-content: stretch;
     height: 100%;
+    margin-bottom: 21px;
 }
 
 .highlight{
@@ -47,6 +43,7 @@
     width: 85px;
     border-radius: 50%;
 }
+
 .highlight__new{
     padding-top: 7px;
     text-align: center;
@@ -57,8 +54,7 @@
 }
 
 .pP__category__container{
-    border: solid green 1px;
-    /* border-top: solid lightgray 1px; */
+    border-top: solid lightgray 1px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -68,22 +64,23 @@
 
 
 .pP__categories{
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     justify-content: center;
     text-transform: uppercase;
-    border: solid red 1px;
     cursor: pointer;
     align-items: center;
     height: 52px;
+    border-top: solid white 1px;
+    color: #8e8e8e;
 }
 
-
-
-.borderTop{
+.active{
     border-top: solid rgb(38, 38, 38) 1px;
-    margin-top: -1px;
+    color: #262626;
 }
+
 
 .category__labels{
     display: flex;
@@ -110,7 +107,7 @@
 
 
 
-@media (min-width: 736px) {
+@media (min-width: 768px) {
 
     .pP__content__container{
         box-sizing: content-box;
@@ -140,6 +137,19 @@
         flex-grow: 1;
         flex-shrink: 1;
     }
+    .highlight{
+        padding: 0px;
+        margin-left: 7px;
+        width: fit-content;
+    }
+    .highlight__img{
+        height: 25px;
+    }
+    .highlight__plus{
+        height: 64px;
+        width: 64px;
+    }
+
     .category__icon{
         height: 24px;
         width: 24px;
@@ -154,7 +164,6 @@
 
 
 .pP__posts__container{
-    border: solid black 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,14 +171,12 @@
     min-width: 0;
 }
 .pP__posts__collection{
-    border: solid orange 2px;
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
 .pP__posts__row{
-    border: solid green 3px;
     display: flex;
     flex-direction: row;
     margin-bottom: 5px;
@@ -177,7 +184,6 @@
 }
 
 .pP__post__container{
-    border: solid red 2px;
     display: flex;
     max-width: 280px;
     height: 100%;
@@ -202,7 +208,7 @@
 
 
 
-@media (min-width: 736px) {
+@media (min-width: 768px) {
     .pP__post__container:not(:last-child){
         margin-right: 28px;
     }

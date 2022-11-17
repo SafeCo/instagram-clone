@@ -1,4 +1,6 @@
 import React, {useEffect, useRef, useState, lazy, Suspense } from 'react'; 
+import { useOutletContext } from 'react-router-dom'
+
 import './HomePage.css';
 import FriendSuggestion from './components/suggestions/FriendSuggestion';
 import { db, auth } from '../firebase';
@@ -7,8 +9,6 @@ import LazyPost from './components/lazyComponents/LazyPost';
 
 
 const Post = lazy(() => import('./components/posts/post/Post'))
-
-
 
 
 function HomePage() {
@@ -26,16 +26,23 @@ function HomePage() {
 	
 	//  None of the Firebase Authentication APIs cost money, except for phone authentication after the free monthly quota has been exhausted
 
-	const [user, setUser]= useState([])
-	useEffect(()=>{
-		auth.onAuthStateChanged((userObj)=>{
-			if(userObj){
-				setUser(userObj)
-			}
-		})
-	},[])
+	const [user, setUser] = useOutletContext()
 
 
+	// const [user, setUser]= useState([])
+	// useEffect(()=>{
+	// 	auth.onAuthStateChanged((userObj)=>{
+	// 		if(userObj){
+	// 			setUser(userObj)
+	// 		}
+	// 	})
+	// },[])
+
+// const test = posts.map((id, post)=>{
+// 	<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} userId={post.userId}/>
+// })
+
+// console.log(test)
 
 //Putting posts on page
 	useEffect(()=>{
@@ -67,7 +74,7 @@ function HomePage() {
 									{
 										
 										posts.map(({id, post}) =>(
-											<Suspense fallback={ <LazyPost/> } >
+											<Suspense key={id} fallback={ <LazyPost/> } >
 												<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} userId={post.userId}/>
 											</Suspense>
 										))

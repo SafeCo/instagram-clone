@@ -1,40 +1,40 @@
 
 .resFollowInfo__container{
-    border: solid red 1px;
     display: flex;
     flex-direction: row;
-    margin-bottom: 20px;
     list-style-type: none;
     justify-content: center;
+    border-bottom: solid lightgray 1px;
+    border-top: solid lightgray 1px;
 }
 
 
 
-.resFollowInfo__text{
+.resFollowInfo__info{
     display: flex;
     flex-direction: column;
     align-items: center;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
 }
 
 .resFollowInfo__num{
     font-weight: 600;
+    margin-bottom: -5px;
 }
+
 
 
 .spread{
     display: flex;
     flex-grow: 1;
     flex-shrink: 1;
+    flex-basis: 90px;
     justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 
-
-@media (min-width: 768px){
-    .spread:not(:last-child){
-        margin-right: 40px;
-    }
-}

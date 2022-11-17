@@ -14,7 +14,9 @@ export const AuthProvider = ({ children }) => {
   // call this function when you want to authenticate the user
   // Having issue as the data is stored on LOCAL STORAGE not state
   const login = async (data) => {
+    // previously above was async e.g. login = async (data) => 
     setUser(data);
+    // navigate doesnt give firebase enough time to update
     navigate("/")
   };
 
