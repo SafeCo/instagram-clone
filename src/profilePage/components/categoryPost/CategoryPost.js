@@ -16,10 +16,12 @@ function CategoryPost({username}) {
 				db.collection("posts").where("username", "==", name)
                 .get()
                 .then((querySnapshot) => {
-                    querySnapshot.forEach((doc) => {
-                        // doc.data() is never undefined for query doc snapshots
-                        console.log(doc.id, " => ", doc.data());
-                    });
+                    setMyposts(querySnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        post: doc.data(),
+                        }))
+                    )
+                    
                 })
                 .catch((error) => {
                     console.log("Error getting documents: ", error);
@@ -27,13 +29,61 @@ function CategoryPost({username}) {
             }
 		}, []);
 
-    // useEffect(()=>{
-    //         db.collection("usernames").doc()
-    // },[])
+
+    const getPosts = () =>{
+        //This determines the number of rows
+        const row = [...Array( Math.ceil(myPosts.length / 3) )]
+        console.log(row)
+
+        //
+        const postRows = row.map( (row, index) => {
+            if (myPosts.length < 3){
+                const diff = 3 - myPosts.length
+                const test = myPosts.slice(index * 3, index * 3 + 3)
+                for(let i = 0; i < diff; i++){
+                    test.push("placeholder")
+                }
+                return test
+            }else{
+                return myPosts.slice(index * 3, index * 3 + 3)
+            }
+        }
+        );
+        console.log(postRows)
+
+        const content = postRows.map((row, index) => (
+            <div className="pP__posts__row" key={index}>
+                { row.map( (postInfo, index) => {
+                        if(postInfo === "placeholder"){
+                            return <div className="pP__post__container" >
+                                        <div></div>
+                                    </div>
+                        }else{
+                        return  <div className="pP__post__container" >
+                                    <img  className="pP__post__image" src={postInfo.post.imageUrl}  />
+                                </div>
+                        }
+                    }
+                    
+                )}
+            </div> )
+        );
+        return (
+            <>
+            {content}
+            </>
+        );
+
+    }
+
+
 
     return (
         <div className="pP__posts__container">
             <div className="pP__posts__collection">
+            {
+                getPosts()
+            }
                 <div className="pP__posts__row" >
                     <div className="pP__post__container" >
                             <img  className="pP__post__image" src={testImage}  />

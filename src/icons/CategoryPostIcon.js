@@ -1,14 +1,14 @@
 import React from 'react'
 
-function CategoryPostIcon({color, height, width}) {
+function CategoryPostIcon({color, matches}) {
     return (
         <svg 
             viewBox="0 0 20 20" 
             xmlns="http://www.w3.org/2000/svg" 
             color={color} 
             fill="#262626" 
-            height={height} 
-            width={width}
+            height={matches ? "10" : "24"} 
+            width={matches ? "10" : "24"} 
         >
                 <path 
                     fill="none" 
@@ -22,9 +22,5 @@ function CategoryPostIcon({color, height, width}) {
     )
 }
 
-CategoryPostIcon.defaultProps = {
-    height: "10",
-    width: "10"
-}
 
 export default CategoryPostIcon

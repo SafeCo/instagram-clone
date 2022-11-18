@@ -10,8 +10,6 @@ import ProfileHeader from './components/profileHeader/ProfileHeader'
 
 //ICON IMPORTS
 import plusIcon from '../icons/plus.svg'
-import taggedIcon from '../icons/taggedIcon.svg'
-
 import CategoryPost from './components/categoryPost/CategoryPost'
 import SaveIcon from '../icons/SaveIcon'
 import CategoryPostIcon from '../icons/CategoryPostIcon'
@@ -64,9 +62,9 @@ function ProfilePage() {
                     }>
                         <div  className="category__labels">
                             {active === "1" ? (
-                                    <CategoryPostIcon color={"#262626"} />
+                                    <CategoryPostIcon color={"#262626"} matches={matches} />
                                 ): (
-                                    <CategoryPostIcon color={"#8e8e8e"} />
+                                    <CategoryPostIcon color={"#8e8e8e"} matches={matches} />
                                 )
                             }
                             <span className="category__name"  >POSTS</span>
@@ -78,9 +76,9 @@ function ProfilePage() {
                     }>
                         <div className="category__labels">
                             {active === "2" ? (
-                                    <SaveIcon color={"#262626"} />
+                                    <SaveIcon matches={matches}  color={"#262626"} />
                                 ): (
-                                    <SaveIcon color={"#8e8e8e"} />
+                                    <SaveIcon matches={matches} color={"#8e8e8e"} />
                                 )
                             }
                             <span className="category__name"  >SAVED</span>
@@ -92,9 +90,9 @@ function ProfilePage() {
                     }>
                         <div className="category__labels">
                             {active === "3" ? (
-                                    <TaggedIcon color={"#262626"} />
+                                    <TaggedIcon matches={matches} color={"#262626"} />
                                 ): (
-                                    <TaggedIcon color={"#8e8e8e"} />
+                                    <TaggedIcon matches={matches} color={"#8e8e8e"} />
                                 )
                             }
                             <span className="category__name"  >TAGGED</span>

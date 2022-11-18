@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SaveIcon({color, height, width}) {
+function SaveIcon({color, matches}) {
 
    
     return (
@@ -10,8 +10,8 @@ function SaveIcon({color, height, width}) {
             aria-label="Save" 
             color={color} 
             fill="#262626" 
-            height={height}
-            width={width}
+            height={matches ? "12" : "24"} 
+            width={matches ? "12" : "24"} 
             >
                 <path 
                     fill="none" 
@@ -26,10 +26,5 @@ function SaveIcon({color, height, width}) {
     )
 }
 
-SaveIcon.defaultProps = {
-    color: "#8e8e8e",
-    height: "12",
-    width: "12"
-}
 
 export default SaveIcon
