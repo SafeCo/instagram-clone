@@ -5,7 +5,7 @@ import InstaLogo from '../instagram-text-icon.svg'
 import SearchBar from '../homePage/components/searchBar/SearchBar'
 import NavIcons from './navIcon/NavIcons'
 
-import { auth } from '../firebase';
+import { db, auth } from '../firebase';
 import { Outlet } from 'react-router-dom'
 
 
@@ -18,15 +18,27 @@ function NavBar() {
     // To find out the height of the Navbar to minus from the outlet page height.
 
     const [user, setUser]= useState([])
+    const [userInfo, setUserInfo]= useState([])
 	useEffect(()=>{
         
 		auth.onAuthStateChanged((userObj)=>{
 			if(userObj){
 				setUser(userObj)
 			}
-		})
-        
+		})      
 	},[])
+
+    useEffect(()=>{
+    if(user.uid){
+        db.collection('usernames')
+            .doc(user.uid)
+            .onSnapshot((doc)=>{
+                setUserInfo(doc.data())
+            })
+    }
+	},[user.uid])
+
+
 
     return (
         <>
@@ -49,7 +61,7 @@ function NavBar() {
                     </div>
                 </div>	
             </nav>
-            <Outlet context={[user, setUser]} />
+            <Outlet context={{user, userInfo}} />
         </>
         
     )

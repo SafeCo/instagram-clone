@@ -17,9 +17,8 @@ import TaggedIcon from '../icons/TaggedIcon'
 
 function ProfilePage() {
 
-    const [user, setUser] = useOutletContext()
+    const {user} = useOutletContext()
     const [active, setActive] = useState("1")
-    
     
     const [matches, setMatches] = useState(
         window.matchMedia("(min-width: 768px)").matches
@@ -33,14 +32,14 @@ function ProfilePage() {
 
     const handleClick = (event) => {
         setActive(event.currentTarget.id);
-      }
+    }
 
 
     return (
         <section className="pP__page__container" >
             <main className="pP__content__container" >
 
-                <ProfileHeader matches={matches} username={user.displayName} profilePic={user.photoURL}  />
+                <ProfileHeader matches={matches} username={user.displayName} profilePic={user.photoURL} id={user.uid} />
 
                 <div className="pP__highlights__container" >
                     <div className="highlight__container">
