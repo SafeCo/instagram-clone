@@ -20,6 +20,8 @@
 .sPB__captionContainer{
     width: 100%;
     padding: 0 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .sPB__caption{
@@ -29,8 +31,20 @@
     width: 100%;
     padding: 0 16px;
     font-size: 16px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    
+}
+
+.sPB__captionCountContainer{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    color: gray;
+    font-size: 10px;
+
+
+}
+
+.sPB__captionCount{
 }
 
 

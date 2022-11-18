@@ -8,6 +8,7 @@ import './SetProfileBio.css'
 
 function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
     const [biography, setBiography] = useState()
+    const [charCount, setCharCount] = useState()
     const navigate = useNavigate();
 
   
@@ -74,8 +75,17 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
             className="sPB__caption"
             type="text" 
             placeholder="Write a caption..." 
-            onChange={event => setBiography(event.target.value) } value={biography}>
+            onChange={event => {
+                setBiography(event.target.value) 
+                setCharCount(event.target.value.length)
+              } } 
+            value={biography}
+          >
           </textarea>
+          <div className="sPB__captionCountContainer">
+            <span>{charCount ? charCount : "0" }</span>
+            <span>/150</span>
+          </div>
         </div>
 
         <div className="sPB__buttonContainer" >

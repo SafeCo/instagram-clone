@@ -130,10 +130,10 @@
 }
 
 .pH__profileInfo__thirdRow{
-    padding: 0 16px 21px;
+    padding: 0 0 21px;
 }
 
-.thirdRow__caption{
+.thirdRow__bio{
     font-size: 14px;
     font-weight: 400;
     line-height: 24px;
@@ -145,6 +145,10 @@
     .firstRow__editButtonContainer{
         margin-left: 0px;
     }
+    .pH__profileInfo__thirdRow{
+        padding: 0 16px 21px;
+    }
+    
 
 }
 

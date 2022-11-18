@@ -78,7 +78,7 @@ function ProfileHeader({matches, username, profilePic}) {
 
                     { matches && 
                         <div className="pH__profileInfo__thirdRow" >
-                            <div className="thirdRow__caption">
+                            <div className="thirdRow__bio">
                                 BIO SHOULD CONTAIN A MAX OF 150 CHARACTERS
                             </div>
                         </div>
@@ -87,7 +87,7 @@ function ProfileHeader({matches, username, profilePic}) {
             </header>
             { !matches && 
                 <div className="pH__profileInfo__thirdRow" >
-                    <div className="thirdRow__caption">
+                    <div className="thirdRow__bio">
                         BIO SHOULD CONTAIN A MAX OF 150 CHARACTERS
                     </div>
                 </div>

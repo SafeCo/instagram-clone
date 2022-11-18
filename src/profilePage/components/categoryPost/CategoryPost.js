@@ -13,32 +13,25 @@ function CategoryPost({username}) {
     // THE USEEFFECT GETS USERNAME AS UNDEFINED
     // MADE THE USE EFFECT DEPENDENT ON USERNAME CHANGING WHICH IS A TEMPORARY FIX
 
-    useEffect(()=>{
-                const name = String(username)
-                db.collection("posts")
-                .where("username", "==", name)
-                .get()
-                .then((querySnapshot) => {
-                    setMyPosts(querySnapshot.docs.map(doc => ({
-                        id: doc.id,
-                        post: doc.data(),
-                        }))
-                    )
-                })
-                
-                .catch((error) => {
-                    console.log("Error getting documents: ", error);
-                });
+    // useEffect(()=>{
+    //             const name = String(username)
+    //             db.collection("posts")
+    //             .where("username", "==", name)
+    //             .get()
+    //             .then((querySnapshot) => {
+    //                 setMyPosts(querySnapshot.docs.map(doc => ({
+    //                     id: doc.id,
+    //                     post: doc.data(),
+    //                     }))
+    //                 )
+    //             })
+
+    //             .catch((error) => {
+    //                 console.log("Error getting documents: ", error);
+    //             });
     
     
-        }, [username]);
-
-        // useEffect(()=>{
-        //     console.log("getPosts useffect")
-        //         setPosts(getPosts());
-        //     }, [myPosts]);
-
-        
+    //     }, [username]);
 
 
     const getPosts = () =>{
@@ -65,9 +58,7 @@ function CategoryPost({username}) {
         }
 
         
-        const postRows = row.map( (row, index) => {
-            // first check if postlength is divisble by 3? if not check its nearest 3 multiplier and then
-            //push the difference in                 
+        const postRows = row.map( (row, index) => {              
                 return tempArr.slice(index * 3, index * 3 + 3)
         });
 
