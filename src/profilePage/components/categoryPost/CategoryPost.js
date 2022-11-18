@@ -15,13 +15,10 @@ function CategoryPost({username}) {
 
     useEffect(()=>{
                 const name = String(username)
-                console.log(username)
                 db.collection("posts")
                 .where("username", "==", name)
                 .get()
                 .then((querySnapshot) => {
-                    console.log("exectued use effect")
-                    console.log(querySnapshot.docs)
                     setMyPosts(querySnapshot.docs.map(doc => ({
                         id: doc.id,
                         post: doc.data(),
@@ -48,27 +45,31 @@ function CategoryPost({username}) {
         //This determines the number of rows
         const row = [...Array( Math.ceil(myPosts.length / 3) )]
 
-        //
-        const postRows = row.map( (row, index) => {
-            if (myPosts.length < 3){
-                const diff = 3 - myPosts.length
-                const test = myPosts.slice(index * 3, index * 3 + 3)
-                
-                console.log(diff)
-
-                for(let i = 0; i < diff; i++){
-                    test.push("placeholder")
-                }
-                return test
-            }else{
-
-                console.log(" post length not less than 3")
-                console.log(myPosts.length)
-
-                return myPosts.slice(index * 3, index * 3 + 3)
-            }
+        const checkNum =  (n)=>{
+            if(n > 0)
+        return Math.ceil(n/3.0) * 3;
+            else if( n < 0)
+                return Math.floor(n/3.0) * 3;
+            else
+        return 3;
         }
-        );
+
+        const num = checkNum(myPosts.length)
+
+        const diff = num - myPosts.length
+        const tempArr = [... myPosts]
+        
+
+        for(let i = 0; i < diff; i++){
+            tempArr.push("placeholder")
+        }
+
+        
+        const postRows = row.map( (row, index) => {
+            // first check if postlength is divisble by 3? if not check its nearest 3 multiplier and then
+            //push the difference in                 
+                return tempArr.slice(index * 3, index * 3 + 3)
+        });
 
         const content = postRows.map((row, index) => (
             <div className="pP__posts__row" key={index}>
@@ -93,7 +94,6 @@ function CategoryPost({username}) {
             </div> )
         );
 
-        console.log("exectued func")
 
         return (
             <>
@@ -104,7 +104,6 @@ function CategoryPost({username}) {
     }
 
     useEffect(()=>{
-        console.log(myPosts)
         setPosts(getPosts())
     },[myPosts])
 
