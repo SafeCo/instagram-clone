@@ -19,12 +19,6 @@ function NavIcons({username, userProfilePic, userId}) {
 	const [modalChild, setModalChild]= useState("")
 	const [modalOpen, setModalOpen] = useState(false)
 
-    //Use location to manage which icon is higlighted in the navicons bar.
-
-
-    
-
-
     // Checks which buttons are active
     // profile was heart before
     const [buttonState, setButtonState] = useState([
@@ -36,20 +30,46 @@ function NavIcons({username, userProfilePic, userId}) {
         {name: "/addprofile", isActive: false},
     ])
 
-    // When page loads checks path and activates icons according to page
+    // When page loads checks path and activates icons according to page path
     const { pathname } = useLocation()
-
     useEffect(() => {
+            const update = buttonState.map((page)=>{
+                if(page.name === pathname){
+                    return {name: page.name, isActive: true}
+                }else{
+                    return{name: page.name, isActive: false}
+                }
+                })
+            setButtonState(update)
+    }, [pathname]);
+
+
+    // receives state from Modalwrapper when modal exited  the state comes from the buttonstatehistory
+    const updateButtonState = (state) =>{
         const update = buttonState.map((page)=>{
-            if(page.name === pathname){
+            if(page.name === state){
                 return {name: page.name, isActive: true}
             }else{
                 return{name: page.name, isActive: false}
             }
-        })
+            })
         setButtonState(update)
-    }, [pathname]);
+    }
 
+
+    // when post button clicked it's active icon is shown
+    const postButton = (e)=>{
+        if (e.currentTarget.name === "post"){
+            const update = buttonState.map((page)=>{
+                if(page.name === "post"){
+                    return {name: page.name, isActive: true}
+                }else{
+                    return{name: page.name, isActive: false}
+                }
+                })
+            setButtonState(update)
+            }
+    }
 
     //used to track the last active button
     const [buttonStateHistory, setButtonStateHistory] = useState()
@@ -61,29 +81,9 @@ function NavIcons({username, userProfilePic, userId}) {
     }
 
     // When button clicked updates button state as the active button and switches the others to not active
-    const updateButtonState = (e)=>{
-        if(e?.currentTarget){
-            const update = buttonState.map((page)=>{
-                if(page.name === e.currentTarget.name){
-                    return {name: page.name, isActive: true}
-                }else{
-                    return{name: page.name, isActive: false}
-                }
-            })
-            setButtonState(update)
-        } else{
-            const update = buttonState.map((page)=>{
-                if(page.name === e){
-                    return {name: page.name, isActive: true}
-                }else{
-                    return{name: page.name, isActive: false}
-                }
-            })
-            setButtonState(update)
-        }        
-    }
+    
 
-
+    //opens modal for post button
 	const modalSwitchOpen= (e)=>{
 		switch(e.currentTarget.name){
 			case "post":
@@ -105,14 +105,14 @@ function NavIcons({username, userProfilePic, userId}) {
     <>
         {/* Added button props to modalwrapper so when modal exits the active button is reverted to the button prior to the modal being opened e.g. Home, then post button, exit post modal, button reverts to home */}
         {modalOpen && 
-            <ModalWrapper modalState={modalOpen} modalSwitch={modalSwitchOpen} buttonStateHistory={buttonStateHistory} updateButtonState={updateButtonState}>
+            <ModalWrapper modalState={modalOpen} modalSwitch={modalSwitchOpen} buttonStateHistory={buttonStateHistory} setButtonStateHistory={setButtonStateHistory} updateButtonState={updateButtonState}>
                 {modalChild}
             </ModalWrapper>
 		}
 
         <div className="nI__headerIcons">
             <div className="nI__headerIconContainer">
-                <button name="/" onClick={(e)=>{setHistory(); updateButtonState(e)}} className="nI__headerIconButton" >
+                <button name="/" onClick={(e)=>{setHistory()}} className="nI__headerIconButton" >
                     <Link to="/">
                         <HomeIcon buttonState={buttonState[0]}/>
                     </Link>
@@ -123,7 +123,7 @@ function NavIcons({username, userProfilePic, userId}) {
             <div className="nI__headerIconContainer">
                 <button 
                     name="send"  
-                    onClick={(e)=>{setHistory(); updateButtonState(e)}} 
+                    onClick={(e)=>{setHistory()}} 
                     className="nI__headerIconButton" >
                         <SendIcon buttonState={buttonState[1]}/>
                 </button>
@@ -134,11 +134,11 @@ function NavIcons({username, userProfilePic, userId}) {
                     name="post" 
                     onClick={(e) => { 
                     setHistory(); 
-                    updateButtonState(e);
+                    postButton(e)
                     modalSwitchOpen(e)
+                    console.log(e.currentTarget.name)
                 }} 
 				className="nI__headerIconButton">
-                    {/* <img name="post" className="nI__headerIcon" src={post} alt='post button'/> */}
                     <PostIcon buttonState={buttonState[2]} />
                 </button>
             </div>
@@ -146,7 +146,7 @@ function NavIcons({username, userProfilePic, userId}) {
             <div className="nI__headerIconContainer">
                 <button 
                     name="explore" 
-                    onClick={(e)=>{setHistory(); updateButtonState(e)}} 
+                    onClick={(e)=>{setHistory()}} 
                     className="nI__headerIconButton" >
                     <ExploreIcon buttonState={buttonState[3]}/>
                 </button>
@@ -157,7 +157,7 @@ function NavIcons({username, userProfilePic, userId}) {
                     <button 
                     //name below formerly heart
                         name="/profile" 
-                        onClick={(e)=>{setHistory(); updateButtonState(e)}} 
+                        onClick={(e)=>{setHistory()}} 
                         className="nI__headerIconButton" >
                         <HeartIcon buttonState={buttonState[4]}/>
                     </button>
@@ -167,7 +167,7 @@ function NavIcons({username, userProfilePic, userId}) {
                 <Link to="addprofile">
                     <button
                     name="/addprofile" 
-                    onClick={(e)=>{setHistory(); updateButtonState(e)}} 
+                    onClick={(e)=>{setHistory()}} 
                     className="nI__headerIconButton" 
                     >
                         <Avatar
