@@ -26,7 +26,7 @@ function HomePage() {
 	
 	//  None of the Firebase Authentication APIs cost money, except for phone authentication after the free monthly quota has been exhausted
 
-	const [user, setUser] = useOutletContext()
+	const {user}= useOutletContext()
 
 
 	// const [user, setUser]= useState([])
@@ -64,8 +64,6 @@ function HomePage() {
 
 	return (
 		<>
-			{/* <NavBar userProfilePic={user.photoURL} username={user.displayName} userId={user.uid} /> */}
-
 			<main className="app__main">
 				<section className="app__section">
 					<div className="app__sectionLeft">

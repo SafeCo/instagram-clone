@@ -7,21 +7,29 @@ import './SetProfileBio.css'
 
 
 function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
-    const [biography, setBiography] = useState()
+    const [biography, setBiography] = useState(" ")
     const [charCount, setCharCount] = useState()
     const navigate = useNavigate();
 
-  
-// firebase only takes a photo URL!!! that means no file
+
 // you have to upload it to storage and then provide the photo link to firebase
 // createobjecturl is a url lifetime tied to the window it was created, it represents sepcified file or blob
 //
     const updateUserProfile = ()=>{
+      
+      if(imageFile === undefined){
+        console.log("return statement")
+        navigate("/")
+        return
+      }
+
       const user = firebase.auth().currentUser;
       let userId = user.uid
       let fileName = userId + ".png"
       const uploadTask = storage.ref(`profilePictures/${fileName}`).put(imageFile);
 
+      // Need new func that handles profile pic upload when there is no selected image
+      // Need to seperate out 
       uploadTask.on(
         "state_changed",
         (snapshot) => {              

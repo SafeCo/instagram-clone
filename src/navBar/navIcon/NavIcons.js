@@ -1,7 +1,8 @@
-import React,{useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Avatar from "@mui/material/Avatar"
 import './NavIcons.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+
 
 
 //Components
@@ -18,16 +19,37 @@ function NavIcons({username, userProfilePic, userId}) {
 	const [modalChild, setModalChild]= useState("")
 	const [modalOpen, setModalOpen] = useState(false)
 
+    //Use location to manage which icon is higlighted in the navicons bar.
+
+
+    
+
 
     // Checks which buttons are active
+    // profile was heart before
     const [buttonState, setButtonState] = useState([
-        {name: "home", isActive: true},
+        {name: "/", isActive: true},
         {name: "send", isActive: false},
         {name: "post", isActive: false},
         {name: "explore", isActive: false},
-        {name: "heart", isActive: false},
-        {name: "profile", isActive: false},
+        {name: "/profile", isActive: false},
+        {name: "/addprofile", isActive: false},
     ])
+
+    // When page loads checks path and activates icons according to page
+    const { pathname } = useLocation()
+
+    useEffect(() => {
+        const update = buttonState.map((page)=>{
+            if(page.name === pathname){
+                return {name: page.name, isActive: true}
+            }else{
+                return{name: page.name, isActive: false}
+            }
+        })
+        setButtonState(update)
+    }, [pathname]);
+
 
     //used to track the last active button
     const [buttonStateHistory, setButtonStateHistory] = useState()
@@ -41,20 +63,20 @@ function NavIcons({username, userProfilePic, userId}) {
     // When button clicked updates button state as the active button and switches the others to not active
     const updateButtonState = (e)=>{
         if(e?.currentTarget){
-            const update = buttonState.map((item)=>{
-                if(item.name === e.currentTarget.name){
-                    return {name: item.name, isActive: true}
+            const update = buttonState.map((page)=>{
+                if(page.name === e.currentTarget.name){
+                    return {name: page.name, isActive: true}
                 }else{
-                    return{name: item.name, isActive: false}
+                    return{name: page.name, isActive: false}
                 }
             })
             setButtonState(update)
         } else{
-            const update = buttonState.map((item)=>{
-                if(item.name === e){
-                    return {name: item.name, isActive: true}
+            const update = buttonState.map((page)=>{
+                if(page.name === e){
+                    return {name: page.name, isActive: true}
                 }else{
-                    return{name: item.name, isActive: false}
+                    return{name: page.name, isActive: false}
                 }
             })
             setButtonState(update)
@@ -90,7 +112,7 @@ function NavIcons({username, userProfilePic, userId}) {
 
         <div className="nI__headerIcons">
             <div className="nI__headerIconContainer">
-                <button name="home" onClick={(e)=>{setHistory(); updateButtonState(e)}} className="nI__headerIconButton" >
+                <button name="/" onClick={(e)=>{setHistory(); updateButtonState(e)}} className="nI__headerIconButton" >
                     <Link to="/">
                         <HomeIcon buttonState={buttonState[0]}/>
                     </Link>
@@ -133,7 +155,8 @@ function NavIcons({username, userProfilePic, userId}) {
             <div className="nI__headerIconContainer">
                 <Link to="profile">
                     <button 
-                        name="heart" 
+                    //name below formerly heart
+                        name="/profile" 
                         onClick={(e)=>{setHistory(); updateButtonState(e)}} 
                         className="nI__headerIconButton" >
                         <HeartIcon buttonState={buttonState[4]}/>
@@ -143,14 +166,14 @@ function NavIcons({username, userProfilePic, userId}) {
             <div className="nI__headerIconContainer">
                 <Link to="addprofile">
                     <button
-                    name="profile" 
+                    name="/addprofile" 
                     onClick={(e)=>{setHistory(); updateButtonState(e)}} 
                     className="nI__headerIconButton" 
                     >
                         <Avatar
                         className="nI__headerIcon"
                         alt={
-                            userProfilePic? userProfilePic : username
+                            userProfilePic ? username : userProfilePic
                         }
                         sx={{ width: 23, height: 23 }}
                         src={userProfilePic}

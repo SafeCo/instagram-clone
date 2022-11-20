@@ -61,19 +61,19 @@ function ProfileHeader({matches, username, profilePic}) {
                         <ul className="pH__profileInfo__secondRow" >
                         <li className="secondRow__posts" >
                             <div className="secondRow__text">
-                                <span className="secondRow__num" >!! </span>
+                                <span className="secondRow__num" >0 </span>
                                 posts
                             </div>
                         </li>
                         <li className="secondRow__followers" >
                             <div className="secondRow__text">
-                                <span className="secondRow__num" >!! </span>
+                                <span className="secondRow__num" >0 </span>
                                 followers
                             </div>
                         </li>
                         <li className="secondRow__following" >
                             <div className="secondRow__text">
-                                <span className="secondRow__num" >!! </span>
+                                <span className="secondRow__num" >0 </span>
                                 following
                             </div>
                         </li>

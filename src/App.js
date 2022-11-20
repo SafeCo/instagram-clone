@@ -16,6 +16,7 @@ const HomePage = lazy(() => import('./homePage/HomePage'))
 const SetProfilePage = lazy(() => import('./setProfilePage/SetProfilePage'))
 const ProfilePage  = lazy(() => import('./profilePage/ProfilePage'))
 
+//BrowserRouter in index.js
 
 
 function App() {

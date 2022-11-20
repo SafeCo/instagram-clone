@@ -14,7 +14,6 @@ function SetProfilePage() {
     const [file, setFile] = useState()
     const [user, setUser]= useState([])
 
-
 	useEffect(()=>{
 		auth.onAuthStateChanged((userObj)=>{
 			if(userObj){

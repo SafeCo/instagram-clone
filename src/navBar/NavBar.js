@@ -14,6 +14,7 @@ import { Outlet } from 'react-router-dom'
 // see what is going on with local storage
 
 function NavBar() {
+    
 
     // To find out the height of the Navbar to minus from the outlet page height.
 
@@ -37,7 +38,6 @@ function NavBar() {
             })
     }
 	},[user.uid])
-
 
 
     return (
