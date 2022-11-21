@@ -20,30 +20,22 @@ function NavBar() {
 
     const [user, setUser]= useState([])
     const [userInfo, setUserInfo]= useState([])
-    
-	useEffect(()=>{
-        db.collection('usernames')
-            .doc(user.uid)
-            .onSnapshot((doc)=>{
-                setUserInfo(doc.data())
-            })
-        
-		auth.onAuthStateChanged((userObj)=>{
+	useEffect(()=>{  
+		const unsubscribe = auth.onAuthStateChanged((userObj)=>{
 			if(userObj){
 				setUser(userObj)
 			}
-		})      
+		})   
+        return ()=> unsubscribe();        
 	},[])
 
     useEffect(()=>{
-        if(user.uid){
-           db.collection('usernames')
-            .doc(user.uid)
-            .onSnapshot((doc)=>{
-                setUserInfo(doc.data())
-            })  
-        }
-        
+        const unsubscribe = db.collection('usernames')
+        .doc(user.uid)
+        .onSnapshot((doc)=>{
+            setUserInfo(doc.data())
+        })  
+        return ()=> unsubscribe();        
 	},[user.uid])
 
 

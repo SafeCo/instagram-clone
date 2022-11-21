@@ -8,7 +8,7 @@ import { useOutletContext } from 'react-router-dom'
 
 
 
-function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
+function SetProfileBio({switchSkip, newImage, setNewImage, imageFile, photoUrl}) {
   const [biography, setBiography] = useState("")
   const [charCount, setCharCount] = useState()
   const navigate = useNavigate();
@@ -21,8 +21,6 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
     const updateUserProfile = ()=>{
       const user = firebase.auth().currentUser;
       let userId = user.uid
-      let fileName = userId + ".png"
-      const uploadTask = storage.ref(`profilePictures/${fileName}`).put(imageFile);
 
 
       if(imageFile === undefined){
@@ -34,7 +32,9 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
         return
       }
 
-      
+      let fileName = userId + ".png"
+      const uploadTask = storage.ref(`profilePictures/${fileName}`).put(imageFile);
+
 
       // Need new func that handles profile pic upload when there is no selected image
       // Need to seperate out 
@@ -81,6 +81,7 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
           ):(
             <Avatar
 							sx={{ width: 200, height: 200}}
+              src={photoUrl}
 							
 					/>
           )

@@ -26,8 +26,8 @@ function NavIcons({username, userProfilePic, userId}) {
         {name: "send", isActive: false},
         {name: "post", isActive: false},
         {name: "explore", isActive: false},
+        {name: "heart", isActive: false},
         {name: "/profile", isActive: false},
-        {name: "/addprofile", isActive: false},
     ])
 
     // When page loads checks path and activates icons according to page path
@@ -153,34 +153,33 @@ function NavIcons({username, userProfilePic, userId}) {
             </div>
 
             <div className="nI__headerIconContainer">
-                <Link to="profile">
                     <button 
                     //name below formerly heart
-                        name="/profile" 
+                        name="heart" 
                         onClick={(e)=>{setHistory()}} 
                         className="nI__headerIconButton" >
                         <HeartIcon buttonState={buttonState[4]}/>
                     </button>
-                </Link>
             </div>
             <div className="nI__headerIconContainer">
-                <Link to="addprofile" style={{ textDecoration: 'none' }}>
+                <Link to="profile" style={{ textDecoration: 'none' }}>
                     <button
-                    name="/addprofile" 
+                    name="/profile" 
                     onClick={(e)=>{setHistory()}} 
                     className="nI__headerIconButton" 
                     >  
+                    
                     {
                         userProfilePic ? (
                             <Avatar
-                            className="post__avatar"
+                            className= { buttonState[5].isActive ? "nI__avatarActive" : ""}
                             alt={username}
                             sx={{ width: 23, height: 23 }}
                             src={userProfilePic}
                             />
                         ): (
-                            <Avatar
-                            className="post__avatar"
+                            <Avatar 
+                            className= { buttonState[5].isActive ? "nI__avatarActive" : ""}
                             alt={username}
                             sx={{ width: 23, height: 23 }}
                             src="/static/images/avatar/1.jpg"
@@ -194,7 +193,7 @@ function NavIcons({username, userProfilePic, userId}) {
             
         </div>
     </>
-  )
+    )
 }
 
 export default NavIcons

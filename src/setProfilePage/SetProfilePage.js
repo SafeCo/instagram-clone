@@ -38,7 +38,7 @@ function SetProfilePage() {
     return (
         <div className="sPPage__container">
         {skip? (
-            <SetProfileBio switchSkip={switchSkip} newImage={newImage} imageFile={file}  setNewImage={setNewImage}/>
+            <SetProfileBio photoUrl={user.photoURL} switchSkip={switchSkip} newImage={newImage} imageFile={file}  setNewImage={setNewImage}/>
         ):(
             <SetProfilePic photoUrl={user.photoURL} switchSkip={switchSkip} getFile={getFile}/>
         )}

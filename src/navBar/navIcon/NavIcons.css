@@ -17,3 +17,6 @@
     background: transparent;
 }
 
+.nI__avatarActive{
+    outline: solid black 2px;
+}

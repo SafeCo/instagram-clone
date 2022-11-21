@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useOutletContext } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 
 
 import './ProfileHeader.css'
@@ -38,9 +40,9 @@ function ProfileHeader({matches, username, profilePic}) {
                         
                         { matches &&
                             <div className="firstRow__editButtonContainer">
-                                <button className="firstRow__editButton">
-                                    Edit Profile
-                                </button>
+                                    <button className="firstRow__editButton">
+                                        Edit Profile
+                                    </button>
                             </div>
                         }
 
@@ -52,9 +54,11 @@ function ProfileHeader({matches, username, profilePic}) {
                     </div>
                     { !matches &&
                         <div className="firstRow__editButtonContainer">
-                            <button className="firstRow__editButton">
-                                Edit Profile
-                            </button>
+                            <Link to="/addprofile" style={{ textDecoration: 'none' }}>
+                                <button className="firstRow__editButton">
+                                    Edit Profile
+                                </button>
+                            </Link>
                         </div>
                     }
                     { matches &&
@@ -92,7 +96,7 @@ function ProfileHeader({matches, username, profilePic}) {
             { !matches && 
                 <div className="pH__profileInfo__thirdRow" >
                     <div className="thirdRow__bio">
-                        BIO SHOULD CONTAIN A MAX OF 150 CHARACTERS
+                        {userInfo.bio}
                     </div>
                 </div>
             }

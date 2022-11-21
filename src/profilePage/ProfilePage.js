@@ -1,7 +1,7 @@
 import { Avatar } from '@mui/material'
 import React, {useState, useEffect} from 'react'
 import './ProfilePage.css'
-import { useOutletContext } from 'react-router-dom'
+import { useOutletContext} from 'react-router-dom'
 
 //COMPONENT IMPORTS
 import ResFollowInfo from './components/resFollowInfo/ResFollowInfo'
