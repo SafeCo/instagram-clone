@@ -20,7 +20,13 @@ function NavBar() {
 
     const [user, setUser]= useState([])
     const [userInfo, setUserInfo]= useState([])
+    
 	useEffect(()=>{
+        db.collection('usernames')
+            .doc(user.uid)
+            .onSnapshot((doc)=>{
+                setUserInfo(doc.data())
+            })
         
 		auth.onAuthStateChanged((userObj)=>{
 			if(userObj){
@@ -30,13 +36,14 @@ function NavBar() {
 	},[])
 
     useEffect(()=>{
-    if(user.uid){
-        db.collection('usernames')
+        if(user.uid){
+           db.collection('usernames')
             .doc(user.uid)
             .onSnapshot((doc)=>{
                 setUserInfo(doc.data())
-            })
-    }
+            })  
+        }
+        
 	},[user.uid])
 
 
@@ -57,7 +64,7 @@ function NavBar() {
                     </div>  
                         
                     <div className="nB__headerIconsFlex">
-                        <NavIcons userProfilePic={user.photoURL} username={user.displayName} userId={user.uid}/>
+                        <NavIcons userProfilePic={userInfo.photoUrl} username={user.displayName} userId={user.uid}/>
                     </div>
                 </div>	
             </nav>

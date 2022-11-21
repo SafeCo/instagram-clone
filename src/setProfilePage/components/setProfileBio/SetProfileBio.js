@@ -4,29 +4,37 @@ import { useNavigate } from "react-router-dom";
 import {storage, db } from "../../../firebase"; 
 import firebase from 'firebase/compat/app';
 import './SetProfileBio.css'
+import { useOutletContext } from 'react-router-dom'
+
 
 
 function SetProfileBio({switchSkip, newImage, setNewImage, imageFile}) {
-    const [biography, setBiography] = useState(" ")
-    const [charCount, setCharCount] = useState()
-    const navigate = useNavigate();
+  const [biography, setBiography] = useState("")
+  const [charCount, setCharCount] = useState()
+  const navigate = useNavigate();
+  const {userInfo} = useOutletContext()
 
 
 // you have to upload it to storage and then provide the photo link to firebase
 // createobjecturl is a url lifetime tied to the window it was created, it represents sepcified file or blob
 //
     const updateUserProfile = ()=>{
-      
-      if(imageFile === undefined){
-        console.log("return statement")
-        navigate("/")
-        return
-      }
-
       const user = firebase.auth().currentUser;
       let userId = user.uid
       let fileName = userId + ".png"
       const uploadTask = storage.ref(`profilePictures/${fileName}`).put(imageFile);
+
+
+      if(imageFile === undefined){
+        console.log("return statement")
+        db.collection("usernames").doc(userId).update({
+          bio: biography
+        });
+        navigate("/")
+        return
+      }
+
+      
 
       // Need new func that handles profile pic upload when there is no selected image
       // Need to seperate out 

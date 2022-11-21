@@ -39,7 +39,8 @@ function LoginPage() {
   db.collection('usernames').doc(authUser.user.uid).set({
     username: username,
     id: authUser.user.uid,
-    photoUrl: username
+    photoUrl: username,
+    bio: ""
   })
   })
   .then(() => {

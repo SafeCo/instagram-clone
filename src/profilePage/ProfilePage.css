@@ -1,3 +1,6 @@
+body{
+    overflow-y: scroll;
+}
 
 .pP__page__container{
     display: flex;

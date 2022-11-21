@@ -164,20 +164,29 @@ function NavIcons({username, userProfilePic, userId}) {
                 </Link>
             </div>
             <div className="nI__headerIconContainer">
-                <Link to="addprofile">
+                <Link to="addprofile" style={{ textDecoration: 'none' }}>
                     <button
                     name="/addprofile" 
                     onClick={(e)=>{setHistory()}} 
                     className="nI__headerIconButton" 
-                    >
-                        <Avatar
-                        className="nI__headerIcon"
-                        alt={
-                            userProfilePic ? username : userProfilePic
-                        }
-                        sx={{ width: 23, height: 23 }}
-                        src={userProfilePic}
-                        />    
+                    >  
+                    {
+                        userProfilePic ? (
+                            <Avatar
+                            className="post__avatar"
+                            alt={username}
+                            sx={{ width: 23, height: 23 }}
+                            src={userProfilePic}
+                            />
+                        ): (
+                            <Avatar
+                            className="post__avatar"
+                            alt={username}
+                            sx={{ width: 23, height: 23 }}
+                            src="/static/images/avatar/1.jpg"
+                            />
+                        )
+                    }  
                     </button>
                     
                 </Link>
