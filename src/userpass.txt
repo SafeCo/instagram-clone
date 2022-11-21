@@ -1,16 +1,6 @@
-REMEMBER TO ATTRIBUTE ICONS
-
-
-Username: Testguy 
-email: tester123@mail.com 
-pass: tester123 
-
-Username: BTestguy2 
-email: tester1234@mail.com 
-pass: tester1234 
-
 OVERALLL TODO LIST
 
+1. reels and suggestions
 2. make a loading screen... Sort of done child componenets ha
  3. followers and saved for users?
  4. skeleton loading

@@ -98,13 +98,12 @@ function CategoryPost({username}) {
         setPosts(getPosts())
     },[myPosts])
 
-   
 
     return (
         <div className="pP__posts__container">
             <div className="pP__posts__collection">
             {
-               myPosts ?  posts : (<div>Not Loaded</div>)
+                myPosts ?  posts : (<div>Not Loaded</div>)
             }
             </div>
                         

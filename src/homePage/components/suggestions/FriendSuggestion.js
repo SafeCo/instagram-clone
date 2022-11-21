@@ -13,55 +13,52 @@ const FriendSuggestion = ({profileUsername, userPhotoUrl}) => {
   const [suggestion, setSuggestion] = useState([]);
 
 
-
+  // Make get request, use filter and random, ensure that user is first??
   useEffect(()=>{
-		if(shouldLogOne.current){
-      shouldLogOne.current = false
-			db.collection("usernames").get().then((querySnapshot) => {
-				for(let i = 0; i < 11; i++){
-					if(querySnapshot.docs[i]){
-						let data = querySnapshot.docs[i].data().username
-						let id = querySnapshot.docs[i].id
-            let profilePic = querySnapshot.docs[i].data().photoUrl
+      const user = String(profileUsername)
+			db.collection("usernames")
+      .where("username", "!=", user)
+      .limit(5)
+      .get()
+      .then((querySnapshot) => {
+        setSuggestion(querySnapshot.docs.map((docs)=>{
+          return docs.data()
+        }))
 
-						setSuggestion((suggest)=>
-						[
-							...suggest,
-							{
-								username: data,
-								id: id,
-                photoUrl: profilePic
-							}
-						]
+
+
+				// for(let i = 0; i < 11; i++){
+				// 	if(querySnapshot.docs[i]){
+				// 		let data = querySnapshot.docs[i].data().username
+				// 		let id = querySnapshot.docs[i].id
+        //     let profilePic = querySnapshot.docs[i].data().photoUrl
+
+				// 		setSuggestion((suggest)=>
+				// 		[
+				// 			...suggest,
+				// 			{
+				// 				username: data,
+				// 				id: id,
+        //         photoUrl: profilePic
+				// 			}
+				// 		]
 						
-					)
-					}else{
-						break;
-					}
-				}
+				// 	)
+				// 	}else{
+				// 		break;
+				// 	}
+				// }
 			});
-		}
+		
 	}, []);
 
+  useEffect(()=>{
+    console.log(suggestion[0])
+
+  },[suggestion])
 
 
-  const reducedList = []
-  for(let i = 0; i < 5; i++){
-    if(suggestion[i]){
-      reducedList.push(suggestion[i])
-    }else{
-      break;
-    }
-  }
-
-  const filteredList = reducedList.filter((name)=>{
-    if(name.username === profileUsername){
-      return false
-    }else{
-      return true
-    }
-  })
-
+ 
 
   return (
     <>
@@ -86,7 +83,7 @@ const FriendSuggestion = ({profileUsername, userPhotoUrl}) => {
       </div>
       <p className="friendSuggestion__suggestTitle"> Suggestions for you</p>
       {
-        filteredList.map(({username, id, photoUrl}) =>(
+        suggestion.map(({username, id, photoUrl}) =>(
           <div key={id} className="friendSuggestion__suggest">
             <Avatar 
             className="friendSuggestion__avatar"
