@@ -1,5 +1,5 @@
 import React,{useContext, useState, useRef, useEffect} from "react"
-import { db } from '../../../firebase';
+import { useOutletContext } from 'react-router-dom'
 
 import Avatar from "@mui/material/Avatar"
 import "./FriendSuggestion.css"
@@ -8,57 +8,24 @@ import AuthContext from "../../../hooks/useAuth"
 //Filtered suggestions need to be from usernames collection which will contain photoUrl
 
 const FriendSuggestion = ({profileUsername, userPhotoUrl}) => {
-  const { logout } = useContext(AuthContext)
-  const shouldLogOne = useRef(true)
-  const [suggestion, setSuggestion] = useState([]);
 
+  const { logout } = useContext(AuthContext)
+  const {reelAndSug} = useOutletContext()
+  const [filteredList, setFilteredList] = useState([])
+
+  useEffect(()=>{
+    setFilteredList(
+        reelAndSug.filter((obj, index)=>{
+          if(index < 4){
+            return obj
+          }else{
+            return
+          }
+      })
+    )
+  },[])
 
   // Make get request, use filter and random, ensure that user is first??
-  useEffect(()=>{
-      const user = String(profileUsername)
-			db.collection("usernames")
-      .where("username", "!=", user)
-      .limit(5)
-      .get()
-      .then((querySnapshot) => {
-        setSuggestion(querySnapshot.docs.map((docs)=>{
-          return docs.data()
-        }))
-
-
-
-				// for(let i = 0; i < 11; i++){
-				// 	if(querySnapshot.docs[i]){
-				// 		let data = querySnapshot.docs[i].data().username
-				// 		let id = querySnapshot.docs[i].id
-        //     let profilePic = querySnapshot.docs[i].data().photoUrl
-
-				// 		setSuggestion((suggest)=>
-				// 		[
-				// 			...suggest,
-				// 			{
-				// 				username: data,
-				// 				id: id,
-        //         photoUrl: profilePic
-				// 			}
-				// 		]
-						
-				// 	)
-				// 	}else{
-				// 		break;
-				// 	}
-				// }
-			});
-		
-	}, []);
-
-  useEffect(()=>{
-    console.log(suggestion[0])
-
-  },[suggestion])
-
-
- 
 
   return (
     <>
@@ -83,7 +50,7 @@ const FriendSuggestion = ({profileUsername, userPhotoUrl}) => {
       </div>
       <p className="friendSuggestion__suggestTitle"> Suggestions for you</p>
       {
-        suggestion.map(({username, id, photoUrl}) =>(
+        filteredList.map(({username, id, photoUrl}) =>(
           <div key={id} className="friendSuggestion__suggest">
             <Avatar 
             className="friendSuggestion__avatar"

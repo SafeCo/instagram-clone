@@ -20,6 +20,8 @@ function NavBar() {
 
     const [user, setUser]= useState([])
     const [userInfo, setUserInfo]= useState([])
+    const [reelAndSug, setReelAndSug] = useState([])
+
 	useEffect(()=>{  
 		const unsubscribe = auth.onAuthStateChanged((userObj)=>{
 			if(userObj){
@@ -37,6 +39,18 @@ function NavBar() {
         })  
         return ()=> unsubscribe();        
 	},[user.uid])
+
+    useEffect(()=>{
+        db.collection("usernames")
+        .where("username", "!=", user.displayName)
+        .limit(11)
+        .get()
+        .then((querySnapshot) => {
+            setReelAndSug(querySnapshot.docs.map((docs)=>{
+            return docs.data()
+            }))
+        });
+    }, []);
 
 
     return (
@@ -60,7 +74,7 @@ function NavBar() {
                     </div>
                 </div>	
             </nav>
-            <Outlet context={{user, userInfo}} />
+            <Outlet context={{user, userInfo, reelAndSug}} />
         </>
         
     )

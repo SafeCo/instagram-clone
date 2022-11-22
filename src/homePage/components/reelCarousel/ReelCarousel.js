@@ -6,28 +6,26 @@ import "slick-carousel/slick/slick-theme.css";
 import { Avatar } from '@mui/material';
 import rightChevron from '../../../icons/rightChevron.svg'
 import leftChevron from '../../../icons/leftChevron.svg'
-import heart from '../../../icons/heart.svg'
-
-
-
-
+import { useOutletContext } from 'react-router-dom'
 
 function ReelCarousel() {
 
-	const list2 = 
-	[
-		{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
-		{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
-		{username: 'Tester', id: 'aHTiFthtrFi7Q5wpwzNg'},
-		{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
-		{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
-		{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
-		{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
-		{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
-		{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
-		{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
-		{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
-	];
+	const {reelAndSug} = useOutletContext()
+
+	// const list2 = 
+	// [
+	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
+	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
+	// 	{username: 'Tester', id: 'aHTiFthtrFi7Q5wpwzNg'},
+	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
+	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
+	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
+	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
+	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
+	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
+	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
+	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
+	// ];
 
 
 	const settings = {
@@ -72,7 +70,7 @@ function ReelCarousel() {
 
 	  function generateReels() {
         
-		return  list2.map(({username, id}) =>{
+		return  reelAndSug.map(({username, id, photoUrl}) =>{
 		  return <div key={id} className="reel__container">
 					<div className="reel__profile">
 						<div className="reel__image">
@@ -80,7 +78,7 @@ function ReelCarousel() {
 							className="reel__avatar"
 							sx={{ width: 55, height: 55 }}
 							alt= {username}
-							src="/static/images/avatar/1.jpg"
+							src={photoUrl}
 							/>
 		
 							<div className="reel__avatarRing"></div>         

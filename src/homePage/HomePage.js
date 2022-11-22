@@ -43,8 +43,6 @@ function HomePage() {
 // 	<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} userId={post.userId}/>
 // })
 
-// console.log(test)
-
 //Putting posts on page
 	useEffect(()=>{
 		if(shouldLogTwo.current){

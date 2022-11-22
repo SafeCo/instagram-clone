@@ -40,9 +40,11 @@ function ProfileHeader({matches, username, profilePic}) {
                         
                         { matches &&
                             <div className="firstRow__editButtonContainer">
+                                <Link to="/addprofile" style={{ textDecoration: 'none' }}>
                                     <button className="firstRow__editButton">
                                         Edit Profile
                                     </button>
+                                </Link>
                             </div>
                         }
 
