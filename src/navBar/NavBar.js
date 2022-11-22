@@ -41,8 +41,9 @@ function NavBar() {
 	},[user.uid])
 
     useEffect(()=>{
+        const userProfileName = String(user.displayName)
         db.collection("usernames")
-        .where("username", "!=", user.displayName)
+        .where("username", "!=", userProfileName)
         .limit(11)
         .get()
         .then((querySnapshot) => {
@@ -50,7 +51,7 @@ function NavBar() {
             return docs.data()
             }))
         });
-    }, []);
+    }, [userInfo]);
 
 
     return (

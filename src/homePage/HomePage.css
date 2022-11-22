@@ -133,6 +133,7 @@ ONLY LEFT FOR THE PURPOSES OF TESTNAV, THIS IS PART OF NAVICONS COMPONENT */
     }
     .app__sectionLeft{
         margin-top: 0px;
+        width: 100%;
     }
     .app__header__searchBarFlex{
         display: none;
@@ -159,9 +160,5 @@ ONLY LEFT FOR THE PURPOSES OF TESTNAV, THIS IS PART OF NAVICONS COMPONENT */
     
   }
 
-@media (max-width: 390px) {
-    .app__sectionLeft{
-        max-width: 390px;
-    }
-}
+
 

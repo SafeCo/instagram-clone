@@ -25,7 +25,6 @@ const FriendSuggestion = ({profileUsername, userPhotoUrl}) => {
     )
   },[])
 
-  // Make get request, use filter and random, ensure that user is first??
 
   return (
     <>
