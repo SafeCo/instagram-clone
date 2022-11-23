@@ -23,8 +23,7 @@ const FriendSuggestion = ({profileUsername, userPhotoUrl}) => {
           }
       })
     )
-  },[])
-
+  },[reelAndSug])
 
   return (
     <>

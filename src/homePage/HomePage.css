@@ -127,6 +127,17 @@ ONLY LEFT FOR THE PURPOSES OF TESTNAV, THIS IS PART OF NAVICONS COMPONENT */
     left: 0;
 }
 
+@media (max-width: 860px) {
+    .app__friendSugg{
+        display: none;
+    }
+    .app__sectionLeft{
+        margin-right: 0px;
+        width: 100%;
+    }
+}
+
+
 @media (max-width: 490px) {
     html, body{
         overflow-x: hidden;
@@ -147,9 +158,6 @@ ONLY LEFT FOR THE PURPOSES OF TESTNAV, THIS IS PART OF NAVICONS COMPONENT */
     }
     .app__header{
         width: 100%;
-    }
-    .app__friendSugg{
-        display: none;
     }
     .app__header{
         padding-left: 0px;

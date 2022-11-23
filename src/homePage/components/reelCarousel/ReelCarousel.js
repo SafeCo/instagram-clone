@@ -12,7 +12,7 @@ function ReelCarousel() {
 
 	const {reelAndSug} = useOutletContext()
 
-	// const list2 = 
+	// const reelAndSug = 
 	// [
 	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
 	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},

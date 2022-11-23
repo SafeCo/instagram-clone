@@ -137,7 +137,7 @@ function Post({filename, postId, user, username, caption, imageUrl, userId}) {
       alt="Not Working"
       />
       
-      <PostIcons/>
+      <PostIcons modalSwitchOpen={modalSwitchOpen} />
       
       
       
