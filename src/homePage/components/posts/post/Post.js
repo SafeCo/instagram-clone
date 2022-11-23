@@ -18,7 +18,7 @@ function Post({filename, postId, user, username, caption, imageUrl, userId}) {
 
 
   const modalSwitchOpen= (e)=>{
-		switch(e.target.name){
+		switch(e.currentTarget.name){
 			case "deletePost":
 				setModalChild(
 					<DeleteModal  
