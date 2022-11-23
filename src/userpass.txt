@@ -1,20 +1,13 @@
 OVERALLL TODO LIST
 
-1. reels and suggestions
-2. make a loading screen... Sort of done child componenets ha
- 3. followers and saved for users?
- 4. skeleton loading
-
+1. Logging In, context provide user? or NavBar get user info? 
+    check if user object in local storage because of hook or firebase
 
 ISSUES NOW
-1. Logging in using login function in useAuth custom hook
 2. dont know why 'post' message error pops up in browser console window
 4. change hooks folder to context and change in APP.js etc.
 5. Make CSS for sign in and out the same
 6. image transition for loginpage
-7. img tags are not dynamically adding classes
-8. signing up results in user.displayname not working and diplaying
-9. Issue if you try to sign in with a new user that doesnt exist and then switch to create new account, the email and pass is recorded but the username is not recorded.
 
 
 attributions:

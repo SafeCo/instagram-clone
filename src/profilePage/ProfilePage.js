@@ -11,7 +11,7 @@ import ProfileHeader from './components/profileHeader/ProfileHeader'
 //ICON IMPORTS
 import plusIcon from '../icons/plus.svg'
 import CategoryPost from './components/categoryPost/CategoryPost'
-import SaveIcon from '../icons/SaveIcon'
+import SaveIcon from './components/icons/SaveIcon'
 import CategoryPostIcon from '../icons/CategoryPostIcon'
 import TaggedIcon from '../icons/TaggedIcon'
 
@@ -21,6 +21,7 @@ function ProfilePage() {
 
     const {user} = useOutletContext()
     const [active, setActive] = useState("1")
+    const [postNum, setPostNum] = useState(0)
     
     const [matches, setMatches] = useState(
         window.matchMedia("(min-width: 768px)").matches
@@ -41,7 +42,7 @@ function ProfilePage() {
         <section className="pP__page__container" >
             <main className="pP__content__container" >
 
-                <ProfileHeader matches={matches} username={user.displayName} profilePic={user.photoURL} id={user.uid} />
+                <ProfileHeader postNum={postNum} matches={matches} username={user.displayName} profilePic={user.photoURL} id={user.uid} />
 
                 <div className="pP__highlights__container" >
                     <div className="highlight__container">
@@ -100,7 +101,7 @@ function ProfilePage() {
                         </div>
                     </div>
                 </div>
-                <CategoryPost username={user.displayName}/>
+                <CategoryPost username={user.displayName} setPostNum={setPostNum} />
 
             </main>
         </section>

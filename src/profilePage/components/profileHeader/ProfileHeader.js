@@ -9,7 +9,7 @@ import './ProfileHeader.css'
 import { Avatar } from '@mui/material'
 import optionsIcon from '../../../icons/options.svg'
 
-function ProfileHeader({matches, username, profilePic}) {
+function ProfileHeader({postNum, matches, username, profilePic}) {
     const {userInfo} = useOutletContext()
 
     return (
@@ -67,7 +67,7 @@ function ProfileHeader({matches, username, profilePic}) {
                         <ul className="pH__profileInfo__secondRow" >
                         <li className="secondRow__posts" >
                             <div className="secondRow__text">
-                                <span className="secondRow__num" >0 </span>
+                                <span className="secondRow__num" >{postNum + " "}</span>
                                 posts
                             </div>
                         </li>

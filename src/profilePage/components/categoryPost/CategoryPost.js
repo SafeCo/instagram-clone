@@ -4,7 +4,7 @@ import ViewComments from '../../../homePage/components/posts/viewComments/ViewCo
 
 
 
-function CategoryPost({username}) {
+function CategoryPost({username, setPostNum}) {
     const [posts, setPosts] = useState([]);
     const stopRepeat = useRef(true)
     const [myPosts, setMyPosts]= useState([])
@@ -32,6 +32,10 @@ function CategoryPost({username}) {
     
     
     //     }, [username]);
+
+    useEffect(()=>{
+        setPostNum(myPosts.length)
+    },[myPosts])
 
 
     const getPosts = () =>{
