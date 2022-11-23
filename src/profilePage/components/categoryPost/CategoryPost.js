@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect} from 'react'
 import { db } from '../../../firebase';
 import ViewComments from '../../../homePage/components/posts/viewComments/ViewComments';
 
@@ -6,7 +6,6 @@ import ViewComments from '../../../homePage/components/posts/viewComments/ViewCo
 
 function CategoryPost({username, setPostNum}) {
     const [posts, setPosts] = useState([]);
-    const stopRepeat = useRef(true)
     const [myPosts, setMyPosts]= useState([])
 
     //THE DATA DOESNT LOAD BECAUSE OF WHERE
