@@ -32,11 +32,11 @@
   padding: 4px 8px;
   }
 
-.top{
+.important{
+  color: rgb(237, 73, 86);
+  font-weight: 700;
+}
 
-
-  }
 .bottom{
   border-top: solid lightgray 1px;
-
   }

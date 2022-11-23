@@ -2,22 +2,22 @@ import React, {useState} from 'react'
 import './PostIcons.css'
 
 import commentIcon from '../../../../icons/comment.svg'
-import heart from '../../../../icons/heart.svg'
 import send from '../../../../icons/send.svg'
-import save from '../../../../icons/save.svg'
+import SaveIcon from '../../../../icons/SaveIcon'
 import Like from '../../../../icons/Like';
 
 
 function PostIcons({modalSwitchOpen}) {
 
-  const [click, setClick] = useState(false)
+  const [likeClick, setLikeClick] = useState(false)
+  const [saveClick, setSaveClick] = useState(false)
 
 
   return (
     <section className="postIcons">
         <div className="postIcons__iconContainer">
-					<button onClick={()=>{setClick(!click)}}>
-            <Like click={click} />
+					<button onClick={()=>{setLikeClick(!likeClick)}}>
+            <Like click={likeClick} />
           </button>
           
         </div>
@@ -42,13 +42,8 @@ function PostIcons({modalSwitchOpen}) {
         </div>
 
         <div className="postIcons__iconContainer">
-          <button>
-            <img
-            className="postIcons__Icon"
-						src={save}
-						alt="Save Icon"
-
-						/>
+          <button onClick={()=>{setSaveClick(!saveClick)}}>
+            <SaveIcon click={saveClick}/>
           </button>
         </div>
     </section>

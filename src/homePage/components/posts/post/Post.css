@@ -71,7 +71,8 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
-    letter-spacing: -2px;
+    letter-spacing: -1.5px;
+    color: #262626;
     position: relative;
     padding: 8px 8px 8px 8px;
     

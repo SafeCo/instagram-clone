@@ -31,9 +31,16 @@ function DeleteModal({id, user, username, filename}) {
       <div className="deleteModal__position">
         <div className="deleteModal__boxContainer">
               {username === user.displayName ?
-                <button className="deleteModal__boxButton top" onClick={()=>{deletePost()}}>Delete</button>:
+                <button className="deleteModal__boxButton important" onClick={()=>{deletePost()}}>Delete</button>:
                 null
               }
+              <button className="deleteModal__boxButton bottom important" >Report</button>
+              <button className="deleteModal__boxButton bottom important" >Unfollow</button>
+              <button className="deleteModal__boxButton bottom" >Add to favourites</button>
+              <button className="deleteModal__boxButton bottom" >Go to Post</button>
+              <button className="deleteModal__boxButton bottom" >Share to...</button>
+              <button className="deleteModal__boxButton bottom" >Copy Link</button>
+              <button className="deleteModal__boxButton bottom" >Embed</button>
               <button className="deleteModal__boxButton bottom" name="cancelModal" >Cancel</button>
         </div>
       </div>
