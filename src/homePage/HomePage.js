@@ -51,7 +51,7 @@ function HomePage() {
 	return (
 		<>
 			<main className="app__main">
-				<div>testing changes</div>
+				<div>testing changes 2</div>
 				<section className="app__section">
 					<div className="app__sectionLeft">
 								<ReelCarousel />
