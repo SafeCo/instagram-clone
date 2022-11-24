@@ -30,19 +30,6 @@ function HomePage() {
 	const {userInfo} = useOutletContext()
 
 
-	// const [user, setUser]= useState([])
-	// useEffect(()=>{
-	// 	auth.onAuthStateChanged((userObj)=>{
-	// 		if(userObj){
-	// 			setUser(userObj)
-	// 		}
-	// 	})
-	// },[])
-
-// const test = posts.map((id, post)=>{
-// 	<Post key={id} filename={post.filename} postId={id} user={user} username={post.username} caption={post.caption} imageUrl={post.imageUrl} userId={post.userId}/>
-// })
-
 //Putting posts on page
 	useEffect(()=>{
 		if(shouldLogTwo.current){
@@ -64,6 +51,7 @@ function HomePage() {
 	return (
 		<>
 			<main className="app__main">
+				<div>testing changes</div>
 				<section className="app__section">
 					<div className="app__sectionLeft">
 								<ReelCarousel />
