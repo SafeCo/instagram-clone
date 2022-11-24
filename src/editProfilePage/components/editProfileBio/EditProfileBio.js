@@ -3,22 +3,20 @@ import React,{useState} from 'react'
 import { useNavigate } from "react-router-dom";
 import {storage, db } from "../../../firebase"; 
 import firebase from 'firebase/compat/app';
-import './SetProfileBio.css'
-import { useOutletContext } from 'react-router-dom'
+import './EditProfileBio.css'
 
 
 
-function SetProfileBio({switchSkip, newImage, setNewImage, imageFile, photoUrl}) {
+function EditProfileBio({switchSkip, newImage, setNewImage, imageFile, photoUrl}) {
   const [biography, setBiography] = useState("")
   const [charCount, setCharCount] = useState()
   const navigate = useNavigate();
-  const {userInfo} = useOutletContext()
 
 
 // you have to upload it to storage and then provide the photo link to firebase
 // createobjecturl is a url lifetime tied to the window it was created, it represents sepcified file or blob
-//
-    const updateUserProfile = ()=>{
+
+const updateUserProfile = ()=>{
       const user = firebase.auth().currentUser;
       let userId = user.uid
 
@@ -36,8 +34,6 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile, photoUrl})
       const uploadTask = storage.ref(`profilePictures/${fileName}`).put(imageFile);
 
 
-      // Need new func that handles profile pic upload when there is no selected image
-      // Need to seperate out 
       uploadTask.on(
         "state_changed",
         (snapshot) => {              
@@ -71,8 +67,8 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile, photoUrl})
     
 
   return (
-    <div className="sPB__boxContainer">
-      <div className="sPB__box">
+    <div className="ePB__boxContainer">
+      <div className="ePB__box">
         { newImage ? (
           <Avatar
 							sx={{ width: 200, height: 200 }}
@@ -87,10 +83,10 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile, photoUrl})
           )
           
         }
-        <div className="sPB__captionContainer">
+        <div className="ePB__captionContainer">
           <textarea 
             maxLength="150"
-            className="sPB__caption"
+            className="ePB__caption"
             type="text" 
             placeholder="Write a caption..." 
             onChange={event => {
@@ -100,19 +96,19 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile, photoUrl})
             value={biography}
           >
           </textarea>
-          <div className="sPB__captionCountContainer">
+          <div className="ePB__captionCountContainer">
             <span>{charCount ? charCount : "0" }</span>
             <span>/150</span>
           </div>
         </div>
 
-        <div className="sPB__buttonContainer" >
-          <button onClick={updateUserProfile} className="sPB__button">
+        <div className="ePB__buttonContainer" >
+          <button onClick={updateUserProfile} className="ePB__button">
             <p>Continue</p>
           </button>
         </div>
-        <div className="sPB__buttonContainer__alt">
-          <button className="sPB__button__alt" onClick={()=>{setNewImage(); switchSkip()}} >
+        <div className="ePB__buttonContainer__alt">
+          <button className="ePB__button__alt" onClick={()=>{setNewImage(); switchSkip()}} >
             <p>Back</p>
           </button>
         </div>
@@ -122,4 +118,4 @@ function SetProfileBio({switchSkip, newImage, setNewImage, imageFile, photoUrl})
   )
 }
 
-export default SetProfileBio
+export default EditProfileBio

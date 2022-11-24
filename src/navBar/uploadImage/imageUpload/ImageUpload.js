@@ -57,7 +57,7 @@ function ImageUpload({setSelectedFile, selectedFile, preview, username, userProf
 
 			<div className="imageUpload__previewContainer">
 				<div className="imageUpload__imageContainer">
-					{selectedFile && <img className="imageUpload__image" src={preview} />}
+					{selectedFile && <img className="imageUpload__image" src={preview} alt="upload" />}
 				</div>
 				<div className="imageUpload__captionContainer">
 					<div className="imageUpload__captionProfile">

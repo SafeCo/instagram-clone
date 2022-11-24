@@ -136,7 +136,6 @@ function NavIcons({username, userProfilePic, userId}) {
                     setHistory(); 
                     postButton(e)
                     modalSwitchOpen(e)
-                    console.log(e.currentTarget.name)
                 }} 
 				className="nI__headerIconButton">
                     <PostIcon buttonState={buttonState[2]} />

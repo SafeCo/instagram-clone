@@ -53,7 +53,6 @@ function Post({filename, postId, user, username, caption, imageUrl, userId}) {
     }).catch((error) => {
       console.log("Error getting document:", error);
     });
-    console.log("useffect get image profile")
   },[postId])
 
   useEffect(()=> {
@@ -78,21 +77,6 @@ function Post({filename, postId, user, username, caption, imageUrl, userId}) {
     setReducedComments(filter)
   },[comments])
 
-  //this useeffect checks the posts userId then looks into firebase's usernames collection to find the photurl
-  
-  const getProfilePic = ()=>{
-    db.collection('usernames').doc(userId).get().then((doc)=>{
-      setProfilePic(doc.get('photoUrl'))
-    }).catch((error) => {
-      console.log("Error getting document:", error);
-    });
-  }
-    
-  
-  
-  
-  
-  
 
   return (
     <>

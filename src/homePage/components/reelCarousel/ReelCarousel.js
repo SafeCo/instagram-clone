@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React from 'react'
 import Slider from "react-slick";
 import './ReelCarousel.css'
 import "slick-carousel/slick/slick.css"; 
@@ -11,22 +11,6 @@ import { useOutletContext } from 'react-router-dom'
 function ReelCarousel() {
 
 	const {reelAndSug} = useOutletContext()
-
-	// const reelAndSug = 
-	// [
-	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
-	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
-	// 	{username: 'Tester', id: 'aHTiFthtrFi7Q5wpwzNg'},
-	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
-	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
-	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
-	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
-	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
-	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
-	// 	{username: 'tester3', id: '1BUG2QxgPKBKMojpBHle'},
-	// 	{username: 'Tester2', id: 'GSG1WREBR34mJNv9RqDi'},
-	// ];
-
 
 	const settings = {
 		centerPadding: 0,
@@ -41,7 +25,7 @@ function ReelCarousel() {
 
 
 	function SampleNextArrow(props) {
-        const { className, style,  onClick } = props;
+        const { className,  onClick } = props;
 		
         return (
 		<div
@@ -49,21 +33,21 @@ function ReelCarousel() {
             style={{}}
             onClick={onClick}
           >
-			<img className="slickArrowImage" src={rightChevron}/>
+			<img className="slickArrowImage" alt="rightChevron" src={rightChevron}/>
 		  </div>
          
         );
       }
 
       function SamplePrevArrow(props) {
-        const { className, style, onClick } = props;
+        const { className, onClick } = props;
         return (
 		<div
             className={className}
             style={{}}
             onClick={onClick}
 			>
-			<img className="slickArrowImage" src={leftChevron}/>
+			<img className="slickArrowImage" alt="leftChevron"  src={leftChevron}/>
 		  </div>
         );
       }

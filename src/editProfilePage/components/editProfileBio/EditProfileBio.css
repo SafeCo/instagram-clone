@@ -1,5 +1,5 @@
 
-.sPB__boxContainer {
+.ePB__boxContainer {
 	border: solid #dbdbdb 1px;
 	background-color: #FFFFFF;
 	margin: 0 0 10px;
@@ -10,21 +10,21 @@
 	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 
-.sPB__box{
+.ePB__box{
     display: flex;
 	flex-direction: column;
 	align-items: center;
     width: 340px;
 }
 
-.sPB__captionContainer{
+.ePB__captionContainer{
     width: 100%;
     padding: 0 16px;
     margin-top: 8px;
     margin-bottom: 8px;
 }
 
-.sPB__caption{
+.ePB__caption{
     /* border: none; */
     outline: none;
     resize: none;
@@ -34,7 +34,7 @@
     
 }
 
-.sPB__captionCountContainer{
+.ePB__captionCountContainer{
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
@@ -44,14 +44,14 @@
 
 }
 
-.sPB__buttonContainer{
+.ePB__buttonContainer{
     height: 30px;
     width: 162px;
     border-radius: 5px;
     overflow: hidden;
 }
 
-.sPB__button{
+.ePB__button{
     background-color: rgb(0, 149, 246);
     color: white;
     cursor: pointer;
@@ -62,11 +62,11 @@
     font-weight: 600;
 }
 
-.sPB__buttonContainer__alt{
+.ePB__buttonContainer__alt{
     padding: 4px;
 }
 
-.sPB__button__alt{
+.ePB__button__alt{
     cursor: pointer;
     background-color: transparent;
     border: none;

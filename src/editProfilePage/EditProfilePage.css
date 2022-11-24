@@ -6,7 +6,7 @@ body{
     overflow-y: scroll;
 }
 
-.sPPage__container{
+.ePPage__container{
     height: calc(100vh - 61px);
     display: flex;
     align-items: center;

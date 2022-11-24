@@ -1,17 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import './NavBar.css'
 
-import InstaLogo from '../instagram-text-icon.svg'
-import SearchBar from '../homePage/components/searchBar/SearchBar'
+import InstaLogo from './images/instagramTextIcon.svg'
+import SearchBar from './searchBar/SearchBar'
 import NavIcons from './navIcon/NavIcons'
 
 import { db, auth } from '../firebase';
 import { Outlet } from 'react-router-dom'
 
-
-// USECONTEXT for user
-// store icons data in context 
-// see what is going on with local storage
 
 function NavBar() {
     
@@ -77,7 +73,6 @@ function NavBar() {
             </nav>
             <Outlet context={{user, userInfo, reelAndSug}} />
         </>
-        
     )
 }
 

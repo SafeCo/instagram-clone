@@ -1,4 +1,4 @@
-import React,{useContext, useState, useRef, useEffect} from "react"
+import React,{useContext, useState, useEffect} from "react"
 import { useOutletContext } from 'react-router-dom'
 
 import Avatar from "@mui/material/Avatar"
@@ -57,7 +57,9 @@ const FriendSuggestion = ({profileUsername, userPhotoUrl}) => {
             sx={{height: 30, width: 30}}
             /> 
             <div className="friendSuggestion__profileName">{username}</div>
-            <div className="friendSuggestion__profileLogout">Follow</div>
+            <div className="friendSuggestion__profileLogout noFeature">
+              Follow
+            </div>
           </div>
           
         ))

@@ -39,7 +39,7 @@ function SignIn({checkSignedIn, signIn, signInProps, email, password}) {
 								value={password}
 								onChange={(e)=> {signInProps(e.target, e.target.value) }}
 								/>
-								<button onClick={(e)=> passSwitch(e)} className='signIn__showButton'>Show</button>
+								<div onClick={(e)=> passSwitch(e)} className='signIn__showButton'>Show</div>
 							</div>
 							<button className='signIn__submitButton' type="submit" onClick={signIn}>Log In</button>
 						</form>
@@ -47,7 +47,7 @@ function SignIn({checkSignedIn, signIn, signInProps, email, password}) {
 				</div>
 			<div className='signIn__box'>
 				<div className='signIn__signUp'>
-					<p>Don't have an account? </p>
+					<p>Don't have an account?</p>
 					<p onClick={checkSignedIn}>Sign Up</p>
 				</div>
 			</div>

@@ -47,7 +47,7 @@ function SignUp({checkSignedIn, signUp, signInProps, username, email, password})
 							value={password}
 							onChange={(e)=> {signInProps(e.target, e.target.value) }}
 							/>
-							<button onClick={(e)=> passSwitch(e)} className='login__showButton'>Show</button>
+							<div onClick={(e)=> passSwitch(e)} className='login__showButton'>Show</div>
 						</div>
 						<button className='login__submitButton' type="submit" onClick={signUp}>Register</button>
 					</form>

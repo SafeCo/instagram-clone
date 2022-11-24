@@ -12,10 +12,6 @@ const ZoomImage = ({ image, getNewImage }, ref) => {
       convertFunc: ()=> convertCanvas(canvasRef?.current),
     }
   })
-  
-  const styles = {
-    border: '2px solid red',
-};
 
   const circleStyle ={
     borderRadius: '50%',

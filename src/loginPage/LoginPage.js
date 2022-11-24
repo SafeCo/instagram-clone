@@ -34,7 +34,7 @@ function LoginPage() {
       displayName: username
     })
 
-   auth.currentUser.reload()
+  auth.currentUser.reload()
 
   db.collection('usernames').doc(authUser.user.uid).set({
     username: username,
@@ -84,7 +84,6 @@ useEffect(()=>{
       //user logged out
       // called 4 times when logging out executes auth as log out once renders page twice
       logout();
-      console.log("logged out")
 
     }
   })

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import { db } from '../../../firebase';
-import ViewComments from '../../../homePage/components/posts/viewComments/ViewComments';
 
 
 
@@ -8,29 +7,25 @@ function CategoryPost({username, setPostNum}) {
     const [posts, setPosts] = useState([]);
     const [myPosts, setMyPosts]= useState([])
 
-    //THE DATA DOESNT LOAD BECAUSE OF WHERE
-    // THE USEEFFECT GETS USERNAME AS UNDEFINED
-    // MADE THE USE EFFECT DEPENDENT ON USERNAME CHANGING WHICH IS A TEMPORARY FIX
+    useEffect(()=>{
+                const name = String(username)
+                db.collection("posts")
+                .where("username", "==", name)
+                .get()
+                .then((querySnapshot) => {
+                    setMyPosts(querySnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        post: doc.data(),
+                        }))
+                    )
+                })
 
-    // useEffect(()=>{
-    //             const name = String(username)
-    //             db.collection("posts")
-    //             .where("username", "==", name)
-    //             .get()
-    //             .then((querySnapshot) => {
-    //                 setMyPosts(querySnapshot.docs.map(doc => ({
-    //                     id: doc.id,
-    //                     post: doc.data(),
-    //                     }))
-    //                 )
-    //             })
-
-    //             .catch((error) => {
-    //                 console.log("Error getting documents: ", error);
-    //             });
+                .catch((error) => {
+                    console.log("Error getting documents: ", error);
+                });
     
     
-    //     }, [username]);
+        }, [username]);
 
     useEffect(()=>{
         setPostNum(myPosts.length)
@@ -53,8 +48,7 @@ function CategoryPost({username, setPostNum}) {
         const num = checkNum(myPosts.length)
 
         const diff = num - myPosts.length
-        const tempArr = [... myPosts]
-        
+        const tempArr = [...myPosts]
 
         for(let i = 0; i < diff; i++){
             tempArr.push("placeholder")
@@ -79,7 +73,7 @@ function CategoryPost({username, setPostNum}) {
                                         key={postInfo.post.id}
                                         className="pP__post__container" 
                                     >
-                                        <img  className="pP__post__image" src={postInfo.post.imageUrl}  />
+                                        <img  className="pP__post__image" src={postInfo.post.imageUrl} alt="post" />
                                     </div>
                         }
                     }

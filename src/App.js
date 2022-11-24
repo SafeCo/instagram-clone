@@ -2,22 +2,20 @@ import React, { lazy, Suspense } from 'react'
 import './App.css'
 import { Routes, Route } from "react-router-dom";
 
-//PAGES
-import LoginPage from './loginPage/LoginPage'
-// import HomePage from './homePage/HomePage'
-// import SetProfilePage from './setProfilePage/SetProfilePage';
-
+//HOOKS
 import { ProtectedRoute } from "./ProtectedRoute";
 import {AuthProvider} from "./hooks/useAuth"
+
+//PAGES
+import LoginPage from './loginPage/LoginPage'
 import NavBar from './navBar/NavBar';
-import Loading from './Loading';
+import Loading from './globalComponents/loading/Loading';
 
 const HomePage = lazy(() => import('./homePage/HomePage'))
-const SetProfilePage = lazy(() => import('./setProfilePage/SetProfilePage'))
+const EditProfilePage = lazy(() => import('./editProfilePage/EditProfilePage'))
 const ProfilePage  = lazy(() => import('./profilePage/ProfilePage'))
 
-//BrowserRouter in index.js
-
+//BrowserRouter is in index.js
 
 function App() {
   
@@ -40,7 +38,7 @@ function App() {
             <Route path="/addprofile" element={
               <ProtectedRoute>
                 <Suspense fallback={<Loading/>}>
-                  <SetProfilePage />
+                  <EditProfilePage />
                 </Suspense>
               </ProtectedRoute>
             } />
@@ -65,7 +63,5 @@ function App() {
 
   )
 }
-
-
 
 export default App

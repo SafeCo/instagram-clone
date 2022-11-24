@@ -21,9 +21,7 @@
 
 .signIn__formBox{
 	margin-bottom: 10px;
-	
 	width: 100%;
-
 }
 
 .signIn__form{
@@ -54,7 +52,8 @@
 	min-height: auto;
 	min-width: auto;
 	margin: 8px 40px 8px 40px;
-	
+	cursor: pointer;
+
 }
 
 .signIn__password{
@@ -75,6 +74,9 @@
 
 .signIn__showButton{
 	flex: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	cursor: pointer;
 	background-color: #fafafa;
 	color: #262626;
@@ -108,9 +110,11 @@
 .signIn__signUp{
 	display: flex;
 	font-size: 14px;
+	cursor: pointer;	
 }
 
 .signIn__signUp :nth-child(2){
 	font-weight: 600;
 	color: #0095F6;
+	margin-left: 3px;
 }

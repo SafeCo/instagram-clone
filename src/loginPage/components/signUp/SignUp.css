@@ -60,6 +60,9 @@
 .login__showButton{
 	flex: 2;
 	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	background-color: #fafafa;
 	color: #262626;
 	border: 1px solid #dbdbdb;
@@ -83,7 +86,7 @@
 	min-height: auto;
 	min-width: auto;
 	margin: 8px 40px 8px 40px;
-	
+	cursor: pointer;
 }
 
 .login__headerImageBox{
@@ -108,4 +111,5 @@
 .login__signIn :nth-child(2){
 	font-weight: 600;
 	color: #0095F6;
+	margin-left: 3px;
 }

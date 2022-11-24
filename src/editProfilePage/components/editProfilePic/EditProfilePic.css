@@ -1,5 +1,5 @@
 
-.sPP__boxContainer {
+.ePP__boxContainer {
 	border: solid #dbdbdb 1px;
 	background-color: #FFFFFF;
 	margin: 0 0 10px;
@@ -10,14 +10,14 @@
 	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 
-.sPP__box{
+.ePP__box{
     display: flex;
 	flex-direction: column;
 	align-items: center;
     width: 340px;
 }
 
-.sPP__textContainer{
+.ePP__textContainer{
     width: 200px;
     text-align: center;
     font-size: 14px;
@@ -25,7 +25,7 @@
     margin-top: 10px;
 }
 
-.sPP__imageContainer{
+.ePP__imageContainer{
     border: solid green 1px;
     display: flex;
     justify-content: center;
@@ -35,10 +35,10 @@
     width: 150px;
 }
 
-.sPP__body__inputContainer{
+.ePP__body__inputContainer{
     padding: 4px;
 }
-.sPP__body__button{
+.ePP__body__button{
     height: 30px;
     width: 162px;
     position: relative;
@@ -51,7 +51,7 @@
 
 }
 
-.sPP__body__buttonText{
+.ePP__body__buttonText{
     position: absolute;
     height: inherit;
     width: inherit;
@@ -66,18 +66,18 @@
 }
 
 
-.sPP__body__input{
+.ePP__body__input{
     height: 100%;
     width: 100%;
     cursor: pointer;
     opacity: 0;
 }
 
-.sPP__buttonContainer__alt{
+.ePP__buttonContainer__alt{
     padding: 4px;
 }
 
-.sPP__button__alt{
+.ePP__button__alt{
     cursor: pointer;
     background-color: transparent;
     border: none;

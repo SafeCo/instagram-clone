@@ -1,9 +1,9 @@
 import { Avatar } from '@mui/material'
 import React,{useState, useEffect, useRef} from 'react'
 import ZoomImage from './ZoomImage'
-import './SetProfilePic.css'
+import './EditProfilePic.css'
 
-function SetProfilePic({photoUrl, switchSkip, getFile}) {
+function EditProfilePic({photoUrl, switchSkip, getFile}) {
 
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
@@ -44,8 +44,8 @@ function SetProfilePic({photoUrl, switchSkip, getFile}) {
 
 
   return (
-        <div className="sPP__boxContainer">
-            <div className="sPP__box">
+        <div className="ePP__boxContainer">
+            <div className="ePP__box">
                     {selectedFile ? 
                         (<ZoomImage ref={clickRef} image={preview} getNewImage={getNewImage} />):
                         photoUrl ? (
@@ -55,17 +55,17 @@ function SetProfilePic({photoUrl, switchSkip, getFile}) {
                         )
                     }
 
-                <div className="sPP__textContainer">
+                <div className="ePP__textContainer">
                     {selectedFile ? 
                         (<p>Adjust your picture by zooming in and dragging</p>):
                         (<p>Add a profile picture</p>) 
                     }
                 </div>
-                <div className="sPP__body__inputContainer">
-                        <button className="sPP__body__button"> 
-                            <p className="sPP__body__buttonText">Select From Computer</p>
+                <div className="ePP__body__inputContainer">
+                        <button className="ePP__body__button"> 
+                            <p className="ePP__body__buttonText">Select From Computer</p>
                             <input 
-                            className="sPP__body__input"
+                            className="ePP__body__input"
                             name="file"
                             type='file'  
                             accept="image/png, image/jpeg" 
@@ -75,16 +75,16 @@ function SetProfilePic({photoUrl, switchSkip, getFile}) {
                     </div>
                 <div>
                     {selectedFile && (
-                        <button className="sPP__body__button" onClick={()=>{canvasToObj(); switchSkip()}}>
+                        <button className="ePP__body__button" onClick={()=>{canvasToObj(); switchSkip()}}>
                             <p>Continue</p>
                         </button>
                         )
                     }
                 </div>
-                <div className="sPP__buttonContainer__alt">
+                <div className="ePP__buttonContainer__alt">
                     <button 
                         onClick={()=> {switchSkip()}}
-                        className="sPP__button__alt"
+                        className="ePP__button__alt"
                     >
                         <p>Skip</p>
                     </button> 
@@ -95,4 +95,4 @@ function SetProfilePic({photoUrl, switchSkip, getFile}) {
   )
 }
 
-export default SetProfilePic
+export default EditProfilePic

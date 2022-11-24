@@ -1,4 +1,3 @@
-import { Avatar } from '@mui/material'
 import React, {useState, useEffect} from 'react'
 import './ProfilePage.css'
 import { useOutletContext} from 'react-router-dom'
@@ -16,8 +15,6 @@ import CategoryPostIcon from '../icons/CategoryPostIcon'
 import TaggedIcon from '../icons/TaggedIcon'
 
 function ProfilePage() {
-
-
 
     const {user} = useOutletContext()
     const [active, setActive] = useState("1")
@@ -55,7 +52,7 @@ function ProfilePage() {
                     </div>
                 </div>
 
-                {!matches && <ResFollowInfo/>}
+                {!matches && <ResFollowInfo  postNum={postNum}/>}
 
                 <div className="pP__category__container">
 
