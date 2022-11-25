@@ -59,6 +59,7 @@
 
 .app__reelsName{
     overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
     font-weight: 400;
     font-size: 12px;

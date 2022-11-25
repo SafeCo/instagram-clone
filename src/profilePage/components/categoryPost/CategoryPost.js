@@ -60,26 +60,28 @@ function CategoryPost({username, setPostNum}) {
         });
 
         const content = postRows.map((row, index) => (
-            <div className="pP__posts__row" key={index}>
+            <section key={"row" + index}
+            className="pP__posts__row" 
+            >
                 { row.map( (postInfo, index) => {
                         if(postInfo === "placeholder"){
-                            return <div 
-                                        key={index}
+                            return <article 
+                                        key={"empty" + index}
                                         className="pP__post__container" >
                                         <div></div>
-                                    </div>
+                                    </article>
                         }else{
-                            return  <div
-                                        key={postInfo.post.id}
+                            return  <article
+                                        key={"image" + index}
                                         className="pP__post__container" 
                                     >
                                         <img  className="pP__post__image" src={postInfo.post.imageUrl} alt="post" />
-                                    </div>
+                                    </article>
                         }
                     }
                     
                 )}
-            </div> )
+            </section> )
         );
 
 
@@ -98,12 +100,11 @@ function CategoryPost({username, setPostNum}) {
 
     return (
         <div className="pP__posts__container">
-            <div className="pP__posts__collection">
+            <div className="pP__posts__collection" >
             {
-                myPosts ?  posts : (<div>Not Loaded</div>)
+                posts 
             }
-            </div>
-                        
+            </div> 
         </div>
     )
 }
