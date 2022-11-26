@@ -17,6 +17,19 @@ function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [matches, setMatches] = useState(
+    window.matchMedia("(min-width: 780px)").matches
+)
+  useEffect(() => {
+    window
+    .matchMedia("(min-width: 780px)")
+    .addEventListener('change', e => setMatches( e.matches ));
+    return ()=>{
+      window
+      .matchMedia("(min-width: 780px)")
+      .removeEventListener('change', e => setMatches( e.matches ));
+    }
+  }, []);
 
   // Sign in
   const signIn = (event)=>{
@@ -99,7 +112,10 @@ useEffect(()=>{
 
   return (
     <main className='loginPage__main'>
-      <LoginImage/>
+      {
+        matches? <LoginImage/> : null
+      }
+      
       {
         isSignedIn ?(
           
