@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import { db } from '../../../firebase';
+import './CategoryPost.css'
+import Content from './Content';
 
 
 
 function CategoryPost({username, setPostNum}) {
     const [posts, setPosts] = useState([]);
     const [myPosts, setMyPosts]= useState([])
-
+    
     useEffect(()=>{
                 const name = String(username)
                 db.collection("posts")
@@ -30,7 +32,6 @@ function CategoryPost({username, setPostNum}) {
     useEffect(()=>{
         setPostNum(myPosts.length)
     },[myPosts])
-
 
     const getPosts = () =>{
         //This determines the number of rows
@@ -61,29 +62,23 @@ function CategoryPost({username, setPostNum}) {
 
         const content = postRows.map((row, index) => (
             <section key={"row" + index}
-            className="pP__posts__row" 
+            className="cP__posts__row" 
             >
                 { row.map( (postInfo, index) => {
                         if(postInfo === "placeholder"){
                             return <article 
                                         key={"empty" + index}
-                                        className="pP__post__container" >
+                                        className="cP__post__container" >
                                         <div></div>
                                     </article>
                         }else{
-                            return  <article
-                                        key={"image" + index}
-                                        className="pP__post__container" 
-                                    >
-                                        <img  className="pP__post__image" src={postInfo.post.imageUrl} alt="post" />
-                                    </article>
+                            return  <Content key={postInfo.id} postInfo={postInfo} index={index} />
                         }
                     }
                     
                 )}
             </section> )
         );
-
 
         return (
             <>
@@ -97,15 +92,18 @@ function CategoryPost({username, setPostNum}) {
         setPosts(getPosts())
     },[myPosts])
 
-
     return (
-        <div className="pP__posts__container">
-            <div className="pP__posts__collection" >
-            {
-                posts 
-            }
-            </div> 
-        </div>
+        <>
+            
+            <div className="cP__posts__container">
+                <div className="cP__posts__collection" >
+                {
+                    posts 
+                }
+                </div> 
+            </div>  
+        </>
+        
     )
 }
 

@@ -1,51 +1,49 @@
-useEffect(()=>{
-    if(stopRepeat.current){
-            stopRepeat.current = false;
-            const name = String(username)
-            db.collection("posts").where("username", "==", name)
-            .get()
-            .then((querySnapshot) => {
-                console.log("exectued use effect")
-                console.log(querySnapshot.docs)
-                setMyPosts(querySnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    post: doc.data(),
-                    }))
-                )
-            })
-            
-            .catch((error) => {
-                console.log("Error getting documents: ", error);
-            });
+import React,{useState} from 'react'
+import ViewComments from '../../../homePage/components/posts/viewComments/ViewComments';
+import ModalWrapper from '../../../globalComponents/modalWrapper/ModalWrapper';
+import {useOutletContext } from 'react-router-dom'
 
-        }
+function Content({postInfo, index}) {
 
-    }, []);
+    const [modalChild, setModalChild]= useState("")
+	const [modalOpen, setModalOpen] = useState(false)
+    const {user} = useOutletContext()
+    
+    const modalSwitchOpen = (e)=>{
+        setModalChild(
+            <ViewComments 
+            user={user}
+            postPhotoUrl={user.photoURL}
+            caption={postInfo.post.caption}
+            postId={postInfo.id}
+            username={postInfo.post.username}
+            imageUrl={postInfo.post.imageUrl}  
+            />
+        )
+		setModalOpen(!modalOpen)
+	}
 
 
-
-    const postRows = row.map( (row, index) => {
-        // first check if postlength is divisble by 3? if not check its nearest 3 multiplier and then
-        //push the difference in 
-        console.log(num)
-        console.log(myPosts.length)
-        console.log(num != myPosts.length)
-        if (num != myPosts.length){
-            const diff = num - myPosts.length
-            const test = myPosts.slice(index * 3, index * 3 + 3)
-            
-            console.log(diff)
-
-            for(let i = 0; i < diff; i++){
-                test.push("placeholder")
+    return (
+        <>
+            {modalOpen && 
+                <ModalWrapper modalState={modalOpen} modalSwitch={modalSwitchOpen}>
+                    {modalChild}
+                </ModalWrapper>
             }
-            return test
+            <article
+                key={"image" + index}
+                className="cP__post__container"
+                onClick={(e)=>{
+                    modalSwitchOpen(e)
+                    }} 
+            >
+                <img  className="cP__post__image" src={postInfo.post.imageUrl} alt="post" />
+            </article>
+        </>
+        
 
-        }else{
+    )
+}
 
-            console.log(" if not activated")
-            
-            return myPosts.slice(index * 3, index * 3 + 3)
-        }
-    }
-    );
+export default Content
