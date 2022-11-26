@@ -43,6 +43,7 @@ has.
 ## Lessons Learned
 
 **What did you learn while building this project?**
+
 To this point the extent of my exeperince in dealing with the backend had been API's. 
 With this project I learned firebase and developed a better grasp of how to minimise and be efficient with server read, write and deletes.
 
