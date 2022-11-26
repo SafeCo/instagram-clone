@@ -26,7 +26,6 @@
 }
 
 .ePP__imageContainer{
-    border: solid green 1px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,8 +36,13 @@
 
 .ePP__body__inputContainer{
     padding: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .ePP__body__button{
+    cursor: pointer;
     height: 30px;
     width: 162px;
     position: relative;
@@ -63,14 +67,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 
 .ePP__body__input{
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;   
+    z-index: -1;
 }
 
 .ePP__buttonContainer__alt{

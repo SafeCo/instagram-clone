@@ -37,7 +37,7 @@ function NavBar() {
 	},[user.uid])
 
     useEffect(()=>{
-        const userProfileName = String(user.displayName)
+        const userProfileName = String(userInfo.username)
         db.collection("usernames")
         .where("username", "!=", userProfileName)
         .limit(11)
@@ -67,7 +67,7 @@ function NavBar() {
                     </div>  
                         
                     <div className="nB__headerIconsFlex">
-                        <NavIcons userProfilePic={userInfo.photoUrl} username={user.displayName} userId={user.uid}/>
+                        <NavIcons userProfilePic={userInfo.photoUrl} username={userInfo.username} userId={user.uid}/>
                     </div>
                 </div>	
             </nav>

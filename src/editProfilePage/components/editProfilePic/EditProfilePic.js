@@ -8,6 +8,7 @@ function EditProfilePic({photoUrl, switchSkip, getFile}) {
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
     const clickRef = useRef()
+    const inputRef = useRef()
 
     useEffect(() => {
         if (!selectedFile) {
@@ -62,17 +63,21 @@ function EditProfilePic({photoUrl, switchSkip, getFile}) {
                     }
                 </div>
                 <div className="ePP__body__inputContainer">
-                        <button className="ePP__body__button"> 
-                            <p className="ePP__body__buttonText">Select From Computer</p>
-                            <input 
+                    <button 
+                    onClick={()=>{inputRef.current.click()}}
+                    className="ePP__body__button"
+                    > 
+                        <p className="ePP__body__buttonText">Select From Computer</p>
+                    </button>
+                    <input 
                             className="ePP__body__input"
                             name="file"
                             type='file'  
+                            ref={inputRef}
                             accept="image/png, image/jpeg" 
                             onChange={onSelectFile} 
                             />
-                        </button>
-                    </div>
+                </div>
                 <div>
                     {selectedFile && (
                         <button className="ePP__body__button" onClick={()=>{canvasToObj(); switchSkip()}}>

@@ -9,7 +9,6 @@ import {useEffect} from 'react'
 
 export default function ModalWrapper(props){
 
-
     const modalSetter = (modalState, scrollBarWidth)=>{
 		if(window.matchMedia("(max-width: 480px)").matches && modalState === false ){
 			document.body.style.paddingRight = "0px"

@@ -8,8 +8,8 @@ import { db } from '../../../../firebase';
 
 
 function ViewComments({ user, caption, postId, username, imageUrl, postPhotoUrl}) {
-	//Component used by Post.js
-	
+	//Component used by Post.js and CategoryPost.js in profile page
+
 	const [comments, setComments] = useState([]);
 
 	useEffect(()=> {
