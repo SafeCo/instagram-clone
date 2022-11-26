@@ -24,7 +24,7 @@ with a Firebase backend.
 ## Excluded Features
 
 There are certain features that are excluded from this 
-project because this project was intitally meant 
+project because this project was initially meant 
 to be a demonstration of my front-end skills, 
 however it has progressed to implement some complex features.
 
@@ -44,14 +44,16 @@ has.
 
 **What did you learn while building this project?**
 
-To this point the extent of my exeperince in dealing with the backend had been API's. 
-With this project I learned firebase and developed a better grasp of how to minimise and be efficient with server read, write and deletes.
+To this point the extent of my experience in dealing with a backend had been API's. 
+With this project I learned Firebase and developed a better grasp of how to minimise and be efficient with server read, write and deletes.
+
+I also furthered my understanding of React and realised how complex state management, rendering and components can become. This project would serve as a reminder how important planning and management is prior to me undertaking any future ambitious projects.
 
 
 **What challenges did you face and how did you overcome them?**
 
-The greatest challenge was learning firebase in conjunction with react.
+The greatest challenge was learning firebase in conjunction with React.
 As I was not only learning Firebase but trying to implement it into a front-end framework rather than 
 vanilla Javscript. The way I overcame this was by reading the Firebase documentation and lots of googling!
 
-Another challenge was making it possible to edit profile pictures. I had to use the canvas element to make it possbile to drag and zoom the profile picture and subsequently convert the image from Base 64 data to a file and then providing a URL to firebase.
+Another challenge was making it possible to edit profile pictures. I had to use the canvas element to make it possbile to drag and zoom the profile picture and subsequently convert the image from Base 64 data to a file and then providing a URL to store in firebase.
