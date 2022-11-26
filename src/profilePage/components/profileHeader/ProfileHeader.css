@@ -85,6 +85,16 @@
     font-weight: 600;
 }
 
+.firstRow__logoutButton{
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	font-size: 12px;
+	color: #0095f6;
+	font-weight: 600;
+    margin-left: 20px;
+}
+
 .firstRow__optionsButtonContainer{
     display: flex;
     flex-direction: row;

@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react'; 
-import { db, auth, storage} from '../firebase';
+import { db, auth} from '../firebase';
 import AuthContext from '../hooks/useAuth'
 import './LoginPage.css'
 import LoginImage from './components/loginImage/LoginImage';
@@ -95,14 +95,11 @@ useEffect(()=>{
       
     }else{
       //user logged out
-      // called 4 times when logging out executes auth as log out once renders page twice
       logout();
 
     }
   })
-
     return () => {
-      //perform some clean up actions before you use the useffect
       unsubscribe()
       }
    }, []);

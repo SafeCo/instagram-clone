@@ -1,16 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useContext} from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-
-
-
 import './ProfileHeader.css'
-
+import AuthContext from "../../../hooks/useAuth"
 import { Avatar } from '@mui/material'
 import optionsIcon from '../../../icons/options.svg'
 
 function ProfileHeader({postNum, matches, username, profilePic}) {
     const {userInfo} = useOutletContext()
+    const { logout } = useContext(AuthContext)
 
     return (
         <>
@@ -50,7 +48,7 @@ function ProfileHeader({postNum, matches, username, profilePic}) {
 
                         <div className="firstRow__optionsButtonContainer">
                             <button className="firstRow__optionsButton" >
-                                <img src={optionsIcon}   />
+                                <img src={optionsIcon} alt="options Icon"  />
                             </button>
                         </div>
                     </div>
@@ -61,6 +59,9 @@ function ProfileHeader({postNum, matches, username, profilePic}) {
                                     Edit Profile
                                 </button>
                             </Link>
+                            <button
+                            className="firstRow__logoutButton"
+                            onClick={()=>{logout()}}>Logout</button>
                         </div>
                     }
                     { matches &&
