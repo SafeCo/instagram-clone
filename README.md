@@ -20,6 +20,8 @@ with a Firebase backend.
 - Edit profiles
 - Drag and zoom your profile picture
 - Protected routes
+- Delete Posts
+- View Comments
 
 ## Excluded Features
 
@@ -35,10 +37,12 @@ has.
 
 ## How to Use
 - User authentication - Users can sign in and sign up from the login page
-- Logout - After logging in there is a logout button on the right side of the home page next to the users profile picture.
+- Logout - After logging in there is a logout button on the right side of the home page next to the users profile picture. If the screen width is below 768px the logout button instead appears in the profile page next to the 'Edit profile' button.
 - Make a post- In the navbar there is a plus button, by clicking this a modal will pop up. Simply select a picture add a caption and click "Post" on the top right of the modal. To exit the modal just click the dark background.
 - User profile- To view your profile click on your profile picture in the Navbar.
 - Edit profile- To add a profile picture and bio go to your profile page and click on the 'Edit profile' button. Once you select a profile picture you can edit the picture by zooming in and dragging the picture. Once you are happy with the picture click continue, provide a bio (optional) and click continue.
+- Delete posts- In the homepage find you post, click the '...' button on the top right of the post to open the options modal and click delete. The delete option only appears on your own posts. Please note none of the other options listed have been implemented.
+- View comments- click the speech bubble icon in a post to open the view comments modal, alternatively if the amount of comments on a post exceed three the 'View all comments' option appears, clicking on this would also open the view comments modal.
 
 ## Lessons Learned
 
